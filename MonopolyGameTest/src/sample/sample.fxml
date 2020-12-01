@@ -6,9 +6,9 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="682.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <ImageView fitHeight="472.0" fitWidth="682.0" layoutX="0" layoutY="0" preserveRatio="false">
+      <ImageView fitHeight="472.0" fitWidth="682.0" layoutX="0" layoutY="0">
          <image>
-            <Image url="file:///../../../Desktop/MonopolyGameTest/Main.jpeg" />
+            <Image url="@../../Main.jpeg" />
          </image>
       </ImageView>
       <Button fx:id="plyBtn" layoutX="53.0" layoutY="113.0" mnemonicParsing="false" onAction="#goForPlay" prefHeight="25.0" prefWidth="83.0" text="PLAY" />

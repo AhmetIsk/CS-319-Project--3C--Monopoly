@@ -8,7 +8,7 @@
    <children>
       <ImageView fitHeight="405.0" fitWidth="656.0" layoutX="0" layoutY="0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:///../Users/Ahmet/Desktop/MonopolyGameTest/HelpPageBacground.jpg" />
+            <Image url="@../../HelpPageBacground.jpg" />
          </image>
       </ImageView>
       <Button fx:id="backBtn" cancelButton="true" defaultButton="true" graphicTextGap="10.0" layoutX="455.0" layoutY="267.0" mnemonicParsing="false" onAction="#closeToBackMain" text="Back" />
