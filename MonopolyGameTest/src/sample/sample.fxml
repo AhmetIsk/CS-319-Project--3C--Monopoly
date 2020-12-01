@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="682.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <ImageView fitHeight="472.0" fitWidth="682.0" layoutX="0" layoutY="0" preserveRatio="false">
+         <image>
+            <Image url="file:///../../../Desktop/MonopolyGameTest/Main.jpeg" />
+         </image>
+      </ImageView>
+      <Button fx:id="plyBtn" layoutX="53.0" layoutY="113.0" mnemonicParsing="false" onAction="#goForPlay" prefHeight="25.0" prefWidth="83.0" text="PLAY" />
+      <Button fx:id="helpBtn" layoutX="53.0" layoutY="160.0" mnemonicParsing="false" onAction="#goToHelp" prefHeight="25.0" prefWidth="83.0" text="HELP" />
+      <Button fx:id="closeBtn" layoutX="53.0" layoutY="207.0" mnemonicParsing="false" onAction="#closeView" prefHeight="32.0" prefWidth="83.0" text="Quit" />
+   </children>
+</Pane>
