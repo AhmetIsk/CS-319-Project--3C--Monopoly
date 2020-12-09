@@ -4,15 +4,15 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="682.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <ImageView fitHeight="472.0" fitWidth="682.0" layoutX="0" layoutY="0">
+      <ImageView fitHeight="768.0" fitWidth="1024.0" layoutX="0" layoutY="0">
          <image>
-            <Image url="@../../Main.jpeg" />
+            <Image url="@../img/Main.jpeg" />
          </image>
       </ImageView>
-      <Button fx:id="plyBtn" layoutX="53.0" layoutY="113.0" mnemonicParsing="false" onAction="#goForPlay" prefHeight="25.0" prefWidth="83.0" text="PLAY" />
-      <Button fx:id="helpBtn" layoutX="53.0" layoutY="160.0" mnemonicParsing="false" onAction="#goToHelp" prefHeight="25.0" prefWidth="83.0" text="HELP" />
-      <Button fx:id="closeBtn" layoutX="53.0" layoutY="207.0" mnemonicParsing="false" onAction="#closeView" prefHeight="32.0" prefWidth="83.0" text="Quit" />
+      <Button fx:id="plyBtn" layoutX="45.0" layoutY="482.0" mnemonicParsing="false" onAction="#goForPlay" prefHeight="61.0" prefWidth="219.0" text="PLAY" />
+      <Button fx:id="helpBtn" layoutX="45.0" layoutY="559.0" mnemonicParsing="false" onAction="#goToHelp" prefHeight="61.0" prefWidth="219.0" text="HELP" />
+      <Button fx:id="closeBtn" layoutX="45.0" layoutY="639.0" mnemonicParsing="false" onAction="#closeView" prefHeight="61.0" prefWidth="219.0" text="Quit" />
    </children>
 </Pane>

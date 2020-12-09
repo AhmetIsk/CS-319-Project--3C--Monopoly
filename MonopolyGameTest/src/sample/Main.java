@@ -24,7 +24,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
         primaryStage.setTitle("Monopoly Space Edition");
-        primaryStage.setScene(new Scene(root, 682, 472));
+        primaryStage.setScene(new Scene(root, 1024 , 768));
         primaryStage.show();
     }
 

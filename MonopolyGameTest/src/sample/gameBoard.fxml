@@ -6,9 +6,9 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameController">
     <children>
-        <ImageView fitHeight="472.0" fitWidth="682.0" layoutX="0" layoutY="0" preserveRatio="false">
+        <ImageView fitHeight="768.0" fitWidth="1024.0" layoutX="0" layoutY="0" preserveRatio="false">
          <image>
-            <Image url="@../../playMode.png" />
+            <Image url="@../img/playMode.png" />
          </image>
         </ImageView>
         <Button layoutX="51.0" layoutY="323.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Replay" />
