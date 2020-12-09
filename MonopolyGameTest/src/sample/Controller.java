@@ -38,7 +38,7 @@ public class Controller implements Initializable {
     }
 
    @FXML
-   void goToHelp()  {
+   void showHelp()  {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HelpPage.fxml"));
             Parent newRoot = (Parent) fxmlLoader.load();

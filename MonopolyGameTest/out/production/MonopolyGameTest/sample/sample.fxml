@@ -12,7 +12,7 @@
          </image>
       </ImageView>
       <Button fx:id="plyBtn" layoutX="45.0" layoutY="482.0" mnemonicParsing="false" onAction="#goForPlay" prefHeight="61.0" prefWidth="219.0" text="PLAY" />
-      <Button fx:id="helpBtn" layoutX="45.0" layoutY="559.0" mnemonicParsing="false" onAction="#goToHelp" prefHeight="61.0" prefWidth="219.0" text="HELP" />
+      <Button fx:id="helpBtn" layoutX="45.0" layoutY="559.0" mnemonicParsing="false" onAction="#showHelp" prefHeight="61.0" prefWidth="219.0" text="HELP" />
       <Button fx:id="closeBtn" layoutX="45.0" layoutY="639.0" mnemonicParsing="false" onAction="#closeView" prefHeight="61.0" prefWidth="219.0" text="Quit" />
    </children>
 </Pane>

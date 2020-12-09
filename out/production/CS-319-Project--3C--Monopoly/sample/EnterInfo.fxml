@@ -6,12 +6,12 @@
 
 <AnchorPane prefHeight="408.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PlayerInfoController">
    <children>
-      <ImageView fitHeight="401.0" fitWidth="598.0" layoutX="6.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="768.0" fitWidth="1024.0" layoutX="0" layoutY="0" pickOnBounds="true">
          <image>
-            <Image url="file:///../../../Desktop/MonopolyGameTest/PlayerInfoBackground.jpg" />
+            <Image url="@../img/PlayerInfoBackground.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="startBtn" layoutX="419.0" layoutY="332.0" mnemonicParsing="false" onAction="#startPlayPage" prefHeight="30.0" prefWidth="144.0" text="Start the Game" />
-      <Button fx:id="backBtn2" layoutX="43.0" layoutY="332.0" mnemonicParsing="false" onAction="#closeToBack" prefHeight="30.0" prefWidth="144.0" text="Back" />
+      <Button fx:id="startBtn" defaultButton="true" layoutX="624.0" layoutY="643.0" mnemonicParsing="false" onAction="#startPlayPage" prefHeight="42.0" prefWidth="329.0" text="Start the Game" />
+      <Button fx:id="backBtn2" cancelButton="true" layoutX="67.0" layoutY="643.0" mnemonicParsing="false" onAction="#closeToBack" prefHeight="42.0" prefWidth="278.0" text="Back" />
    </children>
 </AnchorPane>
