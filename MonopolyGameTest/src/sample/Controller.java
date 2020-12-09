@@ -55,6 +55,7 @@ public class Controller implements Initializable {
     @FXML
     void goForPlay()  {
         try{
+            //change the name
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EnterInfo.fxml"));
             Parent newRoot = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
