@@ -2,16 +2,9 @@ package sample;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.event.EventHandler;
-
-import java.awt.*;
 
 public class Main extends Application {
 
@@ -21,7 +14,7 @@ public class Main extends Application {
         //Button btn = new Button();
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
 
         primaryStage.setTitle("Monopoly Space Edition");
         primaryStage.setScene(new Scene(root, 1024 , 768));

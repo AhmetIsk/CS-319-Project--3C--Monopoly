@@ -1,22 +1,17 @@
 package sample;
 
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class MainSceneController implements Initializable {
 
     @FXML
     Button closeBtn;
@@ -56,7 +51,7 @@ public class Controller implements Initializable {
     void goForPlay()  {
         try{
             //change the name
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EnterInfo.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PlayerInfo.fxml"));
             Parent newRoot = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("Monopoly Space EDITION - Enter Info Page");
