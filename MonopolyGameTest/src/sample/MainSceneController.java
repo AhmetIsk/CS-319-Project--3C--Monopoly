@@ -32,9 +32,11 @@ public class MainSceneController implements Initializable {
         stage.close();
     }
 
-   @FXML
-   void showHelp()  {
-        try{
+   //@FXML
+   public void showHelp() throws Exception {
+
+
+       try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HelpPage.fxml"));
             Parent newRoot = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
