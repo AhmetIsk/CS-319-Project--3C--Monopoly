@@ -1,7 +1,8 @@
 package sample;
 
 public class AlienAttack extends CardDecorator{
-
+    public AlienAttack() {
+    }
 
     Card card;
 

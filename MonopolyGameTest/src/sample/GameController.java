@@ -18,9 +18,7 @@ import javafx.stage.Stage;
 
 public class GameController implements Initializable{
 
-
-    Card card1 = new ChanceCard(1);
-  //  card1 = new PutJail(card1);
+    CardDecorator card1 = new AlienAttack(new ChanceCard(1));
 
     String cardDuty = card1.getContent();
 

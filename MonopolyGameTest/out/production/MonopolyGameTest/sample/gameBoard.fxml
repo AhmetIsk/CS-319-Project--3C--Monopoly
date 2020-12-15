@@ -18,5 +18,7 @@
       <Button fx:id="rollDiceBtn" layoutX="62.0" layoutY="309.0" mnemonicParsing="false" onAction="#rollDice" prefHeight="28.0" prefWidth="135.0" text="Roll Dice" />
       <Label fx:id="labelDice1" layoutX="200.0" layoutY="302.0" prefHeight="15.0" prefWidth="89.0" text="Dice 1:" textFill="#f8f7f7" />
       <Label fx:id="labelDice2" layoutX="200.0" layoutY="330.0" prefHeight="15.0" prefWidth="96.0" text="Dice 2:" textFill="WHITE" />
+      <Button fx:id="chanceBtn" layoutX="520.0" layoutY="252.0" mnemonicParsing="false" onAction="#takeCard" prefHeight="15.0" prefWidth="54.0" rotate="-46.0" text="Draw" />
+      <Button fx:id="chestBtn" layoutX="738.0" layoutY="533.0" mnemonicParsing="false" onAction="#takeCard" prefHeight="15.0" prefWidth="52.0" rotate="-46.0" text="Draw" />
     </children>
 </AnchorPane>
