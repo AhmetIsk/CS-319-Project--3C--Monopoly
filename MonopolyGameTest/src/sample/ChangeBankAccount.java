@@ -2,6 +2,9 @@ package sample;
 
 public class ChangeBankAccount extends CardDecorator{
 
+    public ChangeBankAccount(){
+
+    }
     Card card;
     public ChangeBankAccount(Card card){
         this.card = card;

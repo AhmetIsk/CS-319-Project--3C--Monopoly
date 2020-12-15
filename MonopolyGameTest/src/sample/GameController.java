@@ -14,11 +14,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class GameController implements Initializable{
 
+    //Chance cards
     CardDecorator card1 = new AlienAttack(new ChanceCard(1));
+    CardDecorator card2 = new PutJail(new ChanceCard(2));
+    CardDecorator card3 = new ChangeBankAccount(new ChanceCard(3));
+    CardDecorator card4 = new ChangePosition(new ChanceCard(4));
+    CardDecorator card5 = new ChangePosition(new ChangeBankAccount(new ChanceCard(5)));
+
 
     String cardDuty = card1.getContent();
 
@@ -78,6 +85,7 @@ public class GameController implements Initializable{
     //this method is called when the card is drawn
     void takeCard() throws Exception{
         try{
+
             FXMLLoader fxmlLoader3 = new FXMLLoader(getClass().getResource("cardWindow.fxml"));
             Parent cardRoot = (Parent) fxmlLoader3.load();
             Stage cardStage = new Stage();
@@ -85,8 +93,12 @@ public class GameController implements Initializable{
             cardStage.setScene(new Scene(cardRoot));
             cardStage.setResizable(false);
             cardStage.show();
-            //dutyLabel.setText(card1.content);
+
             System.out.println(card1.getContent());
+            System.out.println(card2.getContent());
+            System.out.println(card3.getContent());
+            System.out.println(card4.getContent());
+            System.out.println(card5.getContent());
             //update
         } catch(Exception e3){
             System.out.println("operation can not be done");

@@ -2,6 +2,10 @@ package sample;
 
 public class ChangePosition extends CardDecorator{
 
+    public ChangePosition(){
+
+    }
+
     Card card;
     public ChangePosition(Card card){
         this.card = card;
@@ -9,7 +13,7 @@ public class ChangePosition extends CardDecorator{
 
     @Override
     public String getContent() {
-        return card.getContent() + "Move to ...";
+        return card.getContent() + "Move to Start Location";
     }
 
     @Override

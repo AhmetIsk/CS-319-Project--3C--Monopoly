@@ -2,6 +2,10 @@ package sample;
 
 public class PutJail extends CardDecorator{
 
+    public PutJail(){
+
+    }
+
     Card card;
     public PutJail(Card card){
         this.card = card;
