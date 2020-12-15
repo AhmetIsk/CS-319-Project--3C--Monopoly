@@ -28,6 +28,7 @@ public class MainSceneController implements Initializable {
 
         // to make operation on the stage
         Stage stage = (Stage) closeBtn.getScene().getWindow();
+        stage.setResizable(false);
         // to close window
         stage.close();
     }
@@ -42,6 +43,7 @@ public class MainSceneController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Monopoly Space EDITION - Help Page");
             stage.setScene(new Scene(newRoot));
+            stage.setResizable(false);
             stage.show();
 
             // closes the current stage
@@ -64,6 +66,7 @@ public class MainSceneController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Monopoly Space EDITION - Enter Info Page");
             stage.setScene(new Scene(newRoot));
+            stage.setResizable(false);
             stage.show();
 
             // closes the current stage

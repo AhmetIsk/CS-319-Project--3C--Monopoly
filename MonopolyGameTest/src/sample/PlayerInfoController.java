@@ -92,6 +92,7 @@ public class PlayerInfoController implements Initializable{
             Stage stage = new Stage();
             stage.setTitle("Monopoly Space Edition");
             stage.setScene(new Scene(newRoot));
+            stage.setResizable(false);
             stage.show();
 
             // to make operation on the stage
@@ -174,6 +175,7 @@ public class PlayerInfoController implements Initializable{
             Stage stage2 = new Stage();
             stage2.setTitle("Monopoly Space EDITION - Enter Info");
             stage2.setScene(new Scene(newRoot2));
+            stage2.setResizable(false);
             stage2.show();
 
             // closes the current stage
