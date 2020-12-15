@@ -43,6 +43,12 @@ public class MainSceneController implements Initializable {
             stage.setTitle("Monopoly Space EDITION - Help Page");
             stage.setScene(new Scene(newRoot));
             stage.show();
+
+            // closes the current stage
+            Stage stage1 = (Stage) helpBtn.getScene().getWindow();
+            stage1.close();
+
+
        } catch(Exception e){
             System.out.println("operation can not be done");
        }
@@ -59,6 +65,11 @@ public class MainSceneController implements Initializable {
             stage.setTitle("Monopoly Space EDITION - Enter Info Page");
             stage.setScene(new Scene(newRoot));
             stage.show();
+
+            // closes the current stage
+            Stage stage1 = (Stage) plyBtn.getScene().getWindow();
+            stage1.close();
+
         } catch(Exception e){
             System.out.println("operation can not be done");
         }

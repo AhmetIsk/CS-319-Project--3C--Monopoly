@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,12 +27,24 @@ public class HelpSceneController implements Initializable{
 
     //this function is to go to main page
     @FXML
-    void closeToBackMain(){
+    void closeToBackMain() throws Exception {
+
+        try {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainScene.fxml"));
+        Parent newRoot = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Monopoly Space Edition");
+        stage.setScene(new Scene(newRoot));
+        stage.show();
 
         // to make operation on the stage
         Stage stage2 = (Stage) backBtn.getScene().getWindow();
         // to close window
         stage2.close();
+
+        } catch(Exception e){
+            System.out.println("operation can not be done");
+        }
     }
 
     //this function is to close the help page window
