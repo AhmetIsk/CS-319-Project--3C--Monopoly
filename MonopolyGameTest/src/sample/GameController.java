@@ -19,6 +19,11 @@ import javafx.stage.Stage;
 public class GameController implements Initializable{
 
 
+    Card card1 = new ChanceCard(1);
+  //  card1 = new PutJail(card1);
+
+    String cardDuty = card1.getContent();
+
     int totalDice;
     @FXML
     Label labelDice1;
@@ -40,10 +45,10 @@ public class GameController implements Initializable{
     Button okInCard;
 
     @FXML
-    Label labelOnCard;
+    Label titleOnCard;
 
     @FXML
-    Label duty;
+    Label dutyLabel;
     //end of buttons and labels on Card window
 
     @FXML
@@ -81,7 +86,10 @@ public class GameController implements Initializable{
             cardStage.setTitle("Monopoly Space EDITION - Card");
             cardStage.setScene(new Scene(cardRoot));
             cardStage.setResizable(false);
+            //dutyLabel.setText(card1.content);
             cardStage.show();
+            System.out.println(card1.getContent());
+
         } catch(Exception e3){
             System.out.println("operation can not be done");
         }
