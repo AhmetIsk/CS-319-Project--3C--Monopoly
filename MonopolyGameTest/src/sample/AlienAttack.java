@@ -10,6 +10,9 @@ public class AlienAttack extends CardDecorator{
 
         this.card = card;
     }
+
+
+
     @Override
     public String getContent() {
 

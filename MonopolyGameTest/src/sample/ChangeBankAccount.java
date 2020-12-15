@@ -14,6 +14,6 @@ public class ChangeBankAccount extends CardDecorator{
 
     @Override
     public void duty() {
-
+        //change position
     }
 }
