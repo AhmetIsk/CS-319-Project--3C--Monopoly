@@ -11,6 +11,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
+        /* card works here but does not work in gameController ?
+        Card card2 = new ChanceCard(1);
+        card2 = new AlienAttack(card2);
+        System.out.println(card2.getContent());*/
 
         Parent root = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
 
