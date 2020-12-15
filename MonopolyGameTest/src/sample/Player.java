@@ -10,7 +10,7 @@ public class Player {
     private int numProperty;
     private int numCards;
 
-    private final ArrayList<Property> titleDeeds;
+   // private final ArrayList<Property> titleDeeds;
     private final ArrayList<Card> ownedCards; //added
     //private final Token token; //???
 
@@ -30,7 +30,7 @@ public class Player {
         numProperty = 0;
         numCards = 0;
 
-        titleDeeds = new ArrayList<Property>();
+        //titleDeeds = new ArrayList<Property>();
         ownedCards = new ArrayList<Card>();
         //token = new Token();
 
@@ -85,31 +85,31 @@ public class Player {
         this.position = position;
     }
 
-    public ArrayList<Property> getTitleDeeds() {
+   /* public ArrayList<Property> getTitleDeeds() {
         return this.titleDeeds;
-    }
+    }*/
 
     /**
      *
      * @param p
      */
-    public void deleteTitleDeed(Property p) {
+   /* public void deleteTitleDeed(Property p) {
         if(titleDeeds.contains(p)){
             titleDeeds.remove(p);
             numProperty--;
         }
-    }
+    }*/
 
     /**
      *
      * @param p
      */
-    public void addTitleDeeds(Property p) {
+    /*public void addTitleDeeds(Property p) {
         if(!(titleDeeds.contains(p)) ){
             titleDeeds.add(p);
             numProperty++;
         }
-    }
+    }*/
 
     /**
      *
@@ -153,14 +153,14 @@ public class Player {
 
     /**
      *
-     * @param p
+     * @param
      */
-    public void buyProperty(Property p) {
+    /*public void buyProperty(Property p) {
         if(buyProperty){
             titleDeeds.add(p);
             //balance = balance - p.getPrice()
         }
-    }
+    }*/
 
     public boolean checkBuildStructure() {
         return buildStructure;
