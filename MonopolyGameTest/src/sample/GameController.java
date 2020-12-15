@@ -84,10 +84,10 @@ public class GameController implements Initializable{
             cardStage.setTitle("Monopoly Space EDITION - Card");
             cardStage.setScene(new Scene(cardRoot));
             cardStage.setResizable(false);
-            //dutyLabel.setText(card1.content);
             cardStage.show();
+            //dutyLabel.setText(card1.content);
             System.out.println(card1.getContent());
-
+            //update
         } catch(Exception e3){
             System.out.println("operation can not be done");
         }
