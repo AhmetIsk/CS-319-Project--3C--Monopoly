@@ -111,7 +111,7 @@ public class GameController implements Initializable{
     Circle circle1;
 
     //@FXML
-   // Circle circle2;
+    // Circle circle2;
 
     @FXML
     Label dutyLabel;
@@ -129,39 +129,19 @@ public class GameController implements Initializable{
     }
 
     @FXML
-    //this method is to replay the game
+        //this method is to replay the game
     void replayGame(){
-        
+
     }
 
 
     // pelinde çalışması için update
 
-    @FXML
-    //this method is to roll dice
-    int rollDice(){
-        int dice1 = (int) (Math.random() * 6 + 1);
-        int dice2 = (int) (Math.random() * 6 + 1);
-        totalDice = dice1 + dice2;
-        labelDice1.setText("Dice 1 : "+dice1);
-        labelDice2.setText("Dice 2 : "+dice2);
-        currentPlayer = names.get(turn);
-        int updatedPosition = currentPlayer.getPosition() + totalDice;
-        currentPlayer.setPosition(updatedPosition);
-        turn = (turn + 1) % names.size();
-        for(int i = 0; i<names.size(); i++){
 
-            String nameOfPlayer = names.get(i).getName();
-            int curPos = names.get(i).getPosition();
-            System.out.println(nameOfPlayer + "position: " + curPos);
-
-        }
-        return totalDice;
-    }
 
     @FXML
-    //this method is called when the card is drawn
-    // comment & displays a random card name
+        //this method is called when the card is drawn
+        // comment & displays a random card name
     void takeCard() throws Exception{
         try{
 
@@ -189,8 +169,8 @@ public class GameController implements Initializable{
     }
 
     @FXML
-    //this method close the new opened windows on Board
-    //closing Card, Title Deed, Go To Jail...
+        //this method close the new opened windows on Board
+        //closing Card, Title Deed, Go To Jail...
     void closeOpenedOnBoard(){
         Stage stage = (Stage) okInCard.getScene().getWindow();
         stage.close();
@@ -205,23 +185,55 @@ public class GameController implements Initializable{
     @FXML
     void move(){
 
-        btnMove.setOnAction((event) -> {
-            System.out.println(circle1.getCenterY());
-            circle1.setRadius(20);
-            circle1.setCenterY(circle1.getCenterY()+ 100);
-            circle1.setCenterX(circle1.getCenterX()+ 100);
 
-            //yeni
-            boardPane.add(circle1, 1, 0);
-
-            /*count++;
-            countText.setText("Pushes: " + count);
-            initCircle.setCenterX(randomNumbers.nextInt((int) MAX_X));
-            initCircle.setCenterY(randomNumbers.nextInt((int) MAX_Y));*/
-        });
     }
 
+    @FXML
+        //this method is to roll dice
+    int rollDice() throws Exception{
+        boardPane.getChildren().remove(circle1);
+        int dice1 = (int) (Math.random() * 6 + 1);
+        int dice2 = (int) (Math.random() * 6 + 1);
+        totalDice = dice1 + dice2;
+        int a = dice1 + dice2;
 
+        labelDice1.setText("Dice 1 : "+dice1);
+        labelDice2.setText("Dice 2 : "+dice2);
+        currentPlayer = names.get(turn);
+        int updatedPosition = (currentPlayer.getPosition() + totalDice) %40;
+        currentPlayer.setPosition(updatedPosition);
+        turn = (turn + 1) % names.size();
+        for(int i = 0; i<names.size(); i++){
+
+            String nameOfPlayer = names.get(i).getName();
+            int curPos = names.get(i).getPosition();
+            System.out.println(nameOfPlayer + "position: " + curPos);
+
+        }
+
+        try {
+            if (updatedPosition <= 10) {
+                boardPane.add(circle1, 10 - updatedPosition, 10);
+            } else if (updatedPosition <= 20) {
+                boardPane.add(circle1, 0, 20 - updatedPosition);
+            } else if (updatedPosition <= 30) {
+                boardPane.add(circle1, updatedPosition - 20, 0);
+            } else {
+                boardPane.add(circle1, 10, updatedPosition - 30);
+            }
+        }
+         catch(Exception e4){
+            System.out.println("operation can not be done");
+        }
+
+
+        //boardPane.add(circle1,updatedPosition%10,1);
+        //boardPane
+
+        //circle1.setCenterX(circle1.getCenterX()*totalDice - 55);
+
+        return updatedPosition;
+    }
 
 
 
