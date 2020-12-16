@@ -21,6 +21,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import java.lang.Math;
 
@@ -50,8 +51,7 @@ public class GameController implements Initializable{
     CardDecorator card3 = new ChangeBankAccount(new ChanceCard(3));
     CardDecorator card4 = new ChangePosition(new ChanceCard(4));
     CardDecorator card5 = new ChangePosition(new ChangeBankAccount(new ChanceCard(5)));
-    //CardDecorator[] cardDecorators = new CardDecorator[5];
-    CardDecorator[] cardsArray = {card1, card2, card3, card4, card5};
+    CardDecorator[] cardsArray =  new CardDecorator[]{card1, card2, card3, card4, card5};
 
     public CardDecorator getRandomCard() {
         int randomNum = (int)((1 + Math.random()*5) - 1);
@@ -106,8 +106,8 @@ public class GameController implements Initializable{
     @FXML
     Button btnMove;
 
-    //@FXML
-    //Circle circle1;
+    @FXML
+    Circle circle1;
 
     //@FXML
    // Circle circle2;
@@ -165,6 +165,7 @@ public class GameController implements Initializable{
             Parent cardRoot = (Parent) fxmlLoader3.load();
 
             //When card is drawn card duty section comes
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Monopoly Space EDITION - Card");
             alert.setContentText(getRandomCard().getContent());
@@ -196,6 +197,23 @@ public class GameController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+    @FXML
+    void move(){
+
+        btnMove.setOnAction((event) -> {
+            System.out.println(circle1.getCenterY());
+            circle1.setRadius(20);
+            circle1.setCenterY(circle1.getCenterY()+ 100);
+            circle1.setCenterX(circle1.getCenterX()+ 100);
+
+            /*count++;
+            countText.setText("Pushes: " + count);
+            initCircle.setCenterX(randomNumbers.nextInt((int) MAX_X));
+            initCircle.setCenterY(randomNumbers.nextInt((int) MAX_Y));*/
+        });
+    }
+
 
 
 
