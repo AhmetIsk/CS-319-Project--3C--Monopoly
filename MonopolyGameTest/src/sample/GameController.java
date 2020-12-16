@@ -95,6 +95,7 @@ public class GameController implements Initializable{
 
     @FXML
     //this method is called when the card is drawn
+    // comment
     void takeCard() throws Exception{
         try{
 
