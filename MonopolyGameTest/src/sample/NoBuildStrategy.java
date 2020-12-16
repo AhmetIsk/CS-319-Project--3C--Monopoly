@@ -7,4 +7,14 @@ public class NoBuildStrategy implements BuildStrategy {
         throw new UnsupportedOperationException();
     }
 
+    @Override
+    public int getPrice() {
+        return 0;
+    }
+
+    @Override
+    public int getRentPrice() {
+        return 0;
+    }
+
 }

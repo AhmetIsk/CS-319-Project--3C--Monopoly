@@ -24,14 +24,25 @@ public abstract class Property {
         isMortgaged = false;
     }
 
+    public void givePlayer(Player p){
+        owner = p;
+        hasOwner = true;
+    }
+
+
     public void performBuild() {
-        // TODO - implement Property.performBuild
-        throw new UnsupportedOperationException();
+        if (hasOwner){
+            owner.makePayment(buildStrategy.getPrice());
+            buildStrategy.build();
+            rentPrice = rentPrice + buildStrategy.getRentPrice();
+        }
+
     }
 
     public void performMortgage() {
-        // TODO - implement Property.performMortgage
-        throw new UnsupportedOperationException();
+        if(hasOwner){
+
+        }
     }
 
     public void setMortgageStrategy() {

@@ -11,8 +11,7 @@ public class BuildHouseStrategy implements BuildStrategy {
     }
 
     public void build() {
-        // TODO - implement BuildHouseStrategy.build
-        throw new UnsupportedOperationException();
+        System.out.println("House is built!");
     }
 
     public int getHousePrice() {
@@ -23,4 +22,13 @@ public class BuildHouseStrategy implements BuildStrategy {
         return this.houseRentPrice;
     }
 
+    @Override
+    public int getPrice() {
+        return housePrice;
+    }
+
+    @Override
+    public int getRentPrice(){
+        return houseRentPrice;
+    }
 }

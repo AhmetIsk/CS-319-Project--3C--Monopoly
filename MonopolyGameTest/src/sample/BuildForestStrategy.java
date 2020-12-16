@@ -10,8 +10,17 @@ public class BuildForestStrategy implements BuildStrategy {
         forestRentPrice = 150;
     }
     public void build() {
-        // TODO - implement BuildForestStrategy.build
-        throw new UnsupportedOperationException();
+        System.out.println("Forest is built!");
+    }
+
+    @Override
+    public int getPrice() {
+        return forestPrice;
+    }
+
+    @Override
+    public int getRentPrice() {
+        return forestRentPrice;
     }
 
     public int getForestPrice() {

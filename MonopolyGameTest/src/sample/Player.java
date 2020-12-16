@@ -145,6 +145,10 @@ public class Player {
         p.getPaid(payment);
     }
 
+    public void makePayment( int payment) {
+        this.balance = balance - payment;
+    }
+
     /**
      *
      * @param

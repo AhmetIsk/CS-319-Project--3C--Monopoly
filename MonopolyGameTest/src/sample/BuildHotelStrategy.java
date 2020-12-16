@@ -10,8 +10,17 @@ public class BuildHotelStrategy implements BuildStrategy {
         hotelRentPrice = 100;
     }
     public void build() {
-        // TODO - implement BuildHotelStrategy.build
-        throw new UnsupportedOperationException();
+        System.out.println("Hotel is built!");
+    }
+
+    @Override
+    public int getPrice() {
+        return hotelPrice;
+    }
+
+    @Override
+    public int getRentPrice() {
+        return hotelRentPrice;
     }
 
     public int getHotelPrice() {
