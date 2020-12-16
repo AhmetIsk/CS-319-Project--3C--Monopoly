@@ -6,6 +6,8 @@
 package sample;
 
 import java.net.URL;
+import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +21,14 @@ import javafx.stage.Stage;
 
 public class GameController implements Initializable{
 
+    ArrayList<Token> tokens;
+    ArrayList<String> names;
+
+    public void initial(ArrayList<String> names, ArrayList<Token> tokens) {
+        this.names = names;
+        this.tokens = tokens;
+    }
+
     //Chance cards
     CardDecorator card1 = new AlienAttack(new ChanceCard(1));
     CardDecorator card2 = new PutJail(new ChanceCard(2));
@@ -28,6 +38,8 @@ public class GameController implements Initializable{
 
 
     String cardDuty = card1.getContent();
+
+
 
     int totalDice;
     @FXML
@@ -99,6 +111,8 @@ public class GameController implements Initializable{
             System.out.println(card3.getContent());
             System.out.println(card4.getContent());
             System.out.println(card5.getContent());
+//            System.out.println(names.get(0));
+//            System.out.println(tokens.get(0).getDirectory());
             //update
         } catch(Exception e3){
             System.out.println("operation can not be done");

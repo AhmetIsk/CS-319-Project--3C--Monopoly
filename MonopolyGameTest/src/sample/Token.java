@@ -5,8 +5,8 @@ public class Token {
     final String tokenName;
     final String directory;
 
-    public Token(String tokenName) {
-        this.tokenName = tokenName;
+    public Token(int id) {
+        this.tokenName = "token" + String.valueOf(id);
         this.directory = "@../img/" + tokenName + ".png";
     }
 
