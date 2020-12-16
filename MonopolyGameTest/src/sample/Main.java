@@ -22,6 +22,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 1024 , 768));
         primaryStage.setResizable(false);
         primaryStage.show();
+
     }
 
 
