@@ -48,10 +48,14 @@ public class GameController implements Initializable{
 
 
     String cardDuty = card1.getContent();
-
-
-
     int totalDice;
+
+    //turn number
+    //if there are 4 players turns is between 0-3
+    int turn = 0;
+    Player currentPlayer;
+
+
     @FXML
     Label labelDice1;
     @FXML
@@ -94,20 +98,24 @@ public class GameController implements Initializable{
 
     @FXML
     //this method is to roll dice
-    void rollDice(){
+    int rollDice(){
         int dice1 = (int) (Math.random() * 6 + 1);
         int dice2 = (int) (Math.random() * 6 + 1);
         totalDice = dice1 + dice2;
         labelDice1.setText("Dice 1 : "+dice1);
         labelDice2.setText("Dice 2 : "+dice2);
-       /* for(int i = 0; i<names.size(); i++){
+        currentPlayer = names.get(turn);
+        int updatedPosition = currentPlayer.getPosition() + totalDice;
+        currentPlayer.setPosition(updatedPosition);
+        turn = (turn + 1) % names.size();
+        for(int i = 0; i<names.size(); i++){
 
-            // String name = players.get(i).getName();
-            //System.out.println(name + "position is");
-            System.out.println(names.get(i));
-           // System.out.println(numOfPlayers);
+            String nameOfPlayer = names.get(i).getName();
+            int curPos = names.get(i).getPosition();
+            System.out.println(nameOfPlayer + "position: " + curPos);
 
-        }*/
+        }
+        return totalDice;
     }
 
     @FXML
