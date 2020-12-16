@@ -25,12 +25,12 @@ public class GameController implements Initializable{
 
 
     ArrayList<Token> tokens;
-    ArrayList<String> names;
+    ArrayList<Player> names;
 
     //Array List that contains player objects
 
 
-    public void initial(ArrayList<String> names, ArrayList<Token> tokens) {
+    public void initial(ArrayList<Player> names, ArrayList<Token> tokens) {
         this.names = names;
         this.tokens = tokens;
 
@@ -129,7 +129,7 @@ public class GameController implements Initializable{
             System.out.println(card3.getContent());
             System.out.println(card4.getContent());
             System.out.println(card5.getContent());
-//            System.out.println(names.get(0));
+//            System.out.println(names.get(0).getName());
 //            System.out.println(tokens.get(0).getDirectory());
 
         } catch(Exception e3){

@@ -105,12 +105,12 @@ public class PlayerInfoController implements Initializable{
         ToggleButton[] toggleButtons4 = new ToggleButton[]{btn1111, btn2111, btn3111, btn4111, btn5111};
 
         ArrayList<Token> tokens = new ArrayList<Token>();
-        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<Player> names = new ArrayList<Player>();
 
 
 
         if (pane1.isVisible() && !pane2.isVisible()) {
-            names.add(textField1.getText());
+            names.add(new Player(textField1.getText(), 1));
 
 
             for (int i = 0; i < 5; i++) {
@@ -123,8 +123,8 @@ public class PlayerInfoController implements Initializable{
             }
         }
         else if (pane2.isVisible() && !pane3.isVisible()) {
-            names.add(textField1.getText());
-            names.add(textField2.getText());
+            names.add(new Player(textField1.getText(), 1));
+            names.add(new Player(textField2.getText(), 2));
 
             for (int i = 0; i < 5; i++) {
                 if (toggleButtons1[i] == group1.getSelectedToggle()) {
@@ -142,9 +142,9 @@ public class PlayerInfoController implements Initializable{
             }
         }
         else if (pane3.isVisible() && !pane4.isVisible()) {
-            names.add(textField1.getText());
-            names.add(textField2.getText());
-            names.add(textField3.getText());
+            names.add(new Player(textField1.getText(), 1));
+            names.add(new Player(textField2.getText(), 2));
+            names.add(new Player(textField3.getText(), 3));
 
             for (int i = 0; i < 5; i++) {
                 if (toggleButtons1[i] == group1.getSelectedToggle()) {
@@ -170,10 +170,10 @@ public class PlayerInfoController implements Initializable{
             }
         }
         else if (pane4.isVisible()){
-            names.add(textField1.getText());
-            names.add(textField2.getText());
-            names.add(textField3.getText());
-            names.add(textField4.getText());
+            names.add(new Player(textField1.getText(), 1));
+            names.add(new Player(textField2.getText(), 2));
+            names.add(new Player(textField3.getText(), 3));
+            names.add(new Player(textField4.getText(), 4));
 
             for (int i = 0; i < 5; i++) {
                 if (toggleButtons1[i] == group1.getSelectedToggle()) {
