@@ -86,6 +86,9 @@ public class GameController implements Initializable{
     @FXML
     Circle circle1;
 
+    //@FXML
+   // Circle circle2;
+
     @FXML
     Label dutyLabel;
     //end of buttons and labels on Card window
@@ -106,7 +109,7 @@ public class GameController implements Initializable{
     }
 
 
-
+    // pelinde çalışması için update
 
     @FXML
     //this method is to roll dice
@@ -148,7 +151,7 @@ public class GameController implements Initializable{
 
     @FXML
     //this method is called when the card is drawn
-    // comment
+    // comment & displays a random card name
     void takeCard() throws Exception{
         try{
 
