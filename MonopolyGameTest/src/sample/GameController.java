@@ -190,6 +190,7 @@ public class GameController implements Initializable{
 
     @FXML
         //this method is to roll dice
+    //token position is updated here
     int rollDice() throws Exception{
         boardPane.getChildren().remove(circle1);
         int dice1 = (int) (Math.random() * 6 + 1);
