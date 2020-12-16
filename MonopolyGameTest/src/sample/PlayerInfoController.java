@@ -107,8 +107,12 @@ public class PlayerInfoController implements Initializable{
         ArrayList<Token> tokens = new ArrayList<Token>();
         ArrayList<String> names = new ArrayList<String>();
 
+
+
         if (pane1.isVisible() && !pane2.isVisible()) {
             names.add(textField1.getText());
+
+
             for (int i = 0; i < 5; i++) {
                 System.out.println();
                 if (toggleButtons1[i] == group1.getSelectedToggle()) {

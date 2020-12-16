@@ -21,13 +21,23 @@ import javafx.stage.Stage;
 
 public class GameController implements Initializable{
 
+
+
+
     ArrayList<Token> tokens;
     ArrayList<String> names;
+
+    //Array List that contains player objects
+
 
     public void initial(ArrayList<String> names, ArrayList<Token> tokens) {
         this.names = names;
         this.tokens = tokens;
+
     }
+
+
+
 
     //Chance cards
     CardDecorator card1 = new AlienAttack(new ChanceCard(1));
@@ -90,7 +100,14 @@ public class GameController implements Initializable{
         totalDice = dice1 + dice2;
         labelDice1.setText("Dice 1 : "+dice1);
         labelDice2.setText("Dice 2 : "+dice2);
+       /* for(int i = 0; i<names.size(); i++){
 
+            // String name = players.get(i).getName();
+            //System.out.println(name + "position is");
+            System.out.println(names.get(i));
+           // System.out.println(numOfPlayers);
+
+        }*/
     }
 
     @FXML
@@ -114,7 +131,7 @@ public class GameController implements Initializable{
             System.out.println(card5.getContent());
 //            System.out.println(names.get(0));
 //            System.out.println(tokens.get(0).getDirectory());
-            //update
+
         } catch(Exception e3){
             System.out.println("operation can not be done");
         }
