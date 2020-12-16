@@ -16,12 +16,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Circle;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.scene.paint.Color;
 
 public class GameController implements Initializable{
-
-
 
 
     ArrayList<Token> tokens;
@@ -57,6 +57,8 @@ public class GameController implements Initializable{
 
 
     @FXML
+    GridPane boardPane;
+    @FXML
     Label labelDice1;
     @FXML
     Label labelDice2;
@@ -79,8 +81,15 @@ public class GameController implements Initializable{
     Label titleOnCard;
 
     @FXML
+    Button btnMove;
+
+    @FXML
+    Circle circle1;
+
+    @FXML
     Label dutyLabel;
     //end of buttons and labels on Card window
+
 
     @FXML
     void closeGame(){
@@ -96,6 +105,9 @@ public class GameController implements Initializable{
         
     }
 
+
+
+
     @FXML
     //this method is to roll dice
     int rollDice(){
@@ -105,7 +117,7 @@ public class GameController implements Initializable{
         labelDice1.setText("Dice 1 : "+dice1);
         labelDice2.setText("Dice 2 : "+dice2);
         currentPlayer = names.get(turn);
-        int updatedPosition = currentPlayer.getPosition() + totalDice;
+        int updatedPosition = (currentPlayer.getPosition() + totalDice) % 40;
         currentPlayer.setPosition(updatedPosition);
         turn = (turn + 1) % names.size();
         for(int i = 0; i<names.size(); i++){
@@ -119,6 +131,22 @@ public class GameController implements Initializable{
     }
 
     @FXML
+    void move(){
+
+        btnMove.setOnAction((event) -> {
+            System.out.println(circle1.getCenterY());
+            circle1.setRadius(20);
+            circle1.setCenterY(circle1.getCenterY()+ 100);
+            circle1.setCenterX(circle1.getCenterX()+ 100);
+
+            /*count++;
+            countText.setText("Pushes: " + count);
+            initCircle.setCenterX(randomNumbers.nextInt((int) MAX_X));
+            initCircle.setCenterY(randomNumbers.nextInt((int) MAX_Y));*/
+        });
+    }
+
+    @FXML
     //this method is called when the card is drawn
     // comment
     void takeCard() throws Exception{
@@ -128,6 +156,8 @@ public class GameController implements Initializable{
             Parent cardRoot = (Parent) fxmlLoader3.load();
             Stage cardStage = new Stage();
             cardStage.setTitle("Monopoly Space EDITION - Card");
+
+
             cardStage.setScene(new Scene(cardRoot));
             cardStage.setResizable(false);
             cardStage.show();
