@@ -107,8 +107,7 @@ public class GameController implements Initializable{
     @FXML
     Button btnMove;
 
-    @FXML
-    Circle circle1;
+
 
     //@FXML
     // Circle circle2;
@@ -117,8 +116,43 @@ public class GameController implements Initializable{
     Label dutyLabel;
     //end of buttons and labels on Card window
 
+    //GridPane
     @FXML
     GridPane boardPane;
+
+    @FXML
+    Circle circle1;
+
+    //Bank Account Table Labels and Buttons
+    @FXML
+    Label p1NameLabel;
+    @FXML
+    Label p2NameLabel;
+    @FXML
+    Label p3NameLabel;
+    @FXML
+    Label p4NameLabel;
+    @FXML
+    Label p1AccountLabel;
+    @FXML
+    Label p2AccountLabel;
+    @FXML
+    Label p3AccountLabel;
+    @FXML
+    Label p4AccountLabel;
+    @FXML
+    Button p1DeedButton;
+    @FXML
+    Button p2DeedButton;
+    @FXML
+    Button p3DeedButton;
+    @FXML
+    Button p4DeedButton;
+    //end of BankAccount Table
+
+
+
+
 
     @FXML
     void closeGame(){
@@ -135,7 +169,14 @@ public class GameController implements Initializable{
     }
 
 
-    // pelinde çalışması için update
+
+    @FXML
+        //this method is for BankAccount Table
+    void updateTable(){
+
+
+
+    }
 
 
 
@@ -180,6 +221,7 @@ public class GameController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
     }
 
     @FXML
@@ -192,6 +234,7 @@ public class GameController implements Initializable{
         //this method is to roll dice
     //token position is updated here
     int rollDice() throws Exception{
+        //
         boardPane.getChildren().remove(circle1);
         int dice1 = (int) (Math.random() * 6 + 1);
         int dice2 = (int) (Math.random() * 6 + 1);
@@ -228,10 +271,7 @@ public class GameController implements Initializable{
         }
 
 
-        //boardPane.add(circle1,updatedPosition%10,1);
-        //boardPane
 
-        //circle1.setCenterX(circle1.getCenterX()*totalDice - 55);
 
         return updatedPosition;
     }

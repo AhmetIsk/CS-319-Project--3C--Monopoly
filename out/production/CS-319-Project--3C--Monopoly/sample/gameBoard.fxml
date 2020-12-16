@@ -12,14 +12,19 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameController">
     <children>
-        <ImageView fitHeight="768.0" fitWidth="1024.0" layoutX="0" layoutY="0" preserveRatio="false">
+        <ImageView fitHeight="768.0" fitWidth="1024.0" preserveRatio="false">
          <image>
             <Image url="@../img/playMode.png" />
          </image>
         </ImageView>
-        <Button fx:id="replayBtn" layoutX="51.0" layoutY="624.0" mnemonicParsing="false" onAction="#replayGame" prefHeight="47.0" prefWidth="193.0" text="Replay" />
-        <Button fx:id="finishBtn" layoutX="51.0" layoutY="697.0" mnemonicParsing="false" onAction="#closeGame" prefHeight="47.0" prefWidth="193.0" text="Finish" />
-      <Button fx:id="rollDiceBtn" layoutX="62.0" layoutY="309.0" mnemonicParsing="false" onAction="#rollDice" prefHeight="28.0" prefWidth="135.0" text="Roll Dice" />
+      <ImageView fitHeight="178.0" fitWidth="296.0" layoutX="9.0" layoutY="418.0">
+         <image>
+            <Image url="@../img/BankTable.png" />
+         </image>
+      </ImageView>
+        <Button fx:id="replayBtn" layoutX="60.0" layoutY="633.0" mnemonicParsing="false" onAction="#replayGame" opacity="0.0" prefHeight="28.0" prefWidth="163.0" text="Replay" />
+        <Button fx:id="finishBtn" layoutX="57.0" layoutY="705.0" mnemonicParsing="false" onAction="#closeGame" opacity="0.0" prefHeight="34.0" prefWidth="169.0" text="Finish" />
+      <Button fx:id="rollDiceBtn" layoutX="41.0" layoutY="316.0" mnemonicParsing="false" onAction="#rollDice" prefHeight="28.0" prefWidth="135.0" text="Roll Dice" />
       <Label fx:id="labelDice1" layoutX="200.0" layoutY="302.0" prefHeight="15.0" prefWidth="89.0" text="Dice 1:" textFill="#f8f7f7" />
       <Label fx:id="labelDice2" layoutX="200.0" layoutY="330.0" prefHeight="15.0" prefWidth="96.0" text="Dice 2:" textFill="WHITE" />
       <Circle fx:id="circle1" fill="DODGERBLUE" layoutX="948.0" layoutY="671.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
@@ -66,5 +71,22 @@
             </GridPane>
          </children>
       </AnchorPane>
+      <ImageView fitHeight="191.0" fitWidth="296.0" layoutX="9.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Desktop/Ekran%20Resmi%202020-12-17%2000.52.56.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="p1DeedButton" layoutX="176.0" layoutY="425.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="116.0" text="Deeds" />
+      <Button fx:id="p2DeedButton" layoutX="176.0" layoutY="467.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="116.0" text="Deeds" />
+      <Button fx:id="p3DeedButton" layoutX="176.0" layoutY="512.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="116.0" text="Deeds" />
+      <Button fx:id="p4DeedButton" layoutX="176.0" layoutY="553.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="116.0" text="Deeds" />
+      <Label fx:id="p1NameLabel" layoutX="14.0" layoutY="427.0" prefHeight="25.0" prefWidth="66.0" text="-" />
+      <Label fx:id="p2NameLabel" layoutX="14.0" layoutY="469.0" prefHeight="25.0" prefWidth="66.0" text="-" />
+      <Label fx:id="p3NameLabel" layoutX="14.0" layoutY="514.0" prefHeight="25.0" prefWidth="66.0" text="-" />
+      <Label fx:id="p4NameLabel" layoutX="14.0" layoutY="567.0" prefHeight="25.0" prefWidth="66.0" text="-" />
+      <Label fx:id="p4AccountLabel" layoutX="80.0" layoutY="567.0" prefHeight="25.0" prefWidth="66.0" text="-" />
+      <Label fx:id="p3AccountLabel" layoutX="80.0" layoutY="514.0" prefHeight="25.0" prefWidth="66.0" text="-" />
+      <Label fx:id="p2AccountLabel" layoutX="80.0" layoutY="469.0" prefHeight="25.0" prefWidth="66.0" text="-" />
+      <Label fx:id="p1AccountLabel" layoutX="80.0" layoutY="427.0" prefHeight="25.0" prefWidth="66.0" text="-" />
     </children>
 </AnchorPane>
