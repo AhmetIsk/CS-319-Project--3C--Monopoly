@@ -11,6 +11,7 @@ public class Player {
 
     private final ArrayList<Property> titleDeeds;
     //private final Token token; //???
+    //comment
 
     private final boolean hasCards;
     private final boolean bankrupt;
