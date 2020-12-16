@@ -151,7 +151,7 @@ public class GameController implements Initializable{
 
     @FXML
     //this method is called when the card is drawn
-    // comment
+    // comment & displays a random card name
     void takeCard() throws Exception{
         try{
 
