@@ -109,7 +109,7 @@ public class GameController implements Initializable{
     }
 
 
-
+    // pelinde çalışması için update
 
     @FXML
     //this method is to roll dice
