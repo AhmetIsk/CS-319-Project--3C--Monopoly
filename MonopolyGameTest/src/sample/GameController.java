@@ -24,6 +24,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import java.lang.Math;
+import javafx.scene.layout.GridPane;
 
 public class GameController implements Initializable{
 
@@ -117,6 +118,9 @@ public class GameController implements Initializable{
     //end of buttons and labels on Card window
 
     @FXML
+    GridPane boardPane;
+
+    @FXML
     void closeGame(){
         // to make operation on the stage
         Stage stage = (Stage) finishBtn.getScene().getWindow();
@@ -206,6 +210,9 @@ public class GameController implements Initializable{
             circle1.setRadius(20);
             circle1.setCenterY(circle1.getCenterY()+ 100);
             circle1.setCenterX(circle1.getCenterX()+ 100);
+
+            //yeni
+            boardPane.add(circle1, 1, 0);
 
             /*count++;
             countText.setText("Pushes: " + count);
