@@ -8,10 +8,8 @@ public class Player {
     private int balance;
     private int position;
     private int numProperty;
-    private int numCards;
 
-   // private final ArrayList<Property> titleDeeds;
-    private final ArrayList<Card> ownedCards; //added
+    private final ArrayList<Property> titleDeeds;
     //private final Token token; //???
 
     private final boolean hasCards;
@@ -28,10 +26,8 @@ public class Player {
         balance = 2000;
         position = 0;
         numProperty = 0;
-        numCards = 0;
 
-        //titleDeeds = new ArrayList<Property>();
-        ownedCards = new ArrayList<Card>();
+        titleDeeds = new ArrayList<Property>();
         //token = new Token();
 
         hasCards = false;
@@ -61,9 +57,6 @@ public class Player {
         return this.numProperty;
     }
 
-    public int getNumCards() {
-        return this.numCards;
-    }
 
     /**
      *
@@ -85,31 +78,31 @@ public class Player {
         this.position = position;
     }
 
-   /* public ArrayList<Property> getTitleDeeds() {
+    public ArrayList<Property> getTitleDeeds() {
         return this.titleDeeds;
-    }*/
+    }
 
     /**
      *
      * @param p
      */
-   /* public void deleteTitleDeed(Property p) {
+    public void deleteTitleDeed(Property p) {
         if(titleDeeds.contains(p)){
             titleDeeds.remove(p);
             numProperty--;
         }
-    }*/
+    }
 
     /**
      *
      * @param p
      */
-    /*public void addTitleDeeds(Property p) {
+    public void addTitleDeeds(Property p) {
         if(!(titleDeeds.contains(p)) ){
             titleDeeds.add(p);
             numProperty++;
         }
-    }*/
+    }
 
     /**
      *
@@ -155,12 +148,12 @@ public class Player {
      *
      * @param
      */
-    /*public void buyProperty(Property p) {
+    public void buyProperty(Property p) {
         if(buyProperty){
             titleDeeds.add(p);
             //balance = balance - p.getPrice()
         }
-    }*/
+    }
 
     public boolean checkBuildStructure() {
         return buildStructure;
