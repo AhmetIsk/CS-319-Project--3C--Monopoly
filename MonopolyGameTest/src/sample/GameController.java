@@ -86,6 +86,9 @@ public class GameController implements Initializable{
     @FXML
     Circle circle1;
 
+    //@FXML
+   // Circle circle2;
+
     @FXML
     Label dutyLabel;
     //end of buttons and labels on Card window
