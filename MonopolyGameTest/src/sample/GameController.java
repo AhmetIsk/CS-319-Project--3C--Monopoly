@@ -5,6 +5,9 @@
 
 package sample;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
@@ -20,6 +23,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -37,10 +42,85 @@ public class GameController implements Initializable{
     //Array List that contains player objects
 
 
-    public void initial(ArrayList<Player> names, ArrayList<Token> tokens) {
+    public void initial(ArrayList<Player> names, ArrayList<Token> tokens) throws FileNotFoundException {
         this.names = names;
         this.tokens = tokens;
+        if (names.size() == 1) {
+            p1NameLabel.setText(names.get(0).getName());
+            p1AccountLabel.setText(String.valueOf(names.get(0).getBalance()));
+            // p1Deed Button will be here
+            Image image = new Image(getClass().getResourceAsStream((tokens.get(0)).getDirectory()));
+            token1.setImage(image);
+            (tokens.get(0)).setImageView(token1);
 
+        }
+        if (names.size() == 2) {
+            p1NameLabel.setText(names.get(0).getName());
+            p1AccountLabel.setText(String.valueOf(names.get(0).getBalance()));
+            // p1Deed Button will be here
+            p2NameLabel.setText(names.get(1).getName());
+            p2AccountLabel.setText(String.valueOf(names.get(1).getBalance()));
+            // p1Deed Button will be here
+            Image image = new Image(getClass().getResourceAsStream((tokens.get(0)).getDirectory()));
+            token1.setImage(image);
+            (tokens.get(0)).setImageView(token1);
+            Image image1 = new Image(getClass().getResourceAsStream((tokens.get(1)).getDirectory()));
+            token2.setImage(image1);
+            (tokens.get(1)).setImageView(token2);
+
+        }
+        if (names.size() == 3) {
+            p1NameLabel.setText(names.get(0).getName());
+            p1AccountLabel.setText(String.valueOf(names.get(0).getBalance()));
+            // p1Deed Button will be here
+            p2NameLabel.setText(names.get(1).getName());
+            p2AccountLabel.setText(String.valueOf(names.get(1).getBalance()));
+            // p1Deed Button will be here
+            p3NameLabel.setText(names.get(2).getName());
+            p3AccountLabel.setText(String.valueOf(names.get(2).getBalance()));
+            // p1Deed Button will be here
+            Image image = new Image(getClass().getResourceAsStream((tokens.get(0)).getDirectory()));
+            token1.setImage(image);
+            (tokens.get(0)).setImageView(token1);
+            Image image1 = new Image(getClass().getResourceAsStream((tokens.get(1)).getDirectory()));
+            token2.setImage(image1);
+            (tokens.get(1)).setImageView(token2);
+            Image image2 = new Image(getClass().getResourceAsStream((tokens.get(2)).getDirectory()));
+            token3.setImage(image2);
+            (tokens.get(2)).setImageView(token3);
+
+        }
+        if (names.size() == 4) {
+            p1NameLabel.setText(names.get(0).getName());
+            p1AccountLabel.setText(String.valueOf(names.get(0).getBalance()));
+            // p1Deed Button will be here
+            p2NameLabel.setText(names.get(1).getName());
+            p2AccountLabel.setText(String.valueOf(names.get(1).getBalance()));
+            // p1Deed Button will be here
+            p3NameLabel.setText(names.get(2).getName());
+            p3AccountLabel.setText(String.valueOf(names.get(2).getBalance()));
+            // p1Deed Button will be here
+            p4NameLabel.setText(names.get(3).getName());
+            p4AccountLabel.setText(String.valueOf(names.get(3).getBalance()));
+            // p1Deed Button will be here
+            Image image = new Image(getClass().getResourceAsStream((tokens.get(0)).getDirectory()));
+            token1.setImage(image);
+            (tokens.get(0)).setImageView(token1);
+            Image image1 = new Image(getClass().getResourceAsStream((tokens.get(1)).getDirectory()));
+            token2.setImage(image1);
+            (tokens.get(1)).setImageView(token2);
+            Image image2 = new Image(getClass().getResourceAsStream((tokens.get(2)).getDirectory()));
+            token3.setImage(image2);
+            (tokens.get(2)).setImageView(token3);
+            Image image3 = new Image(getClass().getResourceAsStream((tokens.get(3)).getDirectory()));
+            token4.setImage(image3);
+            (tokens.get(3)).setImageView(token4);
+
+        }
+
+//        File file = new File((tokens.get(0)).getDirectory());
+//        Image image = new Image(file.toURI().toString());
+//        token1.setImage(new Image(new FileInputStream(tokens.get(0).getDirectory())));
     }
 
 
@@ -69,6 +149,14 @@ public class GameController implements Initializable{
     int turn = 0;
     Player currentPlayer;
 
+    @FXML
+    ImageView token1;
+    @FXML
+    ImageView token2;
+    @FXML
+    ImageView token3;
+    @FXML
+    ImageView token4;
 
     @FXML
     Label labelDice1;
@@ -96,6 +184,8 @@ public class GameController implements Initializable{
     Button chestBtn2;
     @FXML
     Button chestBtn11;
+    @FXML
+    Label currentPlayerName;
 
     //buttons and labels on Card window
     @FXML
@@ -122,6 +212,9 @@ public class GameController implements Initializable{
 
     @FXML
     Circle circle1;
+
+    @FXML
+    GridPane infoTable;
 
     //Bank Account Table Labels and Buttons
     @FXML
@@ -176,6 +269,7 @@ public class GameController implements Initializable{
 
 
 
+
     }
 
 
@@ -221,13 +315,10 @@ public class GameController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
     }
 
     @FXML
     void move(){
-
-
     }
 
     @FXML
@@ -235,7 +326,8 @@ public class GameController implements Initializable{
     //token position is updated here
     int rollDice() throws Exception{
         //
-        boardPane.getChildren().remove(circle1);
+        boardPane.getChildren().remove((tokens.get(turn)).getImageView());
+
         int dice1 = (int) (Math.random() * 6 + 1);
         int dice2 = (int) (Math.random() * 6 + 1);
         totalDice = dice1 + dice2;
@@ -246,6 +338,23 @@ public class GameController implements Initializable{
         currentPlayer = names.get(turn);
         int updatedPosition = (currentPlayer.getPosition() + totalDice) %40;
         currentPlayer.setPosition(updatedPosition);
+
+
+        try {
+            if (updatedPosition <= 10) {
+                boardPane.add((tokens.get(turn)).getImageView(), 10 - updatedPosition, 10);
+            } else if (updatedPosition <= 20) {
+                boardPane.add((tokens.get(turn)).getImageView(), 0, 20 - updatedPosition);
+            } else if (updatedPosition <= 30) {
+                boardPane.add((tokens.get(turn)).getImageView(), updatedPosition - 20, 0);
+            } else {
+                boardPane.add((tokens.get(turn)).getImageView(), 10, updatedPosition - 30);
+            }
+        }
+         catch(Exception e4){
+            System.out.println("operation can not be done");
+        }
+
         turn = (turn + 1) % names.size();
         for(int i = 0; i<names.size(); i++){
 
@@ -254,24 +363,7 @@ public class GameController implements Initializable{
             System.out.println(nameOfPlayer + "position: " + curPos);
 
         }
-
-        try {
-            if (updatedPosition <= 10) {
-                boardPane.add(circle1, 10 - updatedPosition, 10);
-            } else if (updatedPosition <= 20) {
-                boardPane.add(circle1, 0, 20 - updatedPosition);
-            } else if (updatedPosition <= 30) {
-                boardPane.add(circle1, updatedPosition - 20, 0);
-            } else {
-                boardPane.add(circle1, 10, updatedPosition - 30);
-            }
-        }
-         catch(Exception e4){
-            System.out.println("operation can not be done");
-        }
-
-
-
+        currentPlayerName.setText("Current Player : " + currentPlayer.getName());
 
         return updatedPosition;
     }
