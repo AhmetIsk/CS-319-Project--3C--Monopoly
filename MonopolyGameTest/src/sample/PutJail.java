@@ -18,7 +18,7 @@ public class PutJail extends CardDecorator{
 
     @Override
     public void duty() {
-
+        takenBy.setInJail();
     }
 
 }

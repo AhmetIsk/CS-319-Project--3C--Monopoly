@@ -17,6 +17,7 @@ public class ChangeBankAccount extends CardDecorator{
 
     @Override
     public void duty() {
-        //change position
+        int newBalance = (takenBy.getBalance() - 100);
+        takenBy.setBalance(newBalance);
     }
 }

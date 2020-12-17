@@ -13,11 +13,11 @@ public class ChangePosition extends CardDecorator{
 
     @Override
     public String getContent() {
-        return card.getContent() + "Move to Start Location";
+        return card.getContent() + "\nMove to Start Location";
     }
 
     @Override
     public void duty() {
-
+        takenBy.setPosition(0);
     }
 }

@@ -11,7 +11,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-
        /* Card card2 = new ChanceCard(1);
         card2 = new AlienAttack(card2);
         System.out.println(card2.getContent());*/
@@ -22,6 +21,8 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 1024 , 768));
         primaryStage.setResizable(false);
         primaryStage.show();
+
+
 
     }
 

@@ -22,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -152,8 +153,6 @@ public class GameController implements Initializable{
     }
 
 
-
-    String cardDuty = card1.getContent();
     int totalDice;
 
     //turn number
@@ -211,6 +210,9 @@ public class GameController implements Initializable{
 
 
 
+
+    @FXML
+    Button alertOkButton;
 
     @FXML
     Label dutyLabel;
@@ -389,23 +391,95 @@ public class GameController implements Initializable{
     void takeCard() throws Exception{
         try{
 
-            FXMLLoader fxmlLoader3 = new FXMLLoader(getClass().getResource("cardWindow.fxml"));
-            Parent cardRoot = (Parent) fxmlLoader3.load();
+            //FXMLLoader fxmlLoader3 = new FXMLLoader(getClass().getResource("cardWindow.fxml"));
+            //Parent cardRoot = (Parent) fxmlLoader3.load();
 
             //When card is drawn card duty section comes
-
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Monopoly Space EDITION - Card");
-            alert.setContentText(getRandomCard().getContent());
+            CardDecorator randomCard = getRandomCard();
+            alert.setContentText(randomCard.getContent());
+            Button okButton = (Button) alert.getDialogPane().lookupButton(ButtonType.OK);
+            okButton.setId("alertOkButton");
+
+            //When ok button is clicked duty is done.
+
+            okButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    randomCard.setTakenBy(currentPlayer);
+                    randomCard.duty();
+
+                    //Balance is changing
+                    System.out.println(currentPlayer);
+                    System.out.println("bank account: " + currentPlayer.getBalance());
+                    if (currentPlayer.equals(names.get(0))) {
+                        p1AccountLabel.setText("" + currentPlayer.getBalance());
+
+                    }
+                    else if (currentPlayer.equals(names.get(1))) {
+                        p2AccountLabel.setText("" + currentPlayer.getBalance());
+                    }
+                    else if (currentPlayer.equals(names.get(2))){
+                        p3AccountLabel.setText("" + currentPlayer.getBalance());
+                    }
+                    else if (currentPlayer.equals(names.get(3))){
+                        p4AccountLabel.setText("" + currentPlayer.getBalance());
+                    }
+
+                    System.out.println("inJail = " + currentPlayer.checkJail());
+                    if (randomCard.equals(card2)) {
+                        //token moves to jail
+                        boardPane.getChildren().remove((tokens.get(turn)).getImageView());
+                        boardPane.add((tokens.get(turn)).getImageView(), 10, 0);
+                    }
+
+                    System.out.println("random card = " + randomCard);
+                    System.out.println("id: " + randomCard.getId());
+                    if(randomCard.equals(card4)) {
+                        //token moves to start location
+                        boardPane.getChildren().remove((tokens.get(turn)).getImageView());
+                        boardPane.add((tokens.get(turn)).getImageView(), 10, 10);
+                    }
+
+                    if(randomCard.equals(card5)) {
+                        System.out.println("balance ikili: " + currentPlayer.getBalance());
+                        //fonk
+                        boardPane.getChildren().remove((tokens.get(turn)).getImageView());
+                        boardPane.add((tokens.get(turn)).getImageView(), 10, 10);
+                        //fonk
+                        if (currentPlayer.equals(names.get(0))) {
+                            p1AccountLabel.setText("" + currentPlayer.getBalance());
+                        }
+                        else if (currentPlayer.equals(names.get(1))) {
+                            p2AccountLabel.setText("" + currentPlayer.getBalance());
+                        }
+                        else if (currentPlayer.equals(names.get(2))){
+                            p3AccountLabel.setText("" + currentPlayer.getBalance());
+                        }
+                        else if (currentPlayer.equals(names.get(3))){
+                            p4AccountLabel.setText("" + currentPlayer.getBalance());
+                        }
+                    }
+                    System.out.println("current player position: " + currentPlayer.getPosition());
+                    System.out.println();
+
+                }
+            });
+
+
             alert.show();
 
+
+            /*
             System.out.println(card1.getContent());
             System.out.println(card2.getContent());
             System.out.println(card3.getContent());
             System.out.println(card4.getContent());
             System.out.println(card5.getContent());
-//            System.out.println(names.get(0).getName());
-//            System.out.println(tokens.get(0).getDirectory());
+            System.out.println(names.get(0).getName());
+            System.out.println(tokens.get(0).getDirectory());
+             */
 
         } catch(Exception e3){
             System.out.println("operation can not be done");

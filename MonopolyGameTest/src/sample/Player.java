@@ -131,6 +131,8 @@ public class Player {
 
     public void setInJail() {
         inJail = true;
+        this.setPosition(30);
+
     }
 
     public boolean checkBuyProperty() {
