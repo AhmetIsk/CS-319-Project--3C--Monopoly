@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,7 +12,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="bigPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameController">
     <children>
         <ImageView fitHeight="768.0" fitWidth="1024.0" preserveRatio="false">
          <image>
@@ -27,30 +26,30 @@
       <Label fx:id="labelDice2" layoutX="200.0" layoutY="330.0" prefHeight="15.0" prefWidth="96.0" text="Dice 2:" textFill="WHITE" />
       <AnchorPane layoutX="323.0" layoutY="13.0">
          <children>
-            <GridPane fx:id="boardPane" prefHeight="701.0" prefWidth="666.0">
+            <GridPane fx:id="boardPane" prefHeight="701.0" prefWidth="670.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.2" minWidth="10.0" prefWidth="84.2" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="76.4" minWidth="0.0" prefWidth="58.60000000000001" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="72.60000000000001" minWidth="0.0" prefWidth="51.80000000000001" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.60000000000001" minWidth="0.0" prefWidth="53.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.20000000000002" minWidth="10.0" prefWidth="54.79999999999998" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.8" minWidth="10.0" prefWidth="56.19999999999999" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.2" minWidth="10.0" prefWidth="58.19999999999999" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="56.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.0" minWidth="10.0" prefWidth="52.799999999999955" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="89.0" minWidth="10.0" prefWidth="53.200000000000045" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="101.0" minWidth="10.0" prefWidth="97.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="76.4" minWidth="0.0" prefWidth="54.33335367838542" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="72.60000000000001" minWidth="0.0" prefWidth="50.66666666666666" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.60000000000001" minWidth="0.0" prefWidth="53.99997965494791" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.20000000000002" minWidth="10.0" prefWidth="60.00002034505209" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.8" minWidth="10.0" prefWidth="52.333292643229186" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.2" minWidth="10.0" prefWidth="53.3333740234375" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="53.333292643229186" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.0" minWidth="10.0" prefWidth="54.33331298828125" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="89.0" minWidth="10.0" prefWidth="56.33333333333337" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="102.99995930989587" minWidth="10.0" prefWidth="98.99995930989587" />
               </columnConstraints>
               <rowConstraints>
-                  <RowConstraints maxHeight="98.8" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="76.8" minHeight="10.0" prefHeight="54.20000000000002" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="78.19999999999999" minHeight="0.0" prefHeight="56.400000000000006" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="92.60001525878906" minHeight="9.599999999999994" prefHeight="60.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="120.59998474121093" minHeight="1.4000000000000057" prefHeight="54.39999999999998" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="155.4" minHeight="10.0" prefHeight="61.19999999999999" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="153.39999999999998" minHeight="10.0" prefHeight="54.60000000000002" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="151.39999999999998" minHeight="10.0" prefHeight="55.59996948242184" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="143.39999999999998" minHeight="10.0" prefHeight="58.19999999999999" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="98.8" minHeight="10.0" prefHeight="89.33334350585938" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="76.8" minHeight="10.0" prefHeight="60.666656494140625" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="78.19999999999999" minHeight="0.0" prefHeight="54.666651407877595" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="92.60001525878906" minHeight="9.599999999999994" prefHeight="56.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="120.59998474121093" minHeight="1.4000000000000057" prefHeight="59.333353678385436" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="155.4" minHeight="10.0" prefHeight="56.666646321614564" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="153.39999999999998" minHeight="10.0" prefHeight="57.999979654947936" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="151.39999999999998" minHeight="10.0" prefHeight="58.66668701171875" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="143.39999999999998" minHeight="10.0" prefHeight="52.66666666666663" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="134.39999999999998" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="118.39999999999998" minHeight="10.0" prefHeight="99.0" vgrow="SOMETIMES" />
               </rowConstraints>
@@ -64,11 +63,75 @@
                   <Button fx:id="chestBtn2" layoutX="478.0" layoutY="443.0" mnemonicParsing="false" onAction="#takeCard" opacity="0.0" prefHeight="74.0" prefWidth="162.0" text="Draw" GridPane.columnIndex="7" GridPane.rowIndex="8" />
                   <Button fx:id="chestBtn11" layoutX="423.0" layoutY="443.0" mnemonicParsing="false" onAction="#takeCard" opacity="0.0" prefHeight="74.0" prefWidth="162.0" text="Draw" GridPane.columnIndex="8" GridPane.rowIndex="8" />
                   <Button fx:id="btnMove" mnemonicParsing="false" onAction="#move" text="Move" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="54.0" prefWidth="87.0" GridPane.rowIndex="2" />
+                  <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="54.0" prefWidth="87.0" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="89.0" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="91.0" GridPane.rowIndex="6" />
+                  <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="87.0" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="1.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="85.0" prefWidth="52.0" GridPane.columnIndex="1" />
+                  <ImageView fitHeight="61.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../../../g1.PNG" />
+                     </image>
+                  </ImageView>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="54.0" prefWidth="90.0" GridPane.columnIndex="10" GridPane.rowIndex="1" />
+                  <ImageView fitHeight="65.0" fitWidth="53.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                     <image>
+                        <Image url="@../../../../g2.PNG" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="56.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../../../g3.PNG" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" prefHeight="93.0" prefWidth="55.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <ImageView fitHeight="91.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                     <image>
+                        <Image url="@../../../../g4.PNG" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="91.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6">
+                     <image>
+                        <Image url="@../../../../g5.PNG" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="89.0" GridPane.rowIndex="8" />
+                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="89.0" GridPane.rowIndex="9" />
+                  <ImageView fitHeight="99.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../../../g6.PNG" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="96.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7">
+                     <image>
+                        <Image url="@../../../../g7.PNG" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="90.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+                     <image>
+                        <Image url="@../../../../g8.PNG" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="62.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="8">
+                     <image>
+                        <Image url="@../../../../g9.PNG" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="9">
+                     <image>
+                        <Image url="@../../../../g10.PNG" />
+                     </image>
+                  </ImageView>
                </children>
             </GridPane>
          </children>
       </AnchorPane>
-      <GridPane fx:id="infoTable" layoutX="3.0" layoutY="419.0" prefHeight="194.0" prefWidth="305.0" style="-fx-background-color: #d9b3ff#d9b3ff#884dff#884dff;">
+      <GridPane fx:id="infoTable" layoutX="3.0" layoutY="419.0" prefHeight="194.0" prefWidth="305.0" style="-fx-background-color: #C89CE4;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -81,10 +144,10 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="p1DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" />
-            <Button fx:id="p2DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button fx:id="p3DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button fx:id="p4DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button fx:id="p1DeedButton" mnemonicParsing="false" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" />
+            <Button fx:id="p2DeedButton" mnemonicParsing="false" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="p3DeedButton" mnemonicParsing="false" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="p4DeedButton" mnemonicParsing="false" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Label fx:id="p1NameLabel" prefHeight="25.0" prefWidth="103.0" style="-fx-font-style: italic; -fx-alignment: center;" text="-">
                <font>
                   <Font size="18.0" />
@@ -144,19 +207,5 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <AnchorPane fx:id="deedPane" layoutX="55.0" layoutY="290.0" prefHeight="226.0" prefWidth="242.0" style="-fx-background-color: #884dff#884dff; -fx-border-color: white; -fx-border-width: 5; visibility: true;">
-         <children>
-            <Label fx:id="deedPaneTitle" layoutX="14.0" layoutY="14.0" prefHeight="34.0" prefWidth="163.0" text="Player's Title Deeds" textFill="WHITE">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <Button fx:id="closeDeeds" layoutX="177.0" layoutY="187.0" mnemonicParsing="false" onAction="#closeDeeds" text="Close" />
-            <ScrollPane fx:id="scrollPaneDeeds" layoutX="25.0" layoutY="48.0" prefHeight="122.0" prefWidth="193.0">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="127.0" prefWidth="195.0" />
-              </content>
-            </ScrollPane>
-         </children></AnchorPane>
     </children>
 </AnchorPane>

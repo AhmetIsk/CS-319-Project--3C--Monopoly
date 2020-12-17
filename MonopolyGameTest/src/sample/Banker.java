@@ -53,7 +53,7 @@ public class Banker {
         //throw new UnsupportedOperationException();
         if(player.getBalance() <= 0 && (!player.getTitleDeeds().isEmpty()))
         {
-            //player.setBankrupt(true);
+            player.setBankrupt();
         }
     }
 
