@@ -144,7 +144,7 @@ public class GameController implements Initializable{
     CardDecorator card2 = new PutJail(new ChanceCard(2));
     CardDecorator card3 = new ChangeBankAccount(new ChanceCard(3));
     CardDecorator card4 = new ChangePosition(new ChanceCard(4));
-    CardDecorator card5 = new ChangePosition(new ChangeBankAccount(new ChanceCard(5)));
+    CardDecorator card5 = new ChangeBankAccount(new ChangePosition(new ChanceCard(5)));
     CardDecorator[] cardsArray =  new CardDecorator[]{card1, card2, card3, card4, card5};
 
     public CardDecorator getRandomCard() {
@@ -409,44 +409,47 @@ public class GameController implements Initializable{
                 public void handle(ActionEvent event) {
                     randomCard.setTakenBy(currentPlayer);
                     randomCard.duty();
-
+                    int tempTurn = (turn + (names.size() - 1)) % names.size();
                     //Balance is changing
-                    System.out.println(currentPlayer);
+                    System.out.println(currentPlayer.getName());
                     System.out.println("bank account: " + currentPlayer.getBalance());
-                    if (currentPlayer.equals(names.get(0))) {
-                        p1AccountLabel.setText("" + currentPlayer.getBalance());
 
-                    }
-                    else if (currentPlayer.equals(names.get(1))) {
-                        p2AccountLabel.setText("" + currentPlayer.getBalance());
-                    }
-                    else if (currentPlayer.equals(names.get(2))){
-                        p3AccountLabel.setText("" + currentPlayer.getBalance());
-                    }
-                    else if (currentPlayer.equals(names.get(3))){
-                        p4AccountLabel.setText("" + currentPlayer.getBalance());
-                    }
 
                     System.out.println("inJail = " + currentPlayer.checkJail());
                     if (randomCard.equals(card2)) {
                         //token moves to jail
-                        boardPane.getChildren().remove((tokens.get(turn)).getImageView());
-                        boardPane.add((tokens.get(turn)).getImageView(), 10, 0);
+                        boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
+                        boardPane.add((tokens.get(tempTurn)).getImageView(), 10, 0);
+                    }
+
+                    if (randomCard.equals(card3)) {
+                        if (currentPlayer.equals(names.get(0))) {
+                            p1AccountLabel.setText("" + currentPlayer.getBalance());
+                        }
+                        else if (currentPlayer.equals(names.get(1))) {
+                            p2AccountLabel.setText("" + currentPlayer.getBalance());
+                        }
+                        else if (currentPlayer.equals(names.get(2))){
+                            p3AccountLabel.setText("" + currentPlayer.getBalance());
+                        }
+                        else if (currentPlayer.equals(names.get(3))){
+                            p4AccountLabel.setText("" + currentPlayer.getBalance());
+                        }
                     }
 
                     System.out.println("random card = " + randomCard);
                     System.out.println("id: " + randomCard.getId());
                     if(randomCard.equals(card4)) {
                         //token moves to start location
-                        boardPane.getChildren().remove((tokens.get(turn)).getImageView());
-                        boardPane.add((tokens.get(turn)).getImageView(), 10, 10);
+                        boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
+                        boardPane.add((tokens.get(tempTurn)).getImageView(), 10, 10);
                     }
 
                     if(randomCard.equals(card5)) {
                         System.out.println("balance ikili: " + currentPlayer.getBalance());
                         //fonk
-                        boardPane.getChildren().remove((tokens.get(turn)).getImageView());
-                        boardPane.add((tokens.get(turn)).getImageView(), 10, 10);
+                        boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
+                        boardPane.add((tokens.get(tempTurn)).getImageView(), 10, 10);
                         //fonk
                         if (currentPlayer.equals(names.get(0))) {
                             p1AccountLabel.setText("" + currentPlayer.getBalance());

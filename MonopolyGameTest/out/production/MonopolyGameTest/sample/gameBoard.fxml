@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameController">
+<AnchorPane fx:id="bigPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameController">
     <children>
         <ImageView fitHeight="768.0" fitWidth="1024.0" preserveRatio="false">
          <image>
@@ -63,75 +64,11 @@
                   <Button fx:id="chestBtn2" layoutX="478.0" layoutY="443.0" mnemonicParsing="false" onAction="#takeCard" opacity="0.0" prefHeight="74.0" prefWidth="162.0" text="Draw" GridPane.columnIndex="7" GridPane.rowIndex="8" />
                   <Button fx:id="chestBtn11" layoutX="423.0" layoutY="443.0" mnemonicParsing="false" onAction="#takeCard" opacity="0.0" prefHeight="74.0" prefWidth="162.0" text="Draw" GridPane.columnIndex="8" GridPane.rowIndex="8" />
                   <Button fx:id="btnMove" mnemonicParsing="false" onAction="#move" text="Move" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="54.0" prefWidth="87.0" GridPane.rowIndex="2" />
-                  <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="54.0" prefWidth="87.0" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="89.0" GridPane.rowIndex="4" />
-                  <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="91.0" GridPane.rowIndex="6" />
-                  <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="87.0" GridPane.rowIndex="7">
-                     <font>
-                        <Font size="1.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="85.0" prefWidth="52.0" GridPane.columnIndex="1" />
-                  <ImageView fitHeight="61.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
-                     <image>
-                        <Image url="@../../../../g1.PNG" />
-                     </image>
-                  </ImageView>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="54.0" prefWidth="90.0" GridPane.columnIndex="10" GridPane.rowIndex="1" />
-                  <ImageView fitHeight="65.0" fitWidth="53.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-                     <image>
-                        <Image url="@../../../../g2.PNG" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="56.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="1">
-                     <image>
-                        <Image url="@../../../../g3.PNG" />
-                     </image>
-                  </ImageView>
-                  <Button mnemonicParsing="false" prefHeight="93.0" prefWidth="55.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                  <ImageView fitHeight="91.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="10">
-                     <image>
-                        <Image url="@../../../../g4.PNG" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="91.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6">
-                     <image>
-                        <Image url="@../../../../g5.PNG" />
-                     </image>
-                  </ImageView>
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="89.0" GridPane.rowIndex="8" />
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="89.0" GridPane.rowIndex="9" />
-                  <ImageView fitHeight="99.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
-                     <image>
-                        <Image url="@../../../../g6.PNG" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="96.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7">
-                     <image>
-                        <Image url="@../../../../g7.PNG" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="90.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
-                     <image>
-                        <Image url="@../../../../g8.PNG" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="62.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="8">
-                     <image>
-                        <Image url="@../../../../g9.PNG" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="150.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="9">
-                     <image>
-                        <Image url="@../../../../g10.PNG" />
-                     </image>
-                  </ImageView>
                </children>
             </GridPane>
          </children>
       </AnchorPane>
-      <GridPane fx:id="infoTable" layoutX="3.0" layoutY="419.0" prefHeight="194.0" prefWidth="305.0" style="-fx-background-color: #C89CE4;">
+      <GridPane fx:id="infoTable" layoutX="3.0" layoutY="419.0" prefHeight="194.0" prefWidth="305.0" style="-fx-background-color: #d9b3ff#d9b3ff#884dff#884dff;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -144,26 +81,26 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="p1DeedButton" mnemonicParsing="false" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" />
-            <Button fx:id="p2DeedButton" mnemonicParsing="false" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button fx:id="p3DeedButton" mnemonicParsing="false" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button fx:id="p4DeedButton" mnemonicParsing="false" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label fx:id="p1NameLabel" prefHeight="25.0" prefWidth="103.0" style="-fx-font-style: italic; -fx-alignment: center;" text="-">
+            <Button fx:id="p1DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" />
+            <Button fx:id="p2DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="p3DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="p4DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label fx:id="p1NameLabel" prefHeight="25.0" prefWidth="103.0" style="-fx-font-style: ITALIC; -fx-alignment: center;" text="-">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="p2NameLabel" prefHeight="25.0" prefWidth="122.0" style="-fx-alignment: center; -fx-font-style: italic;" text="-" GridPane.rowIndex="1">
+            <Label fx:id="p2NameLabel" prefHeight="25.0" prefWidth="122.0" style="-fx-alignment: center; -fx-font-style: ITALIC;" text="-" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="p3NameLabel" prefHeight="25.0" prefWidth="113.0" style="-fx-alignment: center; -fx-font-style: italic;" text="-" GridPane.rowIndex="2">
+            <Label fx:id="p3NameLabel" prefHeight="25.0" prefWidth="113.0" style="-fx-alignment: center; -fx-font-style: ITALIC;" text="-" GridPane.rowIndex="2">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="p4NameLabel" prefHeight="25.0" prefWidth="110.0" style="-fx-alignment: center; -fx-font-size: italic;" text="-" GridPane.rowIndex="3">
+            <Label fx:id="p4NameLabel" prefHeight="25.0" prefWidth="110.0" style="-fx-alignment: center; -fx-font-size: ITALIC;" text="-" GridPane.rowIndex="3">
                <font>
                   <Font size="18.0" />
                </font>
@@ -207,5 +144,19 @@
             </LinearGradient>
          </textFill>
       </Label>
+      <AnchorPane fx:id="deedPane" layoutX="55.0" layoutY="290.0" prefHeight="226.0" prefWidth="242.0" style="-fx-background-color: #884dff#884dff; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
+         <children>
+            <Label fx:id="deedPaneTitle" layoutX="14.0" layoutY="14.0" prefHeight="34.0" prefWidth="163.0" text="Player's Title Deeds" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Button fx:id="closeDeeds" layoutX="177.0" layoutY="187.0" mnemonicParsing="false" onAction="#closeDeeds" text="Close" />
+            <ScrollPane fx:id="scrollPaneDeeds" layoutX="25.0" layoutY="48.0" prefHeight="122.0" prefWidth="193.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="127.0" prefWidth="195.0" />
+              </content>
+            </ScrollPane>
+         </children></AnchorPane>
     </children>
 </AnchorPane>

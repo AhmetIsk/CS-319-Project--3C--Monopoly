@@ -85,22 +85,22 @@
             <Button fx:id="p2DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Button fx:id="p3DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Button fx:id="p4DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label fx:id="p1NameLabel" prefHeight="25.0" prefWidth="103.0" style="-fx-font-style: italic; -fx-alignment: center;" text="-">
+            <Label fx:id="p1NameLabel" prefHeight="25.0" prefWidth="103.0" style="-fx-font-style: ITALIC; -fx-alignment: center;" text="-">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="p2NameLabel" prefHeight="25.0" prefWidth="122.0" style="-fx-alignment: center; -fx-font-style: italic;" text="-" GridPane.rowIndex="1">
+            <Label fx:id="p2NameLabel" prefHeight="25.0" prefWidth="122.0" style="-fx-alignment: center; -fx-font-style: ITALIC;" text="-" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="p3NameLabel" prefHeight="25.0" prefWidth="113.0" style="-fx-alignment: center; -fx-font-style: italic;" text="-" GridPane.rowIndex="2">
+            <Label fx:id="p3NameLabel" prefHeight="25.0" prefWidth="113.0" style="-fx-alignment: center; -fx-font-style: ITALIC;" text="-" GridPane.rowIndex="2">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="p4NameLabel" prefHeight="25.0" prefWidth="110.0" style="-fx-alignment: center; -fx-font-size: italic;" text="-" GridPane.rowIndex="3">
+            <Label fx:id="p4NameLabel" prefHeight="25.0" prefWidth="110.0" style="-fx-alignment: center; -fx-font-size: ITALIC;" text="-" GridPane.rowIndex="3">
                <font>
                   <Font size="18.0" />
                </font>
