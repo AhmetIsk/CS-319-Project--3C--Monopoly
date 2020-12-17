@@ -10,9 +10,11 @@ public abstract class Property {
     private boolean isMortgaged;
     private Player owner;
     private int rentPrice;
+    private String propName;
 
-    public Property(BuildStrategy bs, MortgageStrategy ms, int price, int position,
+    public Property(String propName,BuildStrategy bs, MortgageStrategy ms, int price, int position,
                     int mortgagePrice, int rentPrice){
+        this.propName = propName;
         buildStrategy = bs;
         mortgageStrategy = ms;
         this.price = price;
@@ -22,6 +24,13 @@ public abstract class Property {
 
         hasOwner = false;
         isMortgaged = false;
+    }
+
+    public void setHasOwner(boolean set){
+        this.hasOwner = set;
+    }
+    public String getPropName() {
+        return propName;
     }
 
     public void givePlayer(Player p){

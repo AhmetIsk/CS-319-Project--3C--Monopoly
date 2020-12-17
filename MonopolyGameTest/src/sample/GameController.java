@@ -43,7 +43,46 @@ public class GameController implements Initializable{
     ArrayList<Token> tokens;
     ArrayList<Player> names;
 
+    //Planet properties and actions-----
+    MortgageStrategy ms;
+    BuildStrategy bs;
     //Array List that contains player objects
+    Planet p1 = new Planet("Planet",bs,  ms, 300, 1,
+    150, 30);
+    Planet[] planets = new Planet[]{p1};
+
+
+    @FXML
+    Button propertyButton1;
+
+    @FXML
+    //this method opens a new window for Property by clicking propety on board
+    public void showPropety(){
+
+        propertyFeature.setText(propertyButton1.getText() + " price is: " + p1.getPrice() + "\nRent is" +p1.getRentPrice());
+        propertyPane.setVisible(true);
+        if(closePropButton.isFocused()){
+            propertyPane.setVisible(false);
+        }
+        if(buyButton.isFocused()){
+            //currentPlayer.getTitleDeeds().add(p1);
+            if(p1.checkHasOwner()== false){
+                currentPlayer.buyProperty(p1);
+                buyButton.setVisible(false);
+                System.out.println(currentPlayer.getName() + " buy " +currentPlayer.getTitleDeeds().get(0).getPropName());
+            }
+            else{
+                if(p1.getOwnerName() != currentPlayer.getName()){
+                    buildButton.setVisible(false);
+                }
+            }
+
+        }
+        if(buildButton.isFocused()){
+
+        }
+
+    }
 
 
     public void initial(ArrayList<Player> names, ArrayList<Token> tokens) throws FileNotFoundException {
@@ -210,7 +249,6 @@ public class GameController implements Initializable{
 
 
 
-
     @FXML
     Button alertOkButton;
 
@@ -225,6 +263,24 @@ public class GameController implements Initializable{
     //biggest anchorPane (full screen)
     @FXML
     AnchorPane bigPane;
+
+    //Property Pane ----
+    @FXML
+    AnchorPane propertyPane;
+
+    @FXML
+    Button buyButton;
+
+    @FXML
+    Button buildButton;
+
+    @FXML
+    Button closePropButton;
+
+    @FXML
+    Label propertyFeature;
+
+    //--------
 
 
     //titleDeed anchorPane

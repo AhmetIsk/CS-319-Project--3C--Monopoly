@@ -10,7 +10,7 @@ public class Player {
     private int numProperty;
     private boolean bankrupt;
 
-    private final ArrayList<Property> titleDeeds;
+    private ArrayList<Planet> titleDeeds;
     //private final Token token; //???
     //comment
 
@@ -29,7 +29,7 @@ public class Player {
         position = 0;
         numProperty = 0;
 
-        titleDeeds = new ArrayList<Property>();
+        titleDeeds = new ArrayList<Planet>();
         //token = new Token();
 
         hasCards = false;
@@ -80,7 +80,7 @@ public class Player {
         this.position = position;
     }
 
-    public ArrayList<Property> getTitleDeeds() {
+    public ArrayList<Planet> getTitleDeeds() {
         return this.titleDeeds;
     }
 
@@ -99,7 +99,7 @@ public class Player {
      *
      * @param p
      */
-    public void addTitleDeeds(Property p) {
+    public void addTitleDeeds(Planet p) {
         if(!(titleDeeds.contains(p)) ){
             titleDeeds.add(p);
             numProperty++;
@@ -158,11 +158,12 @@ public class Player {
      *
      * @param
      */
-    public void buyProperty(Property p) {
-        if(buyProperty){
+    public void buyProperty(Planet p) {
+
             titleDeeds.add(p);
+            p.setHasOwner(true);
             //balance = balance - p.getPrice()
-        }
+
     }
 
     public boolean checkBuildStructure() {

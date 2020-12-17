@@ -1,8 +1,8 @@
 package sample;
 
 public class Spaceship extends Property{
-    public Spaceship(BuildStrategy bs, MortgageStrategy ms, int price, int position,
+    public Spaceship(String shipName,BuildStrategy bs, MortgageStrategy ms, int price, int position,
                      int mortgagePrice, int rentPrice) {
-        super(bs, ms, price, position, mortgagePrice, rentPrice);
+        super(shipName,bs, ms, price, position, mortgagePrice, rentPrice);
     }
 }
