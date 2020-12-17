@@ -2,32 +2,29 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameController">
+<AnchorPane fx:id="bigPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameController">
     <children>
         <ImageView fitHeight="768.0" fitWidth="1024.0" preserveRatio="false">
          <image>
             <Image url="@../img/playMode.png" />
          </image>
         </ImageView>
-      <ImageView fitHeight="178.0" fitWidth="296.0" layoutX="9.0" layoutY="418.0">
-         <image>
-            <Image url="@../img/BankTable.png" />
-         </image>
-      </ImageView>
         <Button fx:id="replayBtn" layoutX="60.0" layoutY="633.0" mnemonicParsing="false" onAction="#replayGame" opacity="0.0" prefHeight="28.0" prefWidth="163.0" text="Replay" />
         <Button fx:id="finishBtn" layoutX="57.0" layoutY="705.0" mnemonicParsing="false" onAction="#closeGame" opacity="0.0" prefHeight="34.0" prefWidth="169.0" text="Finish" />
       <Button fx:id="rollDiceBtn" layoutX="41.0" layoutY="316.0" mnemonicParsing="false" onAction="#rollDice" prefHeight="28.0" prefWidth="135.0" text="Roll Dice" />
       <Label fx:id="labelDice1" layoutX="200.0" layoutY="302.0" prefHeight="15.0" prefWidth="89.0" text="Dice 1:" textFill="#f8f7f7" />
       <Label fx:id="labelDice2" layoutX="200.0" layoutY="330.0" prefHeight="15.0" prefWidth="96.0" text="Dice 2:" textFill="WHITE" />
-      <Circle fx:id="circle1" fill="DODGERBLUE" layoutX="948.0" layoutY="671.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
       <AnchorPane layoutX="323.0" layoutY="13.0">
          <children>
             <GridPane fx:id="boardPane" prefHeight="701.0" prefWidth="666.0">
@@ -71,22 +68,95 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="191.0" fitWidth="296.0" layoutX="9.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../Desktop/Ekran%20Resmi%202020-12-17%2000.52.56.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="p1DeedButton" layoutX="176.0" layoutY="425.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="116.0" text="Deeds" />
-      <Button fx:id="p2DeedButton" layoutX="176.0" layoutY="467.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="116.0" text="Deeds" />
-      <Button fx:id="p3DeedButton" layoutX="176.0" layoutY="512.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="116.0" text="Deeds" />
-      <Button fx:id="p4DeedButton" layoutX="176.0" layoutY="553.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="116.0" text="Deeds" />
-      <Label fx:id="p1NameLabel" layoutX="14.0" layoutY="427.0" prefHeight="25.0" prefWidth="66.0" text="-" />
-      <Label fx:id="p2NameLabel" layoutX="14.0" layoutY="469.0" prefHeight="25.0" prefWidth="66.0" text="-" />
-      <Label fx:id="p3NameLabel" layoutX="14.0" layoutY="514.0" prefHeight="25.0" prefWidth="66.0" text="-" />
-      <Label fx:id="p4NameLabel" layoutX="14.0" layoutY="567.0" prefHeight="25.0" prefWidth="66.0" text="-" />
-      <Label fx:id="p4AccountLabel" layoutX="80.0" layoutY="567.0" prefHeight="25.0" prefWidth="66.0" text="-" />
-      <Label fx:id="p3AccountLabel" layoutX="80.0" layoutY="514.0" prefHeight="25.0" prefWidth="66.0" text="-" />
-      <Label fx:id="p2AccountLabel" layoutX="80.0" layoutY="469.0" prefHeight="25.0" prefWidth="66.0" text="-" />
-      <Label fx:id="p1AccountLabel" layoutX="80.0" layoutY="427.0" prefHeight="25.0" prefWidth="66.0" text="-" />
+      <GridPane fx:id="infoTable" layoutX="3.0" layoutY="419.0" prefHeight="194.0" prefWidth="305.0" style="-fx-background-color: #d9b3ff#d9b3ff#884dff#884dff;">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="p1DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" />
+            <Button fx:id="p2DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="p3DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="p4DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label fx:id="p1NameLabel" prefHeight="25.0" prefWidth="103.0" style="-fx-font-style: italic; -fx-alignment: center;" text="-">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="p2NameLabel" prefHeight="25.0" prefWidth="122.0" style="-fx-alignment: center; -fx-font-style: italic;" text="-" GridPane.rowIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="p3NameLabel" prefHeight="25.0" prefWidth="113.0" style="-fx-alignment: center; -fx-font-style: italic;" text="-" GridPane.rowIndex="2">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="p4NameLabel" prefHeight="25.0" prefWidth="110.0" style="-fx-alignment: center; -fx-font-size: italic;" text="-" GridPane.rowIndex="3">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="p1AccountLabel" prefHeight="25.0" prefWidth="107.0" style="-fx-alignment: center; -fx-font-weight: bold;" text="-" GridPane.columnIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="p2AccountLabel" prefHeight="25.0" prefWidth="112.0" style="-fx-alignment: center; -fx-font-weight: bold;" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="p3AccountLabel" prefHeight="25.0" prefWidth="108.0" style="-fx-alignment: center; -fx-font-weight: bold;" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="p4AccountLabel" prefHeight="25.0" prefWidth="207.0" style="-fx-alignment: center; -fx-font-weight: bold;" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <ImageView fx:id="token1" fitHeight="80.0" fitWidth="68.0" layoutX="914.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="token2" fitHeight="80.0" fitWidth="68.0" layoutX="912.0" layoutY="623.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="token3" fitHeight="86.0" fitWidth="68.0" layoutX="910.0" layoutY="624.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="token4" fitHeight="86.0" fitWidth="68.0" layoutX="914.0" layoutY="623.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="currentPlayerName" alignment="CENTER" layoutX="317.0" layoutY="722.0" prefHeight="34.0" prefWidth="242.0" style="-fx-font-weight: bold; -fx-background-color: #433f3f;">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <AnchorPane fx:id="deedPane" layoutX="55.0" layoutY="290.0" prefHeight="226.0" prefWidth="242.0" style="-fx-background-color: #884dff#884dff; -fx-border-color: white; -fx-border-width: 5; visibility: true;">
+         <children>
+            <Label fx:id="deedPaneTitle" layoutX="14.0" layoutY="14.0" prefHeight="34.0" prefWidth="163.0" text="Player's Title Deeds" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Button fx:id="closeDeeds" layoutX="177.0" layoutY="187.0" mnemonicParsing="false" onAction="#closeDeeds" text="Close" />
+            <ScrollPane fx:id="scrollPaneDeeds" layoutX="25.0" layoutY="48.0" prefHeight="122.0" prefWidth="193.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="127.0" prefWidth="195.0" />
+              </content>
+            </ScrollPane>
+         </children></AnchorPane>
     </children>
 </AnchorPane>

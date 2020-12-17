@@ -23,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -30,6 +31,8 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import java.lang.Math;
 import javafx.scene.layout.GridPane;
+
+import javax.swing.*;
 
 public class GameController implements Initializable{
 
@@ -48,6 +51,10 @@ public class GameController implements Initializable{
         if (names.size() == 1) {
             p1NameLabel.setText(names.get(0).getName());
             p1AccountLabel.setText(String.valueOf(names.get(0).getBalance()));
+            //make other buttons not visible
+            p2DeedButton.setVisible(false);
+            p3DeedButton.setVisible(false);
+            p4DeedButton.setVisible(false);
             // p1Deed Button will be here
             Image image = new Image(getClass().getResourceAsStream((tokens.get(0)).getDirectory()));
             token1.setImage(image);
@@ -57,6 +64,9 @@ public class GameController implements Initializable{
         if (names.size() == 2) {
             p1NameLabel.setText(names.get(0).getName());
             p1AccountLabel.setText(String.valueOf(names.get(0).getBalance()));
+            //make other buttons not visible
+            p3DeedButton.setVisible(false);
+            p4DeedButton.setVisible(false);
             // p1Deed Button will be here
             p2NameLabel.setText(names.get(1).getName());
             p2AccountLabel.setText(String.valueOf(names.get(1).getBalance()));
@@ -78,6 +88,8 @@ public class GameController implements Initializable{
             // p1Deed Button will be here
             p3NameLabel.setText(names.get(2).getName());
             p3AccountLabel.setText(String.valueOf(names.get(2).getBalance()));
+            //make other buttons not visible
+            p4DeedButton.setVisible(false);
             // p1Deed Button will be here
             Image image = new Image(getClass().getResourceAsStream((tokens.get(0)).getDirectory()));
             token1.setImage(image);
@@ -199,20 +211,39 @@ public class GameController implements Initializable{
 
 
 
-    //@FXML
-    // Circle circle2;
 
     @FXML
     Label dutyLabel;
     //end of buttons and labels on Card window
 
-    //GridPane
+    //GridPane for monopoly board
     @FXML
     GridPane boardPane;
 
+    //biggest anchorPane (full screen)
     @FXML
-    Circle circle1;
+    AnchorPane bigPane;
 
+
+    //titleDeed anchorPane
+    @FXML
+    AnchorPane deedPane;
+
+    //titleDeed anchorPane
+    @FXML
+    Label deedPaneTitle;
+
+    //titleDeed anchorPane
+    @FXML
+    Button closeDeeds;
+
+    //scroll Pane in titleDeeds
+    @FXML
+    ScrollPane scrollPaneDeeds;
+
+
+
+    //bank account tabla
     @FXML
     GridPane infoTable;
 
@@ -267,13 +298,91 @@ public class GameController implements Initializable{
         //this method is for BankAccount Table
     void updateTable(){
 
+        //p1NameLabel.setText(names.get(0).getName());
 
+
+        //updateTable();
 
 
     }
 
 
+    @FXML
+    //this method is to show title Deeds of players
+    void showDeeds() throws Exception{
+        //if first players button is clicked
+        if(p1DeedButton.isFocused()){
+            //set title
+            deedPaneTitle.setText(p1NameLabel.getText() + "'s TitleDeeds");
+            //if no title deed
+            if(names.get(0).getTitleDeeds().size() == 0){
+                deedPaneTitle.setText(p1NameLabel.getText() + " has no Property");
+            }
+            else{
+                //initialize an array to print in scroll pane
+                ArrayList<String> propertyNames = new ArrayList<String>();
+                for(int i = 0; i<names.get(0).getNumProperty(); i++ ){
+                    propertyNames.add("a");
+                }
 
+            }
+            deedPane.setVisible(true);
+        }
+        else if(p2DeedButton.isFocused() && names.get(1) != null){
+            deedPaneTitle.setText(p2NameLabel.getText() + "'s TitleDeeds");
+            if(names.get(1).getTitleDeeds().size() == 0){
+                deedPaneTitle.setText(p2NameLabel.getText() + " has no Property");
+            }
+            else{
+                ArrayList<String> propertyNames = new ArrayList<String>();
+                for(int i = 0; i<names.get(1).getNumProperty(); i++ ){
+                    propertyNames.add("a");
+                }
+
+            }
+            deedPane.setVisible(true);
+        }else if(p3DeedButton.isFocused() && names.get(2) != null ){
+            deedPaneTitle.setText(p3NameLabel.getText() + "'s TitleDeeds");
+            if(names.get(2).getTitleDeeds().size() == 0){
+                deedPaneTitle.setText(p3NameLabel.getText() + " has no Property");
+            }
+            else{
+                ArrayList<String> propertyNames = new ArrayList<String>();
+                for(int i = 0; i<names.get(2).getNumProperty(); i++ ){
+                    propertyNames.add("a");
+                }
+
+            }
+            deedPane.setVisible(true);
+        }else if(p3DeedButton.isFocused() && names.get(3) != null){
+            deedPaneTitle.setText(p4NameLabel.getText() + "'s TitleDeeds");
+            if(names.get(3).getTitleDeeds().size() == 0){
+                deedPaneTitle.setText(p4NameLabel.getText() + " has no Property");
+            }
+            else{
+                ArrayList<String> propertyNames = new ArrayList<String>();
+                for(int i = 0; i<names.get(3).getNumProperty(); i++ ){
+                    propertyNames.add("a");
+                }
+
+            }
+            deedPane.setVisible(true);
+        }
+        else{
+            deedPane.setVisible(false);
+        }
+
+
+    }
+
+
+    @FXML
+        //this method closes titleDeeds
+    void closeDeeds(){
+
+        deedPane.setVisible(false);
+
+    }
     @FXML
         //this method is called when the card is drawn
         // comment & displays a random card name
@@ -337,6 +446,7 @@ public class GameController implements Initializable{
         labelDice2.setText("Dice 2 : "+dice2);
         currentPlayer = names.get(turn);
         int updatedPosition = (currentPlayer.getPosition() + totalDice) %40;
+
         currentPlayer.setPosition(updatedPosition);
 
 
@@ -360,7 +470,7 @@ public class GameController implements Initializable{
 
             String nameOfPlayer = names.get(i).getName();
             int curPos = names.get(i).getPosition();
-            System.out.println(nameOfPlayer + "position: " + curPos);
+            System.out.println(nameOfPlayer + "position: " + curPos );
 
         }
         currentPlayerName.setText("Current Player : " + currentPlayer.getName());
