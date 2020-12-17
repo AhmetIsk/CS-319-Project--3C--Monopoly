@@ -28,7 +28,7 @@ public class Banker {
      * @param owner
      * @param buyer
      */
-    public void sellProperty(Property property, Player owner, Player buyer) {
+    public void sellProperty(Planet property, Player owner, Player buyer) {
         // TODO - implement Banker.sellProperty
         //throw new UnsupportedOperationException();
         int newOwnerBalance = owner.getBalance() + property.getPrice();
