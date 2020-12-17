@@ -8,13 +8,14 @@ public class Player {
     private int balance;
     private int position;
     private int numProperty;
+    private boolean bankrupt;
 
     private final ArrayList<Property> titleDeeds;
     //private final Token token; //???
     //comment
 
     private final boolean hasCards;
-    private final boolean bankrupt;
+
     private boolean inJail;
     private final boolean buyProperty;
     private final boolean buildStructure;
@@ -135,6 +136,8 @@ public class Player {
     public boolean checkBuyProperty() {
         return buyProperty;
     }
+
+    public void setBankrupt(){bankrupt = true;}
 
     /**
      *
