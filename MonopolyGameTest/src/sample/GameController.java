@@ -98,36 +98,59 @@ public class GameController implements Initializable{
     @FXML
     //this method opens a new window for Property by clicking propety on board
     public void showPropety(){
-
+        
+        //first make buttons visible, they will be unvisible if neccessary
         buyButton.setVisible(true);
         payRentButton.setVisible(true);
+        buildButton.setVisible(false);
+        
+        //set text at the top of the pane to show information at current player's location
+        //price-rent and planet name will be shown
         propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nPrice is: " + planets[currentPlayer.getPosition()].getPrice()
                 + "\nRent is" +planets[currentPlayer.getPosition()].getRentPrice());
+        
+        //show rent price of the planet
         rentLabel.setText("price :" + planets[currentPlayer.getPosition()].getRentPrice());
+        
+        //show pane that shows information of property
         propertyPane.setVisible(true);
-        /*if(closePropButton.isFocused()){
-            propertyPane.setVisible(false);
-        }*/
+        
+        //if planet at current player's location has owner,
+        //buy button will be unvisible since buy option is not available
         if( planets[currentPlayer.getPosition()].checkHasOwner()){
             buyButton.setVisible(false);
+            buildButton.setVisible(true);
+            //show information about planet, by adding owner player name
             propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nOwner: " + planets[currentPlayer.getPosition()].getOwnerName()
                     + "\nRent is" +planets[currentPlayer.getPosition()].getRentPrice());
         }
+        
+        //if planet has no owner, pay rent button is not visible 
+        //because pay rent is not available for planets that has no owner
         if( !(planets[currentPlayer.getPosition()].checkHasOwner())){
             payRentButton.setVisible(false);
         }
+
+        //if buy button is clicked, player buy the planet property
         if(buyButton.isFocused()){
-            //currentPlayer.getTitleDeeds().add(p1);
+            //if planet has no owner, add it to players tittle list
             if(planets[currentPlayer.getPosition()].checkHasOwner()== false){
+                //player buy the planet with buy property method
                 currentPlayer.buyProperty(planets[currentPlayer.getPosition()]);
+                //make planet hasOwner true
                 planets[currentPlayer.getPosition()].setHasOwner(true);
+                //buy button will be unvisible, since it has owner now
                 buyButton.setVisible(false);
+                //set owner of the planet
                 planets[currentPlayer.getPosition()].setOwner(currentPlayer);
 
                 System.out.println(currentPlayer.getName() + " buy " +currentPlayer.getTitleDeeds().get(0).getPropName());
+                //update bank account in bank account table
                 changeTable();
             }
+
             else{
+
                 if(p1.getOwnerName() != currentPlayer.getName()){
                     buildButton.setVisible(false);
                 }
@@ -142,19 +165,26 @@ public class GameController implements Initializable{
 
     @FXML
     public void closePropertyPane(){
+        //make property pane unvisible
         propertyPane.setVisible(false);
     }
 
     @FXML
-    //this method opens a new window for Property by clicking propety on board
+    //this method is to make payment for rent of the planets
     public void payRent(){
 
+        //planet's rent  that is at the currentPlayer's location
         int temp1 = planets[currentPlayer.getPosition()].getRentPrice();
+        //temp2 = currentPlayers bank account after payment
         int temp2 = currentPlayer.getBalance() -temp1;
+        //set current players bank account after payment for rent
         currentPlayer.setBalance(temp2);
         System.out.println(currentPlayer.getBalance());
+        //update bank account in bank account table
         changeTable();
+        //after payment, make pay button unvisible to avoid multiple payment
         payRentButton.setVisible(false);
+        //message in the label that indicates payment is done
         rentLabel.setText("payment is \n done!");
 
 
@@ -475,16 +505,17 @@ public class GameController implements Initializable{
     @FXML
     //this method is to show title Deeds of players
     void showDeeds() throws Exception{
-        //if first players button is clicked
+        //if first players button is clicked, show players' title deed
         if(p1DeedButton.isFocused()){
-            //set title
+            //set title of the opened title deed's pane
             deedPaneTitle.setText(p1NameLabel.getText() + "'s TitleDeeds");
-            //if no title deed
+            //if player has no propety(players' title deed array is empty)
             if(names.get(0).getTitleDeeds().size() == 0){
+                //indicate in the title that player has no property
                 deedPaneTitle.setText(p1NameLabel.getText() + " has no Property");
             }
             else{
-                //initialize an array to print in scroll pane
+                //print player's title deed in the scroll pane
                 ArrayList<String> propertyNames = new ArrayList<String>();
                 for(int i = 0; i<names.get(0).getNumProperty(); i++ ){
                     propertyNames.add("a");
@@ -497,11 +528,14 @@ public class GameController implements Initializable{
             deedPane.setVisible(true);
         }
         else if(p2DeedButton.isFocused() && names.get(1) != null){
+            //set title of the opened title deed's pane
             deedPaneTitle.setText(p2NameLabel.getText() + "'s TitleDeeds");
+            //if player has no propety(players' title deed array is empty)
             if(names.get(1).getTitleDeeds().size() == 0){
                 deedPaneTitle.setText(p2NameLabel.getText() + " has no Property");
             }
             else{
+                //print player's title deed in the scroll pane
                 ArrayList<String> propertyNames = new ArrayList<String>();
                 for(int i = 0; i<names.get(1).getNumProperty(); i++ ){
                     propertyNames.add("a");
@@ -513,11 +547,14 @@ public class GameController implements Initializable{
             }
             deedPane.setVisible(true);
         }else if(p3DeedButton.isFocused() && names.get(2) != null ){
+            //set title of the opened title deed's pane
             deedPaneTitle.setText(p3NameLabel.getText() + "'s TitleDeeds");
+            //if player has no propety(players' title deed array is empty)
             if(names.get(2).getTitleDeeds().size() == 0){
                 deedPaneTitle.setText(p3NameLabel.getText() + " has no Property");
             }
             else{
+                //print player's title deed in the scroll pane
                 ArrayList<String> propertyNames = new ArrayList<String>();
                 for(int i = 0; i<names.get(2).getNumProperty(); i++ ){
                     propertyNames.add("a");
@@ -529,11 +566,14 @@ public class GameController implements Initializable{
             }
             deedPane.setVisible(true);
         }else if(p3DeedButton.isFocused() && names.get(3) != null){
+            //set title of the opened title deed's pane
             deedPaneTitle.setText(p4NameLabel.getText() + "'s TitleDeeds");
+            //if player has no propety(players' title deed array is empty)
             if(names.get(3).getTitleDeeds().size() == 0){
                 deedPaneTitle.setText(p4NameLabel.getText() + " has no Property");
             }
             else{
+                //print player's title deed in the scroll pane
                 ArrayList<String> propertyNames = new ArrayList<String>();
                 for(int i = 0; i<names.get(3).getNumProperty(); i++ ){
                     propertyNames.add("a");
@@ -543,6 +583,7 @@ public class GameController implements Initializable{
                 }
 
             }
+            //shows deedPane after inserting information
             deedPane.setVisible(true);
         }
         else{
@@ -700,9 +741,11 @@ public class GameController implements Initializable{
         //this method is to roll dice
     //token position is updated here
     int rollDice() throws Exception{
-        //
+        //current player
         currentPlayer = names.get(turn);
+        //initialize updated position
         int updatedPosition = currentPlayer.getPosition();
+
 
         if (currentPlayer.checkJail() && (currentPlayer.getJailDayCounter() != 3)) {
             int currentDay = currentPlayer.getJailDayCounter();
@@ -726,13 +769,20 @@ public class GameController implements Initializable{
 
             boardPane.getChildren().remove((tokens.get(turn)).getImageView());
 
+            //this part is to arrange movements of the tokens in the grid pane
+            //add token to its new position by moving token according to total dice
+            //mathematical calculations are done in if else statements
             try {
                 if (updatedPosition <= 10) {
+                    //add token to its new position by moving token according to total dice
                     boardPane.add((tokens.get(turn)).getImageView(), 10 - updatedPosition, 10);
+                    //add token to its new position by moving token according to total dice
                 } else if (updatedPosition <= 20) {
                     boardPane.add((tokens.get(turn)).getImageView(), 0, 20 - updatedPosition);
+                    //add token to its new position by moving token according to total dice
                 } else if (updatedPosition <= 30) {
                     boardPane.add((tokens.get(turn)).getImageView(), updatedPosition - 20, 0);
+                    //add token to its new position by moving token according to total dice
                 } else {
                     boardPane.add((tokens.get(turn)).getImageView(), 10, updatedPosition - 30);
                 }
@@ -741,11 +791,15 @@ public class GameController implements Initializable{
                 System.out.println("operation can not be done");
             }
 
+            //if there exists a planet after movement of current planer
+            //show the information so that player decide buy/build options
+            //or rent
             if(planets[updatedPosition] != null){
-                //pane i aç
+                //open the information of planet about the current player's new location
                  showPropety();
             }
 
+            //increment turn and take mod
             turn = (turn + 1) % names.size();
 
             if (!currentPlayer.checkJail() && (currentPlayer.getPosition() == 30 || currentPlayer.getPosition() == 20))  {
@@ -760,7 +814,7 @@ public class GameController implements Initializable{
                 }
             }
 
-
+            //print new position at console
             for(int i = 0; i<names.size(); i++){
 
                 String nameOfPlayer = names.get(i).getName();
@@ -770,6 +824,7 @@ public class GameController implements Initializable{
             }
         }
 
+        //show current player at the bottom of the game scene
         currentPlayerName.setText("Current Player : " + currentPlayer.getName());
 
         return updatedPosition;
