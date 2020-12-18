@@ -146,7 +146,7 @@ public class Player {
 
     }
 
-    public void getOutOfJail() {
+    public void exitJail() {
         inJail = false;
         jailDayCounter = 0;
     }

@@ -13,6 +13,7 @@ import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import FileControllerManager.GameInfoReader;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -35,71 +36,80 @@ import javax.swing.*;
 public class GameController implements Initializable{
 
 
-
+    final int PLANET_NUMBER = 22;
+    final int LOCATION_NUMBER = 40;
 
     ArrayList<Token> tokens;
     ArrayList<Player> names;
+
+    String [] planetsNames;
+    Integer [] planetsPositions;
+    Integer [] planetsPrices;
+    Integer [] planetsMortgagePrices;
+    Integer [] planetsRentPrices;
 
     //Planet properties and actions-----
     MortgageStrategy ms;
     BuildStrategy bs;
     //Array List that contains player objects
-    Planet p1 = new Planet("Planet 1",bs,  ms, 300, 1,
-    150, 30);
-    Planet p3 = new Planet("Planet 3",bs,  ms, 200, 3,
-            100, 20);
-    Planet p6 = new Planet("Planet 6",bs,  ms, 400, 6,
-            200, 40);
-    Planet p8 = new Planet("Planet 8",bs,  ms, 350, 8,
-            175, 35);
-    Planet p9 = new Planet("Planet 9",bs,  ms, 300, 9,
-            150, 30);
-    Planet p11 = new Planet("Planet 11",bs,  ms, 500, 11,
-            250, 50);
-    Planet p13 = new Planet("Planet 13",bs,  ms, 380, 13,
-            190, 38);
-    Planet p14 = new Planet("Planet 14",bs,  ms, 400, 14,
-            200, 40);
-    Planet p16 = new Planet("Planet 16",bs,  ms, 150, 16,
-            75, 15);
-    Planet p18 = new Planet("Planet 18",bs,  ms, 200, 18,
-            100, 20);
-    Planet p19 = new Planet("Planet 19",bs,  ms, 300, 19,
-            150, 30);
-    Planet p21 = new Planet("Planet 21",bs,  ms, 250, 21,
-            125, 25);
-    Planet p23 = new Planet("Planet 23",bs,  ms, 350, 23,
-            175, 35);
-    Planet p24 = new Planet("Planet 24",bs,  ms, 200, 24,
-            100, 20);
-    Planet p26 = new Planet("Planet 26",bs,  ms, 500, 26,
-            250, 50);
-    Planet p27 = new Planet("Planet 27",bs,  ms, 280, 27,
-            140, 28);
-    Planet p29 = new Planet("Planet 29",bs,  ms, 400, 29,
-            200, 40);
-    Planet p31 = new Planet("Planet 31",bs,  ms, 250, 31,
-            125, 25);
-    Planet p32 = new Planet("Planet 32",bs,  ms, 300, 32,
-            150, 30);
-    Planet p34 = new Planet("Planet 34",bs,  ms, 200, 34,
-            100, 20);
-    Planet p37 = new Planet("Planet 37",bs,  ms, 350, 37,
-            175, 35);
-    Planet p39 = new Planet("Planet 39",bs,  ms, 280, 39,
-            140, 28);
+//    Planet p1 = new Planet("Planet 1",bs,  ms, 300, 1,
+//    150, 30);
+//    Planet p3 = new Planet("Planet 3",bs,  ms, 200, 3,
+//            100, 20);
+//    Planet p6 = new Planet("Planet 6",bs,  ms, 400, 6,
+//            200, 40);
+//    Planet p8 = new Planet("Planet 8",bs,  ms, 350, 8,
+//            175, 35);
+//    Planet p9 = new Planet("Planet 9",bs,  ms, 300, 9,
+//            150, 30);
+//    Planet p11 = new Planet("Planet 11",bs,  ms, 500, 11,
+//            250, 50);
+//    Planet p13 = new Planet("Planet 13",bs,  ms, 380, 13,
+//            190, 38);
+//    Planet p14 = new Planet("Planet 14",bs,  ms, 400, 14,
+//            200, 40);
+//    Planet p16 = new Planet("Planet 16",bs,  ms, 150, 16,
+//            75, 15);
+//    Planet p18 = new Planet("Planet 18",bs,  ms, 200, 18,
+//            100, 20);
+//    Planet p19 = new Planet("Planet 19",bs,  ms, 300, 19,
+//            150, 30);
+//    Planet p21 = new Planet("Planet 21",bs,  ms, 250, 21,
+//            125, 25);
+//    Planet p23 = new Planet("Planet 23",bs,  ms, 350, 23,
+//            175, 35);
+//    Planet p24 = new Planet("Planet 24",bs,  ms, 200, 24,
+//            100, 20);
+//    Planet p26 = new Planet("Planet 26",bs,  ms, 500, 26,
+//            250, 50);
+//    Planet p27 = new Planet("Planet 27",bs,  ms, 280, 27,
+//            140, 28);
+//    Planet p29 = new Planet("Planet 29",bs,  ms, 400, 29,
+//            200, 40);
+//    Planet p31 = new Planet("Planet 31",bs,  ms, 250, 31,
+//            125, 25);
+//    Planet p32 = new Planet("Planet 32",bs,  ms, 300, 32,
+//            150, 30);
+//    Planet p34 = new Planet("Planet 34",bs,  ms, 200, 34,
+//            100, 20);
+//    Planet p37 = new Planet("Planet 37",bs,  ms, 350, 37,
+//            175, 35);
+//    Planet p39 = new Planet("Planet 39",bs,  ms, 280, 39,
+//            140, 28);
 
 
-    Planet[] planets = new Planet[]{null,p1,null,p3,null,null,p6,null,p8,p9,null,p11,null,p13,p14
-            ,null,p16,null,p18,p19,null,p21,null,p23,p24,null,p26,p27,null,p29,null,p31,p32,null,p34
-    ,null,null,p37,null,p39};
 
+//    Planet[] planets = new Planet[]{null,p1,null,p3,null,null,p6,null,p8,p9,null,p11,null,p13,p14
+//            ,null,p16,null,p18,p19,null,p21,null,p23,p24,null,p26,p27,null,p29,null,p31,p32,null,p34
+//    ,null,null,p37,null,p39};
+
+    Planet[] planets = new Planet[LOCATION_NUMBER];
 
 
 
     @FXML
     //this method opens a new window for Property by clicking propety on board
-    public void showPropety(){
+    public void showProperty(){
         
         //first make buttons visible, they will be unvisible if neccessary
         buyButton.setVisible(true);
@@ -136,7 +146,7 @@ public class GameController implements Initializable{
         //if buy button is clicked, player buy the planet property
         if(buyButton.isFocused()){
             //if planet has no owner, add it to players tittle list
-            if(planets[currentPlayer.getPosition()].checkHasOwner()== false){
+            if(!planets[currentPlayer.getPosition()].checkHasOwner()){
                 //player buy the planet with buy property method
                 currentPlayer.buyProperty(planets[currentPlayer.getPosition()]);
 
@@ -157,9 +167,9 @@ public class GameController implements Initializable{
 
             else{
 
-                if(p1.getOwnerName() != currentPlayer.getName()){
-                    buildButton.setVisible(false);
-                }
+//                if(p1.getOwnerName() != currentPlayer.getName()){
+//                    buildButton.setVisible(false);
+//                }
             }
 
         }
@@ -211,9 +221,29 @@ public class GameController implements Initializable{
         }
     }
 
-    public void initial(ArrayList<Player> names, ArrayList<Token> tokens) throws FileNotFoundException {
+    public void initial(ArrayList<Player> names, ArrayList<Token> tokens) {
         this.names = names;
         this.tokens = tokens;
+        int locationCounter = 0;
+        boolean equal = false;
+
+        planetsNames = GameInfoReader.getPlanetNames();
+        planetsPositions = GameInfoReader.getPlanetSPositions();
+        planetsPrices = GameInfoReader.getPlanetsPrice();
+        planetsRentPrices = GameInfoReader.getPlanetsRentPrice();
+        planetsMortgagePrices = GameInfoReader.getPlanetsMortgagePrice();
+
+        for (int i = 0; i < LOCATION_NUMBER; i++) {
+            if ( planetsPositions[locationCounter] == i) {
+                equal = true;
+                planets[i] = new Planet(planetsNames[locationCounter], bs, ms, planetsPrices[locationCounter],
+                        planetsPositions[locationCounter], planetsMortgagePrices[locationCounter], planetsRentPrices[locationCounter]);
+            }
+            if (equal)
+                locationCounter++;
+                equal = false;
+        }
+
         if (names.size() == 1) {
             p1NameLabel.setText(names.get(0).getName());
             p1AccountLabel.setText(String.valueOf(names.get(0).getBalance()));
@@ -759,7 +789,7 @@ public class GameController implements Initializable{
             turn = (turn + 1) % names.size();
         }
         else {
-            currentPlayer.getOutOfJail();
+            currentPlayer.exitJail();
 
             int dice1 = (int) (Math.random() * 6 + 1);
             int dice2 = (int) (Math.random() * 6 + 1);
@@ -802,7 +832,7 @@ public class GameController implements Initializable{
             //or rent
             if(planets[updatedPosition] != null){
                 //open the information of planet about the current player's new location
-                 showPropety();
+                 showProperty();
             }
 
             //increment turn and take mod
