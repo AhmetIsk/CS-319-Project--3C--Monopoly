@@ -3,11 +3,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -98,22 +100,22 @@
             <Button fx:id="p2DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Button fx:id="p3DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Button fx:id="p4DeedButton" mnemonicParsing="false" onAction="#showDeeds" prefHeight="28.0" prefWidth="116.0" text="Deeds" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label fx:id="p1NameLabel" prefHeight="25.0" prefWidth="103.0" style="-fx-font-style: italic; -fx-alignment: center;" text="-">
+            <Label fx:id="p1NameLabel" prefHeight="25.0" prefWidth="103.0" style="-fx-font-style: ITALIC; -fx-alignment: center;" text="-">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="p2NameLabel" prefHeight="25.0" prefWidth="122.0" style="-fx-alignment: center; -fx-font-style: italic;" text="-" GridPane.rowIndex="1">
+            <Label fx:id="p2NameLabel" prefHeight="25.0" prefWidth="122.0" style="-fx-alignment: center; -fx-font-style: ITALIC;" text="-" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="p3NameLabel" prefHeight="25.0" prefWidth="113.0" style="-fx-alignment: center; -fx-font-style: italic;" text="-" GridPane.rowIndex="2">
+            <Label fx:id="p3NameLabel" prefHeight="25.0" prefWidth="113.0" style="-fx-alignment: center; -fx-font-style: ITALIC;" text="-" GridPane.rowIndex="2">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="p4NameLabel" prefHeight="25.0" prefWidth="110.0" style="-fx-alignment: center; -fx-font-size: italic;" text="-" GridPane.rowIndex="3">
+            <Label fx:id="p4NameLabel" prefHeight="25.0" prefWidth="110.0" style="-fx-alignment: center; -fx-font-size: ITALIC;" text="-" GridPane.rowIndex="3">
                <font>
                   <Font size="18.0" />
                </font>
@@ -157,7 +159,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <AnchorPane fx:id="deedPane" layoutX="55.0" layoutY="290.0" prefHeight="226.0" prefWidth="242.0" style="-fx-background-color: #884dff#884dff; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
+      <AnchorPane fx:id="deedPane" layoutX="55.0" layoutY="290.0" prefHeight="226.0" prefWidth="242.0" style="-fx-background-color: #884dff#884dff; -fx-border-color: white; -fx-border-width: 5; visibility: true;">
          <children>
             <Label fx:id="deedPaneTitle" layoutX="14.0" layoutY="14.0" prefHeight="34.0" prefWidth="163.0" text="Player's Title Deeds" textFill="WHITE">
                <font>
@@ -167,9 +169,18 @@
             <Button fx:id="closeDeeds" layoutX="177.0" layoutY="187.0" mnemonicParsing="false" onAction="#closeDeeds" text="Close" />
             <ScrollPane fx:id="scrollPaneDeeds" layoutX="25.0" layoutY="48.0" prefHeight="122.0" prefWidth="193.0">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="127.0" prefWidth="195.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="127.0" prefWidth="195.0">
+                     <children>
+                        <TextArea fx:id="deedInfo" prefHeight="200.0" prefWidth="200.0" />
+                     </children></AnchorPane>
               </content>
             </ScrollPane>
          </children></AnchorPane>
+      <Pane fx:id="jailPane" layoutX="15.0" layoutY="178.0" prefHeight="206.0" prefWidth="282.0" style="-fx-background-color: gray;" visible="false">
+         <children>
+            <ImageView fx:id="paneImage" fitHeight="206.0" fitWidth="236.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="jailButton" defaultButton="true" layoutX="213.0" layoutY="158.0" mnemonicParsing="false" onAction="#putJail" prefHeight="34.0" prefWidth="55.0" text="OKAY" />
+         </children>
+      </Pane>
     </children>
 </AnchorPane>

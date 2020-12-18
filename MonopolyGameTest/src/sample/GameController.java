@@ -44,9 +44,55 @@ public class GameController implements Initializable{
     MortgageStrategy ms;
     BuildStrategy bs;
     //Array List that contains player objects
-    Planet p1 = new Planet("Planet",bs,  ms, 300, 1,
+    Planet p1 = new Planet("Planet 1",bs,  ms, 300, 1,
     150, 30);
-    Planet[] planets = new Planet[]{p1};
+    Planet p3 = new Planet("Planet 3",bs,  ms, 300, 3,
+            150, 30);
+    Planet p6 = new Planet("Planet 6",bs,  ms, 300, 6,
+            150, 30);
+    Planet p8 = new Planet("Planet 8",bs,  ms, 300, 8,
+            150, 30);
+    Planet p9 = new Planet("Planet 9",bs,  ms, 300, 9,
+            150, 30);
+    Planet p11 = new Planet("Planet 11",bs,  ms, 300, 11,
+            150, 30);
+    Planet p13 = new Planet("Planet 13",bs,  ms, 300, 13,
+            150, 30);
+    Planet p14 = new Planet("Planet 14",bs,  ms, 300, 14,
+            150, 30);
+    Planet p16 = new Planet("Planet 16",bs,  ms, 300, 16,
+            150, 30);
+    Planet p18 = new Planet("Planet 18",bs,  ms, 300, 18,
+            150, 30);
+    Planet p19 = new Planet("Planet 19",bs,  ms, 300, 19,
+            150, 30);
+    Planet p21 = new Planet("Planet 21",bs,  ms, 300, 21,
+            150, 30);
+    Planet p23 = new Planet("Planet 23",bs,  ms, 300, 23,
+            150, 30);
+    Planet p24 = new Planet("Planet 24",bs,  ms, 300, 24,
+            150, 30);
+    Planet p26 = new Planet("Planet 26",bs,  ms, 300, 26,
+            150, 30);
+    Planet p27 = new Planet("Planet 27",bs,  ms, 300, 27,
+            150, 30);
+    Planet p29 = new Planet("Planet 29",bs,  ms, 300, 29,
+            150, 30);
+    Planet p31 = new Planet("Planet 31",bs,  ms, 300, 31,
+            150, 30);
+    Planet p32 = new Planet("Planet 32",bs,  ms, 300, 32,
+            150, 30);
+    Planet p34 = new Planet("Planet 34",bs,  ms, 300, 34,
+            150, 30);
+    Planet p37 = new Planet("Planet 37",bs,  ms, 300, 37,
+            150, 30);
+    Planet p39 = new Planet("Planet 39",bs,  ms, 300, 39,
+            150, 30);
+
+
+    Planet[] planets = new Planet[]{null,p1,null,p3,null,null,p6,null,p8,p9,null,p11,null,p13,p14
+            ,null,p16,null,p18,p19,null,p21,null,p23,p24,null,p26,p27,null,p29,null,p31,p32,null,p34
+    ,null,null,p37,null,p39};
 
 
     @FXML
@@ -56,17 +102,30 @@ public class GameController implements Initializable{
     //this method opens a new window for Property by clicking propety on board
     public void showPropety(){
 
-        propertyFeature.setText(propertyButton1.getText() + " price is: " + p1.getPrice() + "\nRent is" +p1.getRentPrice());
+        propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + " price is: " + planets[currentPlayer.getPosition()].getPrice()
+                + "\nRent is" +planets[currentPlayer.getPosition()].getRentPrice());
         propertyPane.setVisible(true);
         if(closePropButton.isFocused()){
             propertyPane.setVisible(false);
         }
         if(buyButton.isFocused()){
             //currentPlayer.getTitleDeeds().add(p1);
-            if(p1.checkHasOwner()== false){
-                currentPlayer.buyProperty(p1);
+            if(planets[currentPlayer.getPosition()].checkHasOwner()== false){
+                currentPlayer.buyProperty(planets[currentPlayer.getPosition()]);
                 buyButton.setVisible(false);
                 System.out.println(currentPlayer.getName() + " buy " +currentPlayer.getTitleDeeds().get(0).getPropName());
+                if (currentPlayer.equals(names.get(0))) {
+                    p1AccountLabel.setText("" + currentPlayer.getBalance());
+                }
+                else if (currentPlayer.equals(names.get(1))) {
+                    p2AccountLabel.setText("" + currentPlayer.getBalance());
+                }
+                else if (currentPlayer.equals(names.get(2))){
+                    p3AccountLabel.setText("" + currentPlayer.getBalance());
+                }
+                else if (currentPlayer.equals(names.get(3))){
+                    p4AccountLabel.setText("" + currentPlayer.getBalance());
+                }
             }
             else{
                 if(p1.getOwnerName() != currentPlayer.getName()){
@@ -640,6 +699,11 @@ public class GameController implements Initializable{
             }
             catch(Exception e4){
                 System.out.println("operation can not be done");
+            }
+
+            if(planets[updatedPosition] != null){
+                //pane i aç
+                 showPropety();
             }
 
             turn = (turn + 1) % names.size();

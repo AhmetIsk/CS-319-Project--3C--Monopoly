@@ -178,6 +178,7 @@ public class Player {
 
             titleDeeds.add(p);
             p.setHasOwner(true);
+            this.setBalance(this.getBalance()-p.getPrice());
             //balance = balance - p.getPrice()
 
     }
