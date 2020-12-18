@@ -27,16 +27,18 @@
       <Button fx:id="rollDiceBtn" layoutX="41.0" layoutY="316.0" mnemonicParsing="false" onAction="#rollDice" prefHeight="28.0" prefWidth="135.0" text="Roll Dice" />
       <Label fx:id="labelDice1" layoutX="200.0" layoutY="302.0" prefHeight="15.0" prefWidth="89.0" text="Dice 1:" textFill="#f8f7f7" />
       <Label fx:id="labelDice2" layoutX="200.0" layoutY="330.0" prefHeight="15.0" prefWidth="96.0" text="Dice 2:" textFill="WHITE" />
-      <AnchorPane fx:id="propertyPane" layoutX="26.0" layoutY="44.0" prefHeight="200.0" prefWidth="220.0" style="-fx-background-color: grey; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
+      <AnchorPane fx:id="propertyPane" layoutX="32.0" layoutY="181.0" prefHeight="200.0" prefWidth="220.0" style="-fx-background-color: grey; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
          <children>
-            <Label fx:id="propertyFeature" layoutX="19.0" layoutY="14.0" prefHeight="46.0" prefWidth="163.0" text="Property" textFill="#fff4f4">
+            <Label fx:id="propertyFeature" layoutX="19.0" layoutY="14.0" prefHeight="46.0" prefWidth="163.0" text="Property" textFill="#fef3ff">
                <font>
-                  <Font size="17.0" />
+                  <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Button fx:id="buyButton" layoutX="14.0" layoutY="161.0" mnemonicParsing="false" onAction="#showPropety" text="Buy" />
-            <Button fx:id="buildButton" layoutX="69.0" layoutY="161.0" mnemonicParsing="false" onAction="#showPropety" text="Build" />
-            <Button fx:id="closePropButton" layoutX="131.0" layoutY="161.0" mnemonicParsing="false" onAction="#showPropety" text="Close" />
+            <Button fx:id="buyButton" layoutX="11.0" layoutY="127.0" mnemonicParsing="false" onAction="#showPropety" prefHeight="25.0" prefWidth="45.0" text="Buy" />
+            <Button fx:id="buildButton" layoutX="11.0" layoutY="161.0" mnemonicParsing="false" onAction="#showPropety" text="Build" />
+            <Button fx:id="closePropButton" layoutX="68.0" layoutY="161.0" mnemonicParsing="false" onAction="#showPropety" prefHeight="25.0" prefWidth="65.0" text="Close" />
+            <Button fx:id="payRentButton" layoutX="68.0" layoutY="127.0" mnemonicParsing="false" text="Pay Rent" />
+            <Label fx:id="rentLabel" layoutX="141.0" layoutY="127.0" prefHeight="25.0" prefWidth="65.0" text="Rent:" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="323.0" layoutY="13.0">
@@ -78,7 +80,6 @@
                   <Button fx:id="chestBtn2" layoutX="478.0" layoutY="443.0" mnemonicParsing="false" onAction="#takeCard" opacity="0.0" prefHeight="74.0" prefWidth="162.0" text="Draw" GridPane.columnIndex="7" GridPane.rowIndex="8" />
                   <Button fx:id="chestBtn11" layoutX="423.0" layoutY="443.0" mnemonicParsing="false" onAction="#takeCard" opacity="0.0" prefHeight="74.0" prefWidth="162.0" text="Draw" GridPane.columnIndex="8" GridPane.rowIndex="8" />
                   <Button fx:id="btnMove" mnemonicParsing="false" onAction="#move" text="Move" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                  <Button fx:id="propertyButton1" mnemonicParsing="false" onAction="#showPropety" opacity="0.0" prefHeight="91.0" prefWidth="57.0" text="Planet1" GridPane.columnIndex="9" GridPane.rowIndex="10" />
                </children>
             </GridPane>
          </children>
@@ -159,7 +160,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <AnchorPane fx:id="deedPane" layoutX="55.0" layoutY="290.0" prefHeight="226.0" prefWidth="242.0" style="-fx-background-color: #884dff#884dff; -fx-border-color: white; -fx-border-width: 5; visibility: true;">
+      <AnchorPane fx:id="deedPane" layoutX="55.0" layoutY="290.0" prefHeight="226.0" prefWidth="242.0" style="-fx-background-color: #884dff#884dff; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
          <children>
             <Label fx:id="deedPaneTitle" layoutX="14.0" layoutY="14.0" prefHeight="34.0" prefWidth="163.0" text="Player's Title Deeds" textFill="WHITE">
                <font>

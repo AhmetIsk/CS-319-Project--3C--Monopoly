@@ -95,8 +95,7 @@ public class GameController implements Initializable{
     ,null,null,p37,null,p39};
 
 
-    @FXML
-    Button propertyButton1;
+
 
     @FXML
     //this method opens a new window for Property by clicking propety on board
@@ -108,6 +107,9 @@ public class GameController implements Initializable{
         propertyPane.setVisible(true);
         if(closePropButton.isFocused()){
             propertyPane.setVisible(false);
+        }
+        if( planets[currentPlayer.getPosition()].checkHasOwner()){
+            buyButton.setVisible(false);
         }
         if(buyButton.isFocused()){
             //currentPlayer.getTitleDeeds().add(p1);
@@ -347,6 +349,12 @@ public class GameController implements Initializable{
 
     @FXML
     Label propertyFeature;
+
+    @FXML
+    Label rentLabel;
+
+    @FXML
+    Button payRentButton;
 
     //--------
 
