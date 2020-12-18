@@ -389,7 +389,18 @@ public class GameController implements Initializable{
     CardDecorator card3 = new ChangeBankAccount(new ChanceCard(3));
     CardDecorator card4 = new ChangePosition(new ChanceCard(4));
     CardDecorator card5 = new ChangeBankAccount(new ChangePosition(new ChanceCard(5)));
-    CardDecorator[] cardsArray =  new CardDecorator[]{card1, card2, card3, card4, card5};
+
+    //Chest Cards
+    CardDecorator card6 = new FoundMoney(new ChestCard(6));
+    CardDecorator card7 = new FoundMoney(new ChangePosition(new ChestCard(7)));
+    CardDecorator card8 = new CovidHelp(new ChestCard(8));
+    CardDecorator card9 = new CovidHelp(new FoundMoney(new ChestCard(9)));
+
+
+
+
+    CardDecorator[] cardsArray =  new CardDecorator[]{card1, card2, card3, card4,
+                                        card5,card6,card7,card8,card9};
 
     public CardDecorator getRandomCard() {
         int randomNum = (int)((1 + Math.random()*5) - 1);
@@ -574,18 +585,6 @@ public class GameController implements Initializable{
 
 
 
-    @FXML
-        //this method is for BankAccount Table
-    void updateTable(){
-
-        //p1NameLabel.setText(names.get(0).getName());
-
-
-        //updateTable();
-
-
-    }
-
 
     @FXML
         //this method is to show title Deeds of players
@@ -768,6 +767,15 @@ public class GameController implements Initializable{
                     System.out.println("current player position: " + currentPlayer.getPosition());
                     System.out.println();
 
+                    //card6,chest card,
+                    if(randomCard.equals(card6)){
+                        System.out.println("You found money in Space " + currentPlayer.getBalance());
+                        //fonk
+                        boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
+                        boardPane.add((tokens.get(tempTurn)).getImageView(), 10, 10);
+                        changeTable();
+                    }
+
                 }
             });
 
@@ -888,7 +896,7 @@ public class GameController implements Initializable{
                 showProperty();
             }
 
-            //increment turn and take mod
+
             turn = (turn + 1) % names.size();
 
             if (!currentPlayer.checkJail() && (currentPlayer.getPosition() == 30 || currentPlayer.getPosition() == 20))  {
