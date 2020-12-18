@@ -160,7 +160,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <AnchorPane fx:id="deedPane" layoutX="55.0" layoutY="290.0" prefHeight="226.0" prefWidth="242.0" style="-fx-background-color: #884dff#884dff; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
+      <AnchorPane fx:id="deedPane" layoutX="55.0" layoutY="290.0" prefHeight="226.0" prefWidth="242.0" style="-fx-background-color: #884dff#884dff; -fx-border-color: white; -fx-border-width: 5; visibility: true;">
          <children>
             <Label fx:id="deedPaneTitle" layoutX="14.0" layoutY="14.0" prefHeight="34.0" prefWidth="163.0" text="Player's Title Deeds" textFill="WHITE">
                <font>

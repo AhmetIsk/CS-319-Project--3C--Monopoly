@@ -95,6 +95,8 @@ public class GameController implements Initializable{
     ,null,null,p37,null,p39};
 
 
+
+
     @FXML
     //this method opens a new window for Property by clicking propety on board
     public void showPropety(){
@@ -137,11 +139,15 @@ public class GameController implements Initializable{
             if(planets[currentPlayer.getPosition()].checkHasOwner()== false){
                 //player buy the planet with buy property method
                 currentPlayer.buyProperty(planets[currentPlayer.getPosition()]);
+
+
                 //make planet hasOwner true
                 planets[currentPlayer.getPosition()].setHasOwner(true);
                 //buy button will be unvisible, since it has owner now
+
                 buyButton.setVisible(false);
                 //set owner of the planet
+
                 planets[currentPlayer.getPosition()].setOwner(currentPlayer);
 
                 System.out.println(currentPlayer.getName() + " buy " +currentPlayer.getTitleDeeds().get(0).getPropName());
@@ -506,24 +512,28 @@ public class GameController implements Initializable{
     //this method is to show title Deeds of players
     void showDeeds() throws Exception{
         //if first players button is clicked, show players' title deed
+        String printedDeed = ""; //to print planet names as string
         if(p1DeedButton.isFocused()){
             //set title of the opened title deed's pane
             deedPaneTitle.setText(p1NameLabel.getText() + "'s TitleDeeds");
+
+            //deedInfo is text area
             //if player has no propety(players' title deed array is empty)
             if(names.get(0).getTitleDeeds().size() == 0){
                 //indicate in the title that player has no property
                 deedPaneTitle.setText(p1NameLabel.getText() + " has no Property");
+                //scrollPaneDeeds.setContent(deedInfo);
             }
             else{
-                //print player's title deed in the scroll pane
-                ArrayList<String> propertyNames = new ArrayList<String>();
-                for(int i = 0; i<names.get(0).getNumProperty(); i++ ){
-                    propertyNames.add("a");
+
+                for(int i = 0; i< names.get(0).getTitleDeeds().size(); i++ ){
+                    printedDeed = printedDeed + "\n" + names.get(0).getTitleDeeds().get(i).getPropName();
 //                    Tam anlayamadım düzeni, iki opsiyon denedim ama ikisi de çalışmadı
 //                    deedInfo.setText(propertyNames.get(i));
 //                    deedInfo.setText((((names.get(0)).getTitleDeeds()).get(i)).getPropName());
                 }
-
+                deedInfo.appendText(printedDeed);
+                scrollPaneDeeds.setContent(deedInfo);
             }
             deedPane.setVisible(true);
         }
@@ -535,14 +545,12 @@ public class GameController implements Initializable{
                 deedPaneTitle.setText(p2NameLabel.getText() + " has no Property");
             }
             else{
-                //print player's title deed in the scroll pane
-                ArrayList<String> propertyNames = new ArrayList<String>();
-                for(int i = 0; i<names.get(1).getNumProperty(); i++ ){
-                    propertyNames.add("a");
-//                    Tam anlayamadım düzeni, iki opsiyon denedim ama ikisi de çalışmadı
-//                    deedInfo.setText(propertyNames.get(i));
-//                    deedInfo.setText((((names.get(0)).getTitleDeeds()).get(i)).getPropName());
+                for(int i = 0; i< names.get(1).getTitleDeeds().size(); i++ ){
+                    printedDeed = printedDeed + "\n" + names.get(1).getTitleDeeds().get(i).getPropName();
+//
                 }
+                deedInfo.appendText(printedDeed);
+                scrollPaneDeeds.setContent(deedInfo);
 
             }
             deedPane.setVisible(true);
@@ -555,13 +563,12 @@ public class GameController implements Initializable{
             }
             else{
                 //print player's title deed in the scroll pane
-                ArrayList<String> propertyNames = new ArrayList<String>();
-                for(int i = 0; i<names.get(2).getNumProperty(); i++ ){
-                    propertyNames.add("a");
-//                    Tam anlayamadım düzeni, iki opsiyon denedim ama ikisi de çalışmadı
-//                    deedInfo.setText(propertyNames.get(i));
-//                    deedInfo.setText((((names.get(0)).getTitleDeeds()).get(i)).getPropName());
+                for(int i = 0; i< names.get(2).getTitleDeeds().size(); i++ ){
+                    printedDeed = printedDeed + "\n" + names.get(2).getTitleDeeds().get(i).getPropName();
+//
                 }
+                deedInfo.appendText(printedDeed);
+                scrollPaneDeeds.setContent(deedInfo);
 
             }
             deedPane.setVisible(true);
@@ -574,13 +581,12 @@ public class GameController implements Initializable{
             }
             else{
                 //print player's title deed in the scroll pane
-                ArrayList<String> propertyNames = new ArrayList<String>();
-                for(int i = 0; i<names.get(3).getNumProperty(); i++ ){
-                    propertyNames.add("a");
-//                    Tam anlayamadım düzeni, iki opsiyon denedim ama ikisi de çalışmadı
-//                    deedInfo.setText(propertyNames.get(i));
-//                    deedInfo.setText((((names.get(0)).getTitleDeeds()).get(i)).getPropName());
+                for(int i = 0; i< names.get(3).getTitleDeeds().size(); i++ ){
+                    printedDeed = printedDeed + "\n" + names.get(3).getTitleDeeds().get(i).getPropName();
+//
                 }
+                deedInfo.appendText(printedDeed);
+                scrollPaneDeeds.setContent(deedInfo);
 
             }
             //shows deedPane after inserting information
