@@ -95,40 +95,37 @@ public class GameController implements Initializable{
     ,null,null,p37,null,p39};
 
 
-
-
     @FXML
     //this method opens a new window for Property by clicking propety on board
     public void showPropety(){
 
         buyButton.setVisible(true);
-        propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + " price is: " + planets[currentPlayer.getPosition()].getPrice()
+        payRentButton.setVisible(true);
+        propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nPrice is: " + planets[currentPlayer.getPosition()].getPrice()
                 + "\nRent is" +planets[currentPlayer.getPosition()].getRentPrice());
+        rentLabel.setText("price :" + planets[currentPlayer.getPosition()].getRentPrice());
         propertyPane.setVisible(true);
-        if(closePropButton.isFocused()){
+        /*if(closePropButton.isFocused()){
             propertyPane.setVisible(false);
-        }
+        }*/
         if( planets[currentPlayer.getPosition()].checkHasOwner()){
             buyButton.setVisible(false);
+            propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nOwner: " + planets[currentPlayer.getPosition()].getOwnerName()
+                    + "\nRent is" +planets[currentPlayer.getPosition()].getRentPrice());
+        }
+        if( !(planets[currentPlayer.getPosition()].checkHasOwner())){
+            payRentButton.setVisible(false);
         }
         if(buyButton.isFocused()){
             //currentPlayer.getTitleDeeds().add(p1);
             if(planets[currentPlayer.getPosition()].checkHasOwner()== false){
                 currentPlayer.buyProperty(planets[currentPlayer.getPosition()]);
+                planets[currentPlayer.getPosition()].setHasOwner(true);
                 buyButton.setVisible(false);
+                planets[currentPlayer.getPosition()].setOwner(currentPlayer);
+
                 System.out.println(currentPlayer.getName() + " buy " +currentPlayer.getTitleDeeds().get(0).getPropName());
-                if (currentPlayer.equals(names.get(0))) {
-                    p1AccountLabel.setText("" + currentPlayer.getBalance());
-                }
-                else if (currentPlayer.equals(names.get(1))) {
-                    p2AccountLabel.setText("" + currentPlayer.getBalance());
-                }
-                else if (currentPlayer.equals(names.get(2))){
-                    p3AccountLabel.setText("" + currentPlayer.getBalance());
-                }
-                else if (currentPlayer.equals(names.get(3))){
-                    p4AccountLabel.setText("" + currentPlayer.getBalance());
-                }
+                changeTable();
             }
             else{
                 if(p1.getOwnerName() != currentPlayer.getName()){
@@ -143,6 +140,40 @@ public class GameController implements Initializable{
 
     }
 
+    @FXML
+    public void closePropertyPane(){
+        propertyPane.setVisible(false);
+    }
+
+    @FXML
+    //this method opens a new window for Property by clicking propety on board
+    public void payRent(){
+
+        int temp1 = planets[currentPlayer.getPosition()].getRentPrice();
+        int temp2 = currentPlayer.getBalance() -temp1;
+        currentPlayer.setBalance(temp2);
+        System.out.println(currentPlayer.getBalance());
+        changeTable();
+        payRentButton.setVisible(false);
+        rentLabel.setText("payment is \n done!");
+
+
+    }
+
+    public void changeTable(){
+        if (currentPlayer.equals(names.get(0))) {
+            p1AccountLabel.setText("" + currentPlayer.getBalance());
+        }
+        else if (currentPlayer.equals(names.get(1))) {
+            p2AccountLabel.setText("" + currentPlayer.getBalance());
+        }
+        else if (currentPlayer.equals(names.get(2))){
+            p3AccountLabel.setText("" + currentPlayer.getBalance());
+        }
+        else if (currentPlayer.equals(names.get(3))){
+            p4AccountLabel.setText("" + currentPlayer.getBalance());
+        }
+    }
 
     public void initial(ArrayList<Player> names, ArrayList<Token> tokens) throws FileNotFoundException {
         this.names = names;
