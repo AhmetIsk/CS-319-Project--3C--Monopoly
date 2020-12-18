@@ -9,6 +9,7 @@ public class Player {
     private int position;
     private int numProperty;
     private boolean bankrupt;
+    private int jailDayCounter;
 
     private ArrayList<Planet> titleDeeds;
     //private final Token token; //???
@@ -16,11 +17,13 @@ public class Player {
 
     private final boolean hasCards;
 
-    private boolean inJail;
+    private boolean inJail = false;
     private final boolean buyProperty;
     private final boolean buildStructure;
     private final boolean passFromStart;
     private final boolean loseGame;
+
+
 
     public Player(String name, int id){
         this.name = name;
@@ -28,7 +31,7 @@ public class Player {
         balance = 2000;
         position = 0;
         numProperty = 0;
-
+        jailDayCounter = 0;
         titleDeeds = new ArrayList<Planet>();
         //token = new Token();
 
@@ -129,10 +132,23 @@ public class Player {
         return inJail;
     }
 
+    public int getJailDayCounter() {
+        return jailDayCounter;
+    }
+
+    public void setJailDayCounter(int jailDayCounter) {
+        this.jailDayCounter = jailDayCounter;
+    }
+
     public void setInJail() {
         inJail = true;
-        this.setPosition(30);
+        this.setPosition(10);
 
+    }
+
+    public void getOutOfJail() {
+        inJail = false;
+        jailDayCounter = 0;
     }
 
     public boolean checkBuyProperty() {

@@ -20,14 +20,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import java.lang.Math;
@@ -248,6 +245,17 @@ public class GameController implements Initializable{
     Button btnMove;
 
 
+    @FXML
+    Button jailButton;
+
+    @FXML
+    Pane jailPane;
+
+    @FXML
+    ImageView paneImage;
+
+    @FXML
+    TextArea deedInfo;
 
     @FXML
     Button alertOkButton;
@@ -381,6 +389,9 @@ public class GameController implements Initializable{
                 ArrayList<String> propertyNames = new ArrayList<String>();
                 for(int i = 0; i<names.get(0).getNumProperty(); i++ ){
                     propertyNames.add("a");
+//                    Tam anlayamadım düzeni, iki opsiyon denedim ama ikisi de çalışmadı
+//                    deedInfo.setText(propertyNames.get(i));
+//                    deedInfo.setText((((names.get(0)).getTitleDeeds()).get(i)).getPropName());
                 }
 
             }
@@ -395,6 +406,9 @@ public class GameController implements Initializable{
                 ArrayList<String> propertyNames = new ArrayList<String>();
                 for(int i = 0; i<names.get(1).getNumProperty(); i++ ){
                     propertyNames.add("a");
+//                    Tam anlayamadım düzeni, iki opsiyon denedim ama ikisi de çalışmadı
+//                    deedInfo.setText(propertyNames.get(i));
+//                    deedInfo.setText((((names.get(0)).getTitleDeeds()).get(i)).getPropName());
                 }
 
             }
@@ -408,6 +422,9 @@ public class GameController implements Initializable{
                 ArrayList<String> propertyNames = new ArrayList<String>();
                 for(int i = 0; i<names.get(2).getNumProperty(); i++ ){
                     propertyNames.add("a");
+//                    Tam anlayamadım düzeni, iki opsiyon denedim ama ikisi de çalışmadı
+//                    deedInfo.setText(propertyNames.get(i));
+//                    deedInfo.setText((((names.get(0)).getTitleDeeds()).get(i)).getPropName());
                 }
 
             }
@@ -421,6 +438,9 @@ public class GameController implements Initializable{
                 ArrayList<String> propertyNames = new ArrayList<String>();
                 for(int i = 0; i<names.get(3).getNumProperty(); i++ ){
                     propertyNames.add("a");
+//                    Tam anlayamadım düzeni, iki opsiyon denedim ama ikisi de çalışmadı
+//                    deedInfo.setText(propertyNames.get(i));
+//                    deedInfo.setText((((names.get(0)).getTitleDeeds()).get(i)).getPropName());
                 }
 
             }
@@ -564,48 +584,88 @@ public class GameController implements Initializable{
     }
 
     @FXML
+    void putJail() {
+        jailPane.setVisible(false);
+        int tempTurn = (turn + (names.size() - 1)) % names.size();
+        if (currentPlayer.getPosition() == 30) {
+            boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
+            boardPane.add((tokens.get(tempTurn)).getImageView(), 0, 10);
+            currentPlayer.setInJail();
+        }else {
+            currentPlayer.setInJail();
+            currentPlayer.setPosition(20);
+        }
+    }
+
+    @FXML
         //this method is to roll dice
     //token position is updated here
     int rollDice() throws Exception{
         //
-        boardPane.getChildren().remove((tokens.get(turn)).getImageView());
-
-        int dice1 = (int) (Math.random() * 6 + 1);
-        int dice2 = (int) (Math.random() * 6 + 1);
-        totalDice = dice1 + dice2;
-        int a = dice1 + dice2;
-
-        labelDice1.setText("Dice 1 : "+dice1);
-        labelDice2.setText("Dice 2 : "+dice2);
         currentPlayer = names.get(turn);
-        int updatedPosition = (currentPlayer.getPosition() + totalDice) %40;
+        int updatedPosition = currentPlayer.getPosition();
 
-        currentPlayer.setPosition(updatedPosition);
+        if (currentPlayer.checkJail() && (currentPlayer.getJailDayCounter() != 3)) {
+            int currentDay = currentPlayer.getJailDayCounter();
+            currentPlayer.setJailDayCounter(currentDay + 1);
+            turn = (turn + 1) % names.size();
+        }
+        else {
+            currentPlayer.getOutOfJail();
+
+            int dice1 = (int) (Math.random() * 6 + 1);
+            int dice2 = (int) (Math.random() * 6 + 1);
+            totalDice = dice1 + dice2;
+            int a = dice1 + dice2;
+
+            labelDice1.setText("Dice 1 : "+dice1);
+            labelDice2.setText("Dice 2 : "+dice2);
+
+            updatedPosition = (currentPlayer.getPosition() + totalDice) %40;
+
+            currentPlayer.setPosition(updatedPosition);
+
+            boardPane.getChildren().remove((tokens.get(turn)).getImageView());
+
+            try {
+                if (updatedPosition <= 10) {
+                    boardPane.add((tokens.get(turn)).getImageView(), 10 - updatedPosition, 10);
+                } else if (updatedPosition <= 20) {
+                    boardPane.add((tokens.get(turn)).getImageView(), 0, 20 - updatedPosition);
+                } else if (updatedPosition <= 30) {
+                    boardPane.add((tokens.get(turn)).getImageView(), updatedPosition - 20, 0);
+                } else {
+                    boardPane.add((tokens.get(turn)).getImageView(), 10, updatedPosition - 30);
+                }
+            }
+            catch(Exception e4){
+                System.out.println("operation can not be done");
+            }
+
+            turn = (turn + 1) % names.size();
+
+            if (!currentPlayer.checkJail() && (currentPlayer.getPosition() == 30 || currentPlayer.getPosition() == 20))  {
+                if (currentPlayer.getPosition() == 20) {
+                    Image image = new Image(getClass().getResourceAsStream("../img/blackhole.jpg"));
+                    paneImage.setImage(image);
+                    jailPane.setVisible(true);
+                } else {
+                    Image image = new Image(getClass().getResourceAsStream("../img/goToJail.jpg"));
+                    paneImage.setImage(image);
+                    jailPane.setVisible(true);
+                }
+            }
 
 
-        try {
-            if (updatedPosition <= 10) {
-                boardPane.add((tokens.get(turn)).getImageView(), 10 - updatedPosition, 10);
-            } else if (updatedPosition <= 20) {
-                boardPane.add((tokens.get(turn)).getImageView(), 0, 20 - updatedPosition);
-            } else if (updatedPosition <= 30) {
-                boardPane.add((tokens.get(turn)).getImageView(), updatedPosition - 20, 0);
-            } else {
-                boardPane.add((tokens.get(turn)).getImageView(), 10, updatedPosition - 30);
+            for(int i = 0; i<names.size(); i++){
+
+                String nameOfPlayer = names.get(i).getName();
+                int curPos = names.get(i).getPosition();
+                System.out.println(nameOfPlayer + "position: " + curPos );
+
             }
         }
-         catch(Exception e4){
-            System.out.println("operation can not be done");
-        }
 
-        turn = (turn + 1) % names.size();
-        for(int i = 0; i<names.size(); i++){
-
-            String nameOfPlayer = names.get(i).getName();
-            int curPos = names.get(i).getPosition();
-            System.out.println(nameOfPlayer + "position: " + curPos );
-
-        }
         currentPlayerName.setText("Current Player : " + currentPlayer.getName());
 
         return updatedPosition;
