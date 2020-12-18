@@ -46,48 +46,48 @@ public class GameController implements Initializable{
     //Array List that contains player objects
     Planet p1 = new Planet("Planet 1",bs,  ms, 300, 1,
     150, 30);
-    Planet p3 = new Planet("Planet 3",bs,  ms, 300, 3,
-            150, 30);
-    Planet p6 = new Planet("Planet 6",bs,  ms, 300, 6,
-            150, 30);
-    Planet p8 = new Planet("Planet 8",bs,  ms, 300, 8,
-            150, 30);
+    Planet p3 = new Planet("Planet 3",bs,  ms, 200, 3,
+            100, 20);
+    Planet p6 = new Planet("Planet 6",bs,  ms, 400, 6,
+            200, 40);
+    Planet p8 = new Planet("Planet 8",bs,  ms, 350, 8,
+            175, 35);
     Planet p9 = new Planet("Planet 9",bs,  ms, 300, 9,
             150, 30);
-    Planet p11 = new Planet("Planet 11",bs,  ms, 300, 11,
-            150, 30);
-    Planet p13 = new Planet("Planet 13",bs,  ms, 300, 13,
-            150, 30);
-    Planet p14 = new Planet("Planet 14",bs,  ms, 300, 14,
-            150, 30);
-    Planet p16 = new Planet("Planet 16",bs,  ms, 300, 16,
-            150, 30);
-    Planet p18 = new Planet("Planet 18",bs,  ms, 300, 18,
-            150, 30);
+    Planet p11 = new Planet("Planet 11",bs,  ms, 500, 11,
+            250, 50);
+    Planet p13 = new Planet("Planet 13",bs,  ms, 380, 13,
+            190, 38);
+    Planet p14 = new Planet("Planet 14",bs,  ms, 400, 14,
+            200, 40);
+    Planet p16 = new Planet("Planet 16",bs,  ms, 150, 16,
+            75, 15);
+    Planet p18 = new Planet("Planet 18",bs,  ms, 200, 18,
+            100, 20);
     Planet p19 = new Planet("Planet 19",bs,  ms, 300, 19,
             150, 30);
-    Planet p21 = new Planet("Planet 21",bs,  ms, 300, 21,
-            150, 30);
-    Planet p23 = new Planet("Planet 23",bs,  ms, 300, 23,
-            150, 30);
-    Planet p24 = new Planet("Planet 24",bs,  ms, 300, 24,
-            150, 30);
-    Planet p26 = new Planet("Planet 26",bs,  ms, 300, 26,
-            150, 30);
-    Planet p27 = new Planet("Planet 27",bs,  ms, 300, 27,
-            150, 30);
-    Planet p29 = new Planet("Planet 29",bs,  ms, 300, 29,
-            150, 30);
-    Planet p31 = new Planet("Planet 31",bs,  ms, 300, 31,
-            150, 30);
+    Planet p21 = new Planet("Planet 21",bs,  ms, 250, 21,
+            125, 25);
+    Planet p23 = new Planet("Planet 23",bs,  ms, 350, 23,
+            175, 35);
+    Planet p24 = new Planet("Planet 24",bs,  ms, 200, 24,
+            100, 20);
+    Planet p26 = new Planet("Planet 26",bs,  ms, 500, 26,
+            250, 50);
+    Planet p27 = new Planet("Planet 27",bs,  ms, 280, 27,
+            140, 28);
+    Planet p29 = new Planet("Planet 29",bs,  ms, 400, 29,
+            200, 40);
+    Planet p31 = new Planet("Planet 31",bs,  ms, 250, 31,
+            125, 25);
     Planet p32 = new Planet("Planet 32",bs,  ms, 300, 32,
             150, 30);
-    Planet p34 = new Planet("Planet 34",bs,  ms, 300, 34,
-            150, 30);
-    Planet p37 = new Planet("Planet 37",bs,  ms, 300, 37,
-            150, 30);
-    Planet p39 = new Planet("Planet 39",bs,  ms, 300, 39,
-            150, 30);
+    Planet p34 = new Planet("Planet 34",bs,  ms, 200, 34,
+            100, 20);
+    Planet p37 = new Planet("Planet 37",bs,  ms, 350, 37,
+            175, 35);
+    Planet p39 = new Planet("Planet 39",bs,  ms, 280, 39,
+            140, 28);
 
 
     Planet[] planets = new Planet[]{null,p1,null,p3,null,null,p6,null,p8,p9,null,p11,null,p13,p14
@@ -102,6 +102,7 @@ public class GameController implements Initializable{
     //this method opens a new window for Property by clicking propety on board
     public void showPropety(){
 
+        buyButton.setVisible(true);
         propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + " price is: " + planets[currentPlayer.getPosition()].getPrice()
                 + "\nRent is" +planets[currentPlayer.getPosition()].getRentPrice());
         propertyPane.setVisible(true);
