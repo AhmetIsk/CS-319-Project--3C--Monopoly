@@ -155,7 +155,9 @@ public class Player {
         return buyProperty;
     }
 
-    public void setBankrupt(){bankrupt = true;}
+    public boolean getBankrupt(){return this.bankrupt;}
+
+    public void setBankrupt(){this.bankrupt = true;}
 
     /**
      *
