@@ -34,8 +34,8 @@
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Button fx:id="buyButton" layoutX="11.0" layoutY="127.0" mnemonicParsing="false" onAction="#showPropety" prefHeight="25.0" prefWidth="45.0" text="Buy" />
-            <Button fx:id="buildButton" layoutX="11.0" layoutY="161.0" mnemonicParsing="false" onAction="#showPropety" text="Build" />
+            <Button fx:id="buyButton" layoutX="11.0" layoutY="127.0" mnemonicParsing="false" onAction="#showProperty" prefHeight="25.0" prefWidth="45.0" text="Buy" />
+            <Button fx:id="buildButton" layoutX="11.0" layoutY="161.0" mnemonicParsing="false" onAction="#showProperty" text="Build" />
             <Button fx:id="closePropButton" layoutX="68.0" layoutY="161.0" mnemonicParsing="false" onAction="#closePropertyPane" prefHeight="25.0" prefWidth="65.0" text="Close" />
             <Button fx:id="payRentButton" layoutX="68.0" layoutY="127.0" mnemonicParsing="false" onAction="#payRent" text="Pay Rent" />
             <Label fx:id="rentLabel" layoutX="141.0" layoutY="127.0" prefHeight="46.0" prefWidth="65.0" text="Rent:" textFill="WHITE" />

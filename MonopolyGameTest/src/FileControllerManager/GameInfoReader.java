@@ -31,7 +31,9 @@ public class GameInfoReader implements Serializable
         }
         catch (IOException e)
         {
+
             return null;
+
         }
     }
 
