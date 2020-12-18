@@ -208,7 +208,21 @@ public class GameController implements Initializable{
         int temp2 = currentPlayer.getBalance() -temp1;
         //set current players bank account after payment for rent
         currentPlayer.setBalance(temp2);
+
+        String tempName =planets[currentPlayer.getPosition()].getOwnerName();
+
+        for(int i = 0; i<names.size(); i++){
+            if( names.get(i).getName()==tempName){
+                //set owner's bank account
+                names.get(i).setBalance(names.get(i).getBalance() + temp1);
+                changeTable(names.get(i));
+                System.out.println(tempName + "balance " + names.get(i).getBalance());
+
+            }
+        }
+
         System.out.println(currentPlayer.getBalance());
+
         //update bank account in bank account table
         changeTable();
         //after payment, make pay button unvisible to avoid multiple payment
@@ -235,6 +249,25 @@ public class GameController implements Initializable{
         else if (currentPlayer.equals(names.get(3))){
             p4AccountLabel.setText("" + currentPlayer.getBalance());
         }
+    }
+
+    public void changeTable(Player p){
+
+        int index = names.indexOf(p);
+        if(index ==0){
+
+            p1AccountLabel.setText(""+p.getBalance());
+
+        }else if (index ==1){
+            p2AccountLabel.setText(""+p.getBalance());
+
+        }else if(index ==2){
+
+            p3AccountLabel.setText(""+p.getBalance());
+        }else{
+            p4AccountLabel.setText(""+p.getBalance());
+        }
+
     }
 
     public void initial(ArrayList<Player> names, ArrayList<Token> tokens) {
