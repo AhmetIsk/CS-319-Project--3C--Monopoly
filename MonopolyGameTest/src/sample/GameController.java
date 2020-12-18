@@ -110,69 +110,82 @@ public class GameController implements Initializable{
     @FXML
     //this method opens a new window for Property by clicking propety on board
     public void showProperty(){
-        
+
         //first make buttons visible, they will be unvisible if neccessary
         buyButton.setVisible(true);
         payRentButton.setVisible(true);
         buildButton.setVisible(false);
-        
+
         //set text at the top of the pane to show information at current player's location
         //price-rent and planet name will be shown
         propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nPrice is: " + planets[currentPlayer.getPosition()].getPrice()
                 + "\nRent is" +planets[currentPlayer.getPosition()].getRentPrice());
-        
+
         //show rent price of the planet
-        rentLabel.setText("price :" + planets[currentPlayer.getPosition()].getRentPrice());
-        
+        rentLabel.setText("Rent :" + planets[currentPlayer.getPosition()].getRentPrice());
+
         //show pane that shows information of property
         propertyPane.setVisible(true);
-        
+
+        //CASE1 player comes other player's planet
         //if planet at current player's location has owner,
+        //and owner is not current player
         //buy button will be unvisible since buy option is not available
-        if( planets[currentPlayer.getPosition()].checkHasOwner()){
+        if( planets[currentPlayer.getPosition()].checkHasOwner()
+                && planets[currentPlayer.getPosition()].getOwnerName() != currentPlayer.getName()){
             buyButton.setVisible(false);
-            buildButton.setVisible(true);
+            buildButton.setVisible(false);
+            closePropButton.setVisible(false);
             //show information about planet, by adding owner player name
             propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nOwner: " + planets[currentPlayer.getPosition()].getOwnerName()
                     + "\nRent is" +planets[currentPlayer.getPosition()].getRentPrice());
         }
-        
-        //if planet has no owner, pay rent button is not visible 
+
+        //if player comes to his/her own property
+        if( planets[currentPlayer.getPosition()].checkHasOwner()
+                && planets[currentPlayer.getPosition()].getOwnerName() == currentPlayer.getName()){
+            buyButton.setVisible(false);
+            buildButton.setVisible(true);
+            payRentButton.setVisible(false);
+            //show information about planet, by adding owner player name
+            propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nOwner: " + planets[currentPlayer.getPosition()].getOwnerName()
+                    + "\nRent is" +planets[currentPlayer.getPosition()].getRentPrice());
+        }
+
+        //if planet has no owner, pay rent button is not visible
         //because pay rent is not available for planets that has no owner
         if( !(planets[currentPlayer.getPosition()].checkHasOwner())){
             payRentButton.setVisible(false);
-        }
+            buildButton.setVisible(false);
+            //if buy button is clicked, player buy the planet property
+            if(buyButton.isFocused()){
+                //if planet has no owner, add it to players title list
+                if(!planets[currentPlayer.getPosition()].checkHasOwner()){
+                    //player buy the planet with buy property method
+                    currentPlayer.buyProperty(planets[currentPlayer.getPosition()]);
 
-        //if buy button is clicked, player buy the planet property
-        if(buyButton.isFocused()){
-            //if planet has no owner, add it to players tittle list
-            if(!planets[currentPlayer.getPosition()].checkHasOwner()){
-                //player buy the planet with buy property method
-                currentPlayer.buyProperty(planets[currentPlayer.getPosition()]);
+
+                    //make planet hasOwner true
+                    planets[currentPlayer.getPosition()].setHasOwner(true);
+                    //buy button will be unvisible, since it has owner now
+
+                    buyButton.setVisible(false);
+                    //set owner of the planet
+
+                    planets[currentPlayer.getPosition()].setOwner(currentPlayer);
+
+                    System.out.println(currentPlayer.getName() + " buy " +currentPlayer.getTitleDeeds().get(0).getPropName());
+                    //update bank account in bank account table
+                    changeTable();
+                }
 
 
-                //make planet hasOwner true
-                planets[currentPlayer.getPosition()].setHasOwner(true);
-                //buy button will be unvisible, since it has owner now
-
-                buyButton.setVisible(false);
-                //set owner of the planet
-
-                planets[currentPlayer.getPosition()].setOwner(currentPlayer);
-
-                System.out.println(currentPlayer.getName() + " buy " +currentPlayer.getTitleDeeds().get(0).getPropName());
-                //update bank account in bank account table
-                changeTable();
             }
 
-            else{
-
-//                if(p1.getOwnerName() != currentPlayer.getName()){
-//                    buildButton.setVisible(false);
-//                }
-            }
 
         }
+
+
         if(buildButton.isFocused()){
 
         }
@@ -199,7 +212,10 @@ public class GameController implements Initializable{
         //update bank account in bank account table
         changeTable();
         //after payment, make pay button unvisible to avoid multiple payment
-        payRentButton.setVisible(false);
+        if(payRentButton.isFocused()) {
+            payRentButton.setVisible(false);
+            closePropButton.setVisible(true);
+        }
         //message in the label that indicates payment is done
         rentLabel.setText("payment is \n done!");
 
@@ -241,7 +257,7 @@ public class GameController implements Initializable{
             }
             if (equal)
                 locationCounter++;
-                equal = false;
+            equal = false;
         }
 
         if (names.size() == 1) {
@@ -539,7 +555,7 @@ public class GameController implements Initializable{
 
 
     @FXML
-    //this method is to show title Deeds of players
+        //this method is to show title Deeds of players
     void showDeeds() throws Exception{
         //if first players button is clicked, show players' title deed
         String printedDeed = ""; //to print planet names as string
@@ -775,7 +791,7 @@ public class GameController implements Initializable{
 
     @FXML
         //this method is to roll dice
-    //token position is updated here
+        //token position is updated here
     int rollDice() throws Exception{
         //current player
         currentPlayer = names.get(turn);
@@ -836,7 +852,7 @@ public class GameController implements Initializable{
             //or rent
             if(planets[updatedPosition] != null){
                 //open the information of planet about the current player's new location
-                 showProperty();
+                showProperty();
             }
 
             //increment turn and take mod
