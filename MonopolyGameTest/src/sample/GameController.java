@@ -813,6 +813,9 @@ public class GameController implements Initializable{
                     //add token to its new position by moving token according to total dice
                     boardPane.add((tokens.get(turn)).getImageView(), 10 - updatedPosition, 10);
                     //add token to its new position by moving token according to total dice
+                    if (((updatedPosition - totalDice) < 0) || updatedPosition == 0)
+                        currentPlayer.setBalance(currentPlayer.getBalance() + 1000);
+                    changeTable();
                 } else if (updatedPosition <= 20) {
                     boardPane.add((tokens.get(turn)).getImageView(), 0, 20 - updatedPosition);
                     //add token to its new position by moving token according to total dice
@@ -822,6 +825,7 @@ public class GameController implements Initializable{
                 } else {
                     boardPane.add((tokens.get(turn)).getImageView(), 10, updatedPosition - 30);
                 }
+
             }
             catch(Exception e4){
                 System.out.println("operation can not be done");
