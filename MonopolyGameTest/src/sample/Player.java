@@ -104,16 +104,6 @@ public class Player {
         }
     }
 
-    /**
-     *
-     * @param p
-     */
-    public void addTitleDeeds(Planet p) {
-        if(!(titleDeeds.contains(p)) ){
-            titleDeeds.add(p);
-            numProperty++;
-        }
-    }
 
     /**
      *
@@ -183,11 +173,14 @@ public class Player {
      * @param
      */
     public void buyProperty(Planet p) {
+        if(!(titleDeeds.contains(p)) ) {
 
             titleDeeds.add(p);
             p.setHasOwner(true);
-            this.setBalance(this.getBalance()-p.getPrice());
+            this.setBalance(this.getBalance() - p.getPrice());
+            numProperty++;
             //balance = balance - p.getPrice()
+        }
 
     }
 
@@ -197,11 +190,12 @@ public class Player {
      */
     public void buySpaceShip(Spaceship s) {
 
-        spaceShipDeeds.add(s);
-        s.setHasOwner(true);
-        this.setBalance(this.getBalance()-s.getPrice());
-
-
+        if(!(spaceShipDeeds.contains(s)) ) {
+            spaceShipDeeds.add(s);
+            s.setHasOwner(true);
+            this.setBalance(this.getBalance() - s.getPrice());
+            numProperty++;
+        }
     }
 
 

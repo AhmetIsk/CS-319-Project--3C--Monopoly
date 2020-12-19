@@ -40,7 +40,7 @@ public class Banker {
         property.setOwner(buyer);
 
         owner.deleteTitleDeed(property);
-        buyer.addTitleDeeds(property);
+        buyer.buyProperty(property);
 
     }
 

@@ -13,7 +13,6 @@ import java.net.URL;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import FileControllerManager.GameInfoReader;
 import FileControllerManager.MusicPlayer;
 import javafx.event.ActionEvent;
@@ -200,9 +199,6 @@ public class GameController implements Initializable{
             infoShipLabel.setText("Ship has no owner." +
                     "\n Do you want to have a space ship?" +
                     " \n This will be cool");
-            if(buyShip.isFocused()){
-
-            }
 
         }
 
@@ -255,8 +251,6 @@ public class GameController implements Initializable{
             //update bank account in bank account table
             changeTable(); //change bank account in the table of player
         }
-
-
     }
 
     @FXML
@@ -323,8 +317,6 @@ public class GameController implements Initializable{
         if( planets[currentPlayer.getPosition()].checkHasOwner()
                 && planets[currentPlayer.getPosition()].getOwnerName() != currentPlayer.getName()){
 
-
-
             buyButton.setDisable(true);
             buildButton.setDisable(true);
             closePropButton.setDisable(true);
@@ -376,7 +368,6 @@ public class GameController implements Initializable{
                 //player buy the planet with buy property method
                 currentPlayer.buyProperty(planets[currentPlayer.getPosition()]);
 
-
                 //make planet hasOwner true
                 planets[currentPlayer.getPosition()].setHasOwner(true);
                 //buy button will be invisible, since it has owner now
@@ -400,19 +391,14 @@ public class GameController implements Initializable{
         rollDiceBtn.setText("");
         propertyPane.setVisible(false);
         shipPane.setVisible(false);
-
-
     }
 
     @FXML
     //this method is to make payment for rent of the planets
     public void payRent(){
 
-
-
         //planet's rent  that is at the currentPlayer's location
         int temp1 = planets[currentPlayer.getPosition()].getRentPrice();
-
 
         //MORTGAGE
         //22222222-eğer current playerin balance < planet.rent--->mortgage (currentPlayer'a yap)
@@ -420,9 +406,6 @@ public class GameController implements Initializable{
             //1-open new pane for mortgage
             //2- call a method that makes mortgage(this process is handled in pane with "ok" button)
             //method name is mortgageOperation()
-
-
-
 
         }
 
@@ -441,7 +424,6 @@ public class GameController implements Initializable{
                 names.get(i).setBalance(names.get(i).getBalance() + temp1);
                 changeTable(names.get(i));
                 System.out.println(tempName + "balance " + names.get(i).getBalance());
-
             }
         }
 
@@ -539,8 +521,6 @@ public class GameController implements Initializable{
                 equal = false;
             }
 
-
-
             if ( SpaceshipsPositions[locationCounter1] == i) {
                 equal1 = true;
                 spaceships[i] = new Spaceship(SpaceshipsNames[locationCounter1], ms, SpaceshipsPrices[locationCounter1],
@@ -562,7 +542,6 @@ public class GameController implements Initializable{
 //        System.out.println(spaceships[5].getPosition());
 //        System.out.println(spaceships[5].getPrice());
 //        System.out.println(spaceships[5].getRentPrice());
-
 
         if (names.size() == 1) {
             p1NameLabel.setText(names.get(0).getName());
@@ -645,19 +624,16 @@ public class GameController implements Initializable{
             (tokens.get(3)).setImageView(token4);
 
         }
-
 //        File file = new File((tokens.get(0)).getDirectory());
 //        Image image = new Image(file.toURI().toString());
 //        token1.setImage(new Image(new FileInputStream(tokens.get(0).getDirectory())));
     }
-
 
     //Aliens
     Alien blackHoleAlien = new Alien(1, "Black Hole Alien", "Alien is throwing you into black hole");
     Alien moneyThiefAlien = new Alien(2, "Money Thief Alien", "Alien is stealing your 200M");
     Alien planetThiefAlien = new Alien(3,"Planet Thief Alien", "Alien is seizing a random planet");
     Alien[] aliens = new Alien[]{blackHoleAlien, moneyThiefAlien, planetThiefAlien};
-
 
     //Chance cards
     CardDecorator card1 = new AlienAttack(new ChanceCard(1));
@@ -667,13 +643,11 @@ public class GameController implements Initializable{
     CardDecorator card5 = new ChangeBankAccount(new ChangePosition(new ChanceCard(5)));
     CardDecorator[] chanceCardsArray =  new CardDecorator[]{card1, card2, card3, card4, card5};
 
-
     CardDecorator card6 = new FoundMoney(new ChestCard(6));
     CardDecorator card7 = new FoundMoney(new ChangePosition(new ChestCard(7)));
     CardDecorator card8 = new CovidHelp(new ChestCard(8));
     CardDecorator card9 = new CovidHelp(new FoundMoney(new ChestCard(9)));
     CardDecorator[] chestCardsArray =  new CardDecorator[]{card6, card7, card8, card9};
-
 
     public CardDecorator getRandomCard(int num, CardDecorator[] cd) {
         int randomNum = (int)((1 + Math.random()*num) - 1);
@@ -695,7 +669,6 @@ public class GameController implements Initializable{
     ImageView token3;
     @FXML
     ImageView token4;
-
     @FXML
     Label labelDice1;
     @FXML
@@ -724,35 +697,25 @@ public class GameController implements Initializable{
     Button chestBtn11;
     @FXML
     Label currentPlayerName;
-
     //buttons and labels on Card window
     @FXML
     Button okInCard;
-
     @FXML
     Label titleOnCard;
-
     @FXML
     Button btnMove;
-
     @FXML
     Label nextPlayerName;
-
     @FXML
     Button jailButton;
-
     @FXML
     Pane jailPane;
-
     @FXML
     ImageView paneImage;
-
     @FXML
     TextArea deedInfo;
-
     @FXML
     Button alertOkButton;
-
     @FXML
     Label dutyLabel;
     //end of buttons and labels on Card window
@@ -760,58 +723,41 @@ public class GameController implements Initializable{
     //GridPane for monopoly board
     @FXML
     GridPane boardPane;
-
     //biggest anchorPane (full screen)
     @FXML
     AnchorPane bigPane;
-
     //Property Pane ----
     @FXML
     AnchorPane propertyPane;
-
     @FXML
     Button buyButton;
-
     @FXML
     Button buildButton;
-
     @FXML
     Button closePropButton;
-
     @FXML
     Label propertyFeature;
-
     @FXML
     Label rentLabel;
-
     @FXML
     Button payRentButton;
-
     //--------
-
 
     //titleDeed anchorPane
     @FXML
     AnchorPane deedPane;
-
     //titleDeed anchorPane
     @FXML
     Label deedPaneTitle;
-
     //titleDeed anchorPane
     @FXML
     Button closeDeeds;
-
     //scroll Pane in titleDeeds
     @FXML
     ScrollPane scrollPaneDeeds;
-
-
-
-    //bank account tabla
+  //bank account tabla
     @FXML
     GridPane infoTable;
-
     //Bank Account Table Labels and Buttons
     @FXML
     Label p1NameLabel;
@@ -845,7 +791,6 @@ public class GameController implements Initializable{
     Button noButton;
     @FXML
     Pane replayPane;
-
     //alien
     @FXML
     Pane alienPane;
@@ -859,9 +804,6 @@ public class GameController implements Initializable{
     Label alienNameLabel;
     @FXML
     Label alienDutyLabel;
-
-
-
 
     @FXML
     void closeGame(){
@@ -899,7 +841,6 @@ public class GameController implements Initializable{
 
         GameController controller = loader.getController();
         controller.initial(namesForReplay, tokensForReplay);
-
 
         Stage stage2 = new Stage();
         stage2.setTitle("Monopoly Space EDITION - Game Board");
@@ -1003,19 +944,15 @@ public class GameController implements Initializable{
         else{
             deedPane.setVisible(false);
         }
-
-
     }
-
 
     @FXML
         //this method closes titleDeeds
     void closeDeeds(){
-
         deedPane.setVisible(false);
         // comment
-
     }
+
     @FXML
         //this method is called when the card is drawn
         // comment & displays a random card name
@@ -1069,7 +1006,6 @@ public class GameController implements Initializable{
                     }
                     System.out.println("current player position: " + currentPlayer.getPosition());
                     System.out.println();
-
                 }
             });
 
@@ -1134,7 +1070,6 @@ public class GameController implements Initializable{
                     }
                     System.out.println("current player position: " + currentPlayer.getPosition());
                     System.out.println();
-
                 }
             });
 
@@ -1153,16 +1088,16 @@ public class GameController implements Initializable{
         stage.close();
     }
 
-
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 
     @FXML
     void move(){
+        for (int i = 0; i < names.size(); i++) {
+            (names.get(i)).setBalance(0);
+//            (names.get(i).getNumProperty()).
+        }
     }
 
     @FXML
@@ -1187,8 +1122,6 @@ public class GameController implements Initializable{
         currentPlayer = names.get(turn);
         //initialize updated position
         int updatedPosition = currentPlayer.getPosition();
-
-
 
         if (currentPlayer.checkJail() && (currentPlayer.getJailDayCounter() != 3)) {
             int currentDay = currentPlayer.getJailDayCounter();
@@ -1328,7 +1261,6 @@ public class GameController implements Initializable{
                 alienOkButton.setVisible(false);
                 closeAlien.setVisible(true);
             }
-
         }
         //money thief alien (-200M)
         else if(randomAlien.getAlienId() == 2) {
@@ -1355,11 +1287,9 @@ public class GameController implements Initializable{
 
     }
 
-
     @FXML
     void closeAlienPane(){
         alienPane.setVisible(false);
     }
-
 
 }
