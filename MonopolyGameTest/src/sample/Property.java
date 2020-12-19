@@ -12,10 +12,10 @@ public abstract class Property {
     private int rentPrice;
     private String propName;
 
-    public Property(String propName,BuildStrategy bs, MortgageStrategy ms, int price, int position,
+    public Property(String propName,MortgageStrategy ms, int price, int position,
                     int mortgagePrice, int rentPrice){
         this.propName = propName;
-        buildStrategy = bs;
+        buildStrategy = new NoBuildStrategy(); //nothing is built yet
         mortgageStrategy = ms;
         this.price = price;
         this.position = position;
@@ -39,30 +39,7 @@ public abstract class Property {
     }
 
 
-    public void performBuild() {
-        if (hasOwner){
-            owner.makePayment(buildStrategy.getPrice());
-            buildStrategy.build();
-            rentPrice = rentPrice + buildStrategy.getRentPrice();
-        }
-
-    }
-
-    public void performMortgage() {
-        if(hasOwner){
-
-        }
-    }
-
-    public void setMortgageStrategy() {
-        // TODO - implement Property.setMortgageStrategy
-        throw new UnsupportedOperationException();
-    }
-
-    public void setBuildStrategy() {
-        // TODO - implement Property.setBuildStrategy
-        throw new UnsupportedOperationException();
-    }
+    public abstract void performMortgage();
 
     /**
      *
@@ -113,7 +90,13 @@ public abstract class Property {
      * @param owner
      */
     public void setOwner(Player owner) {
+
         this.owner = owner;
+        hasOwner = true;
+    }
+
+    public Player getOwner(){
+        return owner;
     }
 
     public int getPrice() {
@@ -122,5 +105,13 @@ public abstract class Property {
 
     public int getRentPrice() {
         return this.rentPrice;
+    }
+
+    public   MortgageStrategy getMortgageStrategy(){
+        return mortgageStrategy;
+    }
+
+    public void setIsMortgage(boolean set){
+        isMortgaged = set;
     }
 }

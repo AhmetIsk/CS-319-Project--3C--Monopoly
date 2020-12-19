@@ -9,19 +9,20 @@ public class BuildHotelStrategy implements BuildStrategy {
         hotelPrice = 150;
         hotelRentPrice = 100;
     }
-    public void build() {
+
+    @Override
+    public void build(Property property, Player player) {
+        player.makePayment(hotelPrice);
+        property.setRentPrice(property.getRentPrice() + hotelRentPrice);
         System.out.println("Hotel is built!");
     }
+
 
     @Override
     public int getPrice() {
         return hotelPrice;
     }
 
-    @Override
-    public int getRentPrice() {
-        return hotelRentPrice;
-    }
 
     public int getHotelPrice() {
         return this.hotelPrice;
