@@ -15,7 +15,7 @@
         </ImageView>
         <Button fx:id="replayBtn" layoutX="60.0" layoutY="633.0" mnemonicParsing="false" onAction="#replayGame" opacity="0.0" prefHeight="28.0" prefWidth="163.0" text="Replay" />
         <Button fx:id="finishBtn" layoutX="57.0" layoutY="705.0" mnemonicParsing="false" onAction="#closeGame" opacity="0.0" prefHeight="34.0" prefWidth="169.0" text="Finish" />
-      <Button fx:id="rollDiceBtn" layoutX="41.0" layoutY="316.0" mnemonicParsing="false" onAction="#rollDice" prefHeight="28.0" prefWidth="135.0" text="Roll Dice" />
+      <Button fx:id="rollDiceBtn" layoutX="41.0" layoutY="316.0" mnemonicParsing="false" onAction="#rollDice" opacity="0.47" prefHeight="28.0" prefWidth="135.0" />
       <Label fx:id="labelDice1" layoutX="200.0" layoutY="302.0" prefHeight="15.0" prefWidth="89.0" text="Dice 1:" textFill="#f8f7f7">
          <font>
             <Font size="15.0" />

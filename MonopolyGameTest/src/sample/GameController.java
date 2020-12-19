@@ -63,16 +63,13 @@ public class GameController implements Initializable{
 
     //4 space ship we have
 
-    Spaceship spaceship1 = new Spaceship("SPACESHIP 1", ms, 100, 5,
-    50, 30);
-    Spaceship spaceship2 = new Spaceship("SPACESHIP 2", ms, 100, 15,
-            50, 30);
-    Spaceship spaceship3 = new Spaceship("SPACESHIP 3", ms, 100, 25,
-            50, 30);
-    Spaceship spaceship4 = new Spaceship("SPACESHIP 4", ms, 100, 35,
-            50, 30);
+    String [] SpaceshipsNames;
+    Integer [] SpaceshipsPositions;
+    Integer [] SpaceshipsPrices;
+    Integer [] SpaceshipsRentPrices;
 
-    Spaceship [] spaceships = new Spaceship []{spaceship1,spaceship2,spaceship3,spaceship4};
+
+    Spaceship [] spaceships = new Spaceship [LOCATION_NUMBER];
 
 
     @FXML
@@ -112,7 +109,7 @@ public class GameController implements Initializable{
         shipPane.setVisible(true);
 
         if(currentPlayer.getPosition()==5){
-            currentShip = spaceships[0];
+            currentShip = spaceships[5];
             titleShipPaneL.setText("" + currentShip.getPropName());
             //player comes to space ship that has no owner
             if(!currentShip.checkHasOwner()){
@@ -139,16 +136,16 @@ public class GameController implements Initializable{
         }
         else if(currentPlayer.getPosition()==15){
 
-            currentShip = spaceships[1];
+            currentShip = spaceships[15];
             titleShipPaneL.setText("" + currentShip.getPropName());
 
         }
         else if(currentPlayer.getPosition()==25){
-            currentShip = spaceships[2];
+            currentShip = spaceships[25];
             titleShipPaneL.setText("" + currentShip.getPropName());
 
         }else if(currentPlayer.getPosition()==35){
-            currentShip = spaceships[3];
+            currentShip = spaceships[35];
             titleShipPaneL.setText("" + currentShip.getPropName());
 
         }
@@ -295,7 +292,6 @@ public class GameController implements Initializable{
         //message in the label that indicates payment is done
         rentLabel.setText("payment is \n done!");
 
-
     }
 
     public void changeTable(){
@@ -339,12 +335,20 @@ public class GameController implements Initializable{
         this.tokens = tokens;
         int locationCounter = 0;
         boolean equal = false;
+        int locationCounter1 = 0;
+        boolean equal1 = false;
 
-        planetsNames = GameInfoReader.getPlanetNames();
-        planetsPositions = GameInfoReader.getPlanetSPositions();
-        planetsPrices = GameInfoReader.getPlanetsPrice();
-        planetsRentPrices = GameInfoReader.getPlanetsRentPrice();
+        planetsNames = GameInfoReader.getPropertiesNames("PlanetNamesUpdate");
+        planetsPositions = GameInfoReader.getPropertiesPositions("PlanetsPositions");
+        planetsPrices = GameInfoReader.getPropertiesPrice("PlanetsPrices");
+        planetsRentPrices = GameInfoReader.getPropertiesRentPrice("PlanetsRentPrices");
         planetsMortgagePrices = GameInfoReader.getPlanetsMortgagePrice();
+
+        SpaceshipsNames = GameInfoReader.getPropertiesNames("SpaceshipsNames");
+        SpaceshipsPositions = GameInfoReader.getPropertiesPositions("SpaceshipsPositions");
+        SpaceshipsPrices = GameInfoReader.getPropertiesPrice("SpaceshipsPrices");
+        SpaceshipsRentPrices = GameInfoReader.getPropertiesRentPrice("SpaceshipsRentPrices");
+
 
         for (int i = 0; i < LOCATION_NUMBER; i++) {
             if ( planetsPositions[locationCounter] == i) {
@@ -352,10 +356,35 @@ public class GameController implements Initializable{
                 planets[i] = new Planet(planetsNames[locationCounter], ms, planetsPrices[locationCounter],
                         planetsPositions[locationCounter], planetsMortgagePrices[locationCounter], planetsRentPrices[locationCounter]);
             }
-            if (equal)
+            if (equal) {
                 locationCounter++;
-            equal = false;
+                equal = false;
+            }
+
+
+
+            if ( SpaceshipsPositions[locationCounter1] == i) {
+                equal1 = true;
+                spaceships[i] = new Spaceship(SpaceshipsNames[locationCounter1], ms, SpaceshipsPrices[locationCounter1],
+                        SpaceshipsPositions[locationCounter1], SpaceshipsPrices[locationCounter1], SpaceshipsRentPrices[locationCounter1]);
+            }
+            if (equal1) {
+                if (locationCounter1 != 3)
+                    locationCounter1++;
+                equal1 = false;
+            }
         }
+
+//        System.out.println(SpaceshipsNames[3]);
+//        System.out.println(SpaceshipsPositions[3]);
+//        System.out.println(SpaceshipsPrices[3]);
+//        System.out.println(SpaceshipsRentPrices[3]);
+//
+//        System.out.println(spaceships[5].getPropName());
+//        System.out.println(spaceships[5].getPosition());
+//        System.out.println(spaceships[5].getPrice());
+//        System.out.println(spaceships[5].getRentPrice());
+
 
         if (names.size() == 1) {
             p1NameLabel.setText(names.get(0).getName());

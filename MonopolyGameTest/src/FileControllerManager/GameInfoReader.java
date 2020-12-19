@@ -9,9 +9,14 @@ public class GameInfoReader implements Serializable
 
     //methods
 
-    public static String[] getPlanetNames()
+    public static String[] getPropertiesNames(String fileName)
     {
-        final int PLANET_NUMBER = 22;
+        int NUMBER;
+        if ( fileName == "PlanetNamesUpdate") {
+            NUMBER = 22;
+        }
+        else
+            NUMBER = 4;
 
         try
         {
@@ -19,10 +24,10 @@ public class GameInfoReader implements Serializable
             FileReader fr;
             BufferedReader br;
 
-            planets = new String[ PLANET_NUMBER ];
-            fr = new FileReader( "src/Game Files/PlanetNamesUpdate.txt" );
+            planets = new String[ NUMBER ];
+            fr = new FileReader( "src/Game Files/" + fileName + ".txt" );
             br = new BufferedReader( fr );
-            for( int i = 0; i < PLANET_NUMBER; i++ )
+            for( int i = 0; i < NUMBER; i++ )
             {
                 planets[ i ] = br.readLine();
             }
@@ -38,9 +43,14 @@ public class GameInfoReader implements Serializable
     }
 
     //
-    public static Integer[] getPlanetSPositions()
+    public static Integer[] getPropertiesPositions(String fileName)
     {
-        final int PLANET_NUMBER = 22;
+        int NUMBER;
+        if ( fileName == "PlanetsPositions") {
+            NUMBER = 22;
+        }
+        else
+            NUMBER = 4;
 
         try
         {
@@ -48,10 +58,10 @@ public class GameInfoReader implements Serializable
             FileReader fr;
             BufferedReader br;
 
-            positions = new Integer[ PLANET_NUMBER ];
-            fr = new FileReader( "src/Game Files/PlanetsPositions.txt" );
+            positions = new Integer[ NUMBER ];
+            fr = new FileReader( "src/Game Files/" + fileName + ".txt" );
             br = new BufferedReader( fr );
-            for( int i = 0; i < PLANET_NUMBER; i++ )
+            for( int i = 0; i < NUMBER; i++ )
             {
                 positions[ i ] = Integer.parseInt(br.readLine());
             }
@@ -65,9 +75,14 @@ public class GameInfoReader implements Serializable
     }
 
     //
-    public static Integer[] getPlanetsPrice()
+    public static Integer[] getPropertiesPrice(String fileName)
     {
-        final int PLANET_NUMBER = 22;
+        int NUMBER;
+        if ( fileName == "PlanetsPrices") {
+            NUMBER = 22;
+        }
+        else
+            NUMBER = 4;
 
         try
         {
@@ -75,10 +90,10 @@ public class GameInfoReader implements Serializable
             FileReader fr;
             BufferedReader br;
 
-            prices = new Integer[ PLANET_NUMBER ];
-            fr = new FileReader( "src/Game Files/PlanetsPrices.txt" );
+            prices = new Integer[ NUMBER ];
+            fr = new FileReader( "src/Game Files/" + fileName + ".txt" );
             br = new BufferedReader( fr );
-            for( int i = 0; i < PLANET_NUMBER; i++ )
+            for( int i = 0; i < NUMBER; i++ )
             {
                 prices[ i ] = Integer.parseInt(br.readLine());
             }
@@ -119,9 +134,14 @@ public class GameInfoReader implements Serializable
     }
 
     //
-    public static Integer[] getPlanetsRentPrice()
+    public static Integer[] getPropertiesRentPrice( String fileName)
     {
-        final int PLANET_NUMBER = 22;
+        int NUMBER;
+        if ( fileName == "PlanetsRentPrices") {
+            NUMBER = 22;
+        }
+        else
+            NUMBER = 4;
 
         try
         {
@@ -129,10 +149,10 @@ public class GameInfoReader implements Serializable
             FileReader fr;
             BufferedReader br;
 
-            prices = new Integer[ PLANET_NUMBER ];
-            fr = new FileReader( "src/Game Files/PlanetsRentPrices.txt" );
+            prices = new Integer[ NUMBER ];
+            fr = new FileReader( "src/Game Files/" + fileName + ".txt" );
             br = new BufferedReader( fr );
-            for( int i = 0; i < PLANET_NUMBER; i++ )
+            for( int i = 0; i < NUMBER; i++ )
             {
                 prices[ i ] = Integer.parseInt(br.readLine());
             }
