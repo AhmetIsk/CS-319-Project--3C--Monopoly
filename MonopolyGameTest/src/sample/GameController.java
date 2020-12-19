@@ -1151,6 +1151,7 @@ public class GameController implements Initializable{
                     //covid help
                     if(randomCard.equals(card8)) {
                         System.out.println("card8");
+                        currentPlayer.setPosition(3);
                         boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
                         boardPane.add((tokens.get(tempTurn)).getImageView(), 7, 10);
                     }
