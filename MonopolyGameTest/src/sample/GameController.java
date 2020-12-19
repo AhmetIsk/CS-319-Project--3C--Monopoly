@@ -112,6 +112,8 @@ public class GameController implements Initializable{
         if( !(planets[currentPlayer.getPosition()].checkHasOwner())){
             payRentButton.setVisible(false);
             buildButton.setVisible(false);
+            rollDiceBtn.setDisable(true);
+            rollDiceBtn.setText("");
             //if buy button is clicked, player buy the planet property
             if(buyButton.isFocused()){
                 //if planet has no owner, add it to players title list
@@ -144,6 +146,8 @@ public class GameController implements Initializable{
     public void closePropertyPane(){
         //make property pane unvisible
         propertyPane.setVisible(false);
+        rollDiceBtn.setDisable(false);
+        rollDiceBtn.setText("Roll Dice");
     }
 
     @FXML
@@ -833,6 +837,7 @@ public class GameController implements Initializable{
         currentPlayer = names.get(turn);
         //initialize updated position
         int updatedPosition = currentPlayer.getPosition();
+
 
 
         if (currentPlayer.checkJail() && (currentPlayer.getJailDayCounter() != 3)) {
