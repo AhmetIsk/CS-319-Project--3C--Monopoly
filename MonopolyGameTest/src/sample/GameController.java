@@ -847,7 +847,7 @@ public class GameController implements Initializable{
                     if (randomCard.equals(card2)) {
                         //token moves to jail
                         boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
-                        boardPane.add((tokens.get(tempTurn)).getImageView(), 10, 0);
+                        boardPane.add((tokens.get(tempTurn)).getImageView(), 0, 10);
                     }
 
                     if (randomCard.equals(card3)) {
@@ -1078,8 +1078,6 @@ public class GameController implements Initializable{
         return aliens[randomNum];
     }
 
-
-
     @FXML
     public void showAlien() {
 
@@ -1138,6 +1136,7 @@ public class GameController implements Initializable{
     void closeAlienPane(){
         alienPane.setVisible(false);
     }
+
 
 
 }
