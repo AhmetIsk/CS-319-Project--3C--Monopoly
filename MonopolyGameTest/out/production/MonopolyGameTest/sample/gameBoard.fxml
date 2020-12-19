@@ -260,5 +260,19 @@
             </LinearGradient>
          </textFill>
       </Label>
+      <Pane fx:id="finishPane" layoutX="26.0" layoutY="11.0" prefHeight="733.0" prefWidth="972.0" style="-fx-background-color: red;" visible="false">
+         <children>
+            <Button fx:id="bankruptButton" layoutX="96.0" layoutY="565.0" mnemonicParsing="false" onAction="#removePlayer" prefHeight="102.0" prefWidth="745.0" text="Ah shit here we go again">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Button>
+            <Text layoutX="151.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BANKRUPT..." textAlignment="CENTER" wrappingWidth="670.0">
+               <font>
+                  <Font name="System Bold" size="90.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
     </children>
 </AnchorPane>

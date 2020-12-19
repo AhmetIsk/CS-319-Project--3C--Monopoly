@@ -662,6 +662,12 @@ public class GameController implements Initializable{
     Player currentPlayer;
 
     @FXML
+    Pane finishPane;
+
+    @FXML
+    Button bankruptButton;
+
+    @FXML
     ImageView token1;
     @FXML
     ImageView token2;
@@ -1096,7 +1102,9 @@ public class GameController implements Initializable{
     void move(){
         for (int i = 0; i < names.size(); i++) {
             (names.get(i)).setBalance(0);
-//            (names.get(i).getNumProperty()).
+            if (names.get(i).getNumProperty() == 0) {
+                (names.get(i)).setBankrupt();
+            }
         }
     }
 
@@ -1127,6 +1135,9 @@ public class GameController implements Initializable{
             int currentDay = currentPlayer.getJailDayCounter();
             currentPlayer.setJailDayCounter(currentDay + 1);
             turn = (turn + 1) % names.size();
+        }
+        else if (currentPlayer.getBankrupt()) {
+            finishPane.setVisible(true);
         }
         else {
             currentPlayer.exitJail();
@@ -1290,6 +1301,18 @@ public class GameController implements Initializable{
     @FXML
     void closeAlienPane(){
         alienPane.setVisible(false);
+    }
+
+    @FXML
+    void removePlayer() {
+        Token currentToken = tokens.get(turn);
+        names.remove(currentPlayer);
+        boardPane.getChildren().remove((tokens.get(turn)).getImageView());
+        tokens.remove(currentToken);
+        turn = (turn + 1) % names.size();
+        currentPlayer = names.get(turn);
+        changeTable();
+        finishPane.setVisible(false);
     }
 
 }
