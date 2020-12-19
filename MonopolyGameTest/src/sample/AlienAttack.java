@@ -7,11 +7,8 @@ public class AlienAttack extends CardDecorator{
     Card card;
 
     public AlienAttack(Card card){
-
         this.card = card;
     }
-
-
 
     @Override
     public String getContent() {
@@ -22,5 +19,12 @@ public class AlienAttack extends CardDecorator{
     @Override
     public void duty() {
 
+        int[] alienPositonArray = new int[]{4,12,28,38};
+        int randomNum = (int)((1 + Math.random()*4) - 1);
+        System.out.println("*******************" + alienPositonArray[randomNum]);
+        takenBy.setPosition(alienPositonArray[randomNum]);
+
     }
+
+
 }

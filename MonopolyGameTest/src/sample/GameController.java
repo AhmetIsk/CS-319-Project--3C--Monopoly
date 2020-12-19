@@ -232,7 +232,7 @@ public class GameController implements Initializable{
 
                     //make planet hasOwner true
                     planets[currentPlayer.getPosition()].setHasOwner(true);
-                    //buy button will be unvisible, since it has owner now
+                    //buy button will be invisible, since it has owner now
 
                     buyButton.setVisible(false);
                     //set owner of the planet
@@ -445,6 +445,11 @@ public class GameController implements Initializable{
     }
 
 
+    //Aliens
+    Alien blackHoleAlien = new Alien(1, "Black Hole Alien", "Alien is throwing you into black hole");
+    Alien moneyThiefAlien = new Alien(2, "Money Thief Alien", "Alien is stealing your 200M");
+    Alien planetThiefAlien = new Alien(3,"Planet Thief Alien", "Alien is seizing a random planet");
+    Alien[] aliens = new Alien[]{blackHoleAlien, moneyThiefAlien, planetThiefAlien};
 
 
     //Chance cards
@@ -454,21 +459,21 @@ public class GameController implements Initializable{
     CardDecorator card4 = new ChangePosition(new ChanceCard(4));
     CardDecorator card5 = new ChangeBankAccount(new ChangePosition(new ChanceCard(5)));
 
-    //Chest Cards
-   /* CardDecorator card6 = new FoundMoney(new ChestCard(6));
+
+    CardDecorator card6 = new FoundMoney(new ChestCard(6));
     CardDecorator card7 = new FoundMoney(new ChangePosition(new ChestCard(7)));
     CardDecorator card8 = new CovidHelp(new ChestCard(8));
-    CardDecorator card9 = new CovidHelp(new FoundMoney(new ChestCard(9)));*/
+    CardDecorator card9 = new CovidHelp(new FoundMoney(new ChestCard(9)));
 
 
 
 
-    CardDecorator[] cardsArray =  new CardDecorator[]{card1, card2, card3, card4, card5};
+    CardDecorator[] chanceCardsArray =  new CardDecorator[]{card1, card2, card3, card4, card5};
             //card6,card7,card8,card9};
 
-    public CardDecorator getRandomCard() {
-        int randomNum = (int)((1 + Math.random()*5) - 1);
-        return cardsArray[randomNum];
+    public CardDecorator getRandomCard(int num) {
+        int randomNum = (int)((1 + Math.random()*num) - 1);
+        return chanceCardsArray[randomNum];
     }
 
 
@@ -797,7 +802,7 @@ public class GameController implements Initializable{
     @FXML
         //this method is called when the card is drawn
         // comment & displays a random card name
-    void takeCard() throws Exception{
+    void takeChanceCard() throws Exception{
         try{
 
             //FXMLLoader fxmlLoader3 = new FXMLLoader(getClass().getResource("cardWindow.fxml"));
@@ -806,7 +811,7 @@ public class GameController implements Initializable{
             //When card is drawn card duty section comes
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Monopoly Space EDITION - Card");
-            CardDecorator randomCard = getRandomCard();
+            CardDecorator randomCard = getRandomCard(chanceCardsArray.length);
             alert.setContentText(randomCard.getContent());
             Button okButton = (Button) alert.getDialogPane().lookupButton(ButtonType.OK);
             okButton.setId("alertOkButton");
@@ -832,18 +837,7 @@ public class GameController implements Initializable{
                     }
 
                     if (randomCard.equals(card3)) {
-                        if (currentPlayer.equals(names.get(0))) {
-                            p1AccountLabel.setText("" + currentPlayer.getBalance());
-                        }
-                        else if (currentPlayer.equals(names.get(1))) {
-                            p2AccountLabel.setText("" + currentPlayer.getBalance());
-                        }
-                        else if (currentPlayer.equals(names.get(2))){
-                            p3AccountLabel.setText("" + currentPlayer.getBalance());
-                        }
-                        else if (currentPlayer.equals(names.get(3))){
-                            p4AccountLabel.setText("" + currentPlayer.getBalance());
-                        }
+                       changeTable();
                     }
 
                     System.out.println("random card = " + randomCard);
@@ -876,17 +870,16 @@ public class GameController implements Initializable{
                     System.out.println("current player position: " + currentPlayer.getPosition());
                     System.out.println();
 
-                    //card6,chest card,
-                    /*if(randomCard.equals(card6)){
-                        System.out.println("You found money in Space " + currentPlayer.getBalance());
-                        //fonk
-                        boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
-                        boardPane.add((tokens.get(tempTurn)).getImageView(), 10, 10);
-                        changeTable();
-                    }*/
-
                 }
             });
+
+            /*
+            //card6,chest card,
+            if(randomCard.equals(card6)){
+                System.out.println("You found money in Space " + currentPlayer.getBalance());
+                changeTable();
+            }
+             */
 
 
             alert.show();
@@ -908,12 +901,25 @@ public class GameController implements Initializable{
     }
 
     @FXML
+        //this method is called when the card is drawn
+        // comment & displays a random card name
+    void takeChestCard() throws Exception{
+        try{
+
+        } catch(Exception e3){
+            System.out.println("operation can not be done");
+        }
+    }
+
+    @FXML
         //this method close the new opened windows on Board
         //closing Card, Title Deed, Go To Jail...
     void closeOpenedOnBoard(){
         Stage stage = (Stage) okInCard.getScene().getWindow();
         stage.close();
     }
+
+
 
 
     @Override
@@ -1012,6 +1018,16 @@ public class GameController implements Initializable{
                 showSpaceShip();
             }
 
+            if(currentPlayer.getPosition()==4 || currentPlayer.getPosition()==12 || currentPlayer.getPosition()==28 ||
+                    currentPlayer.getPosition()==38){
+                //alienPane.setVisible(true);
+                showAlien();
+            }
+
+            if(currentPlayer.getPosition()==7 || currentPlayer.getPosition()==22 || currentPlayer.getPosition()==36  ){
+                takeChanceCard();
+            }
+
             turn = (turn + 1) % names.size();
 
             if (!currentPlayer.checkJail() && (currentPlayer.getPosition() == 30 || currentPlayer.getPosition() == 20))  {
@@ -1042,4 +1058,82 @@ public class GameController implements Initializable{
 
         return updatedPosition;
     }
+
+    public Alien getRandomAlien() {
+        int randomNum = (int)((1 + Math.random()*3) - 1);
+        return aliens[randomNum];
+    }
+
+
+    @FXML
+    public void showAlien() {
+        /*
+        alienOkButton.setVisible(true);
+        closeAlien.setVisible(true);
+
+         */
+
+        Alien randomAlien = getRandomAlien();
+        randomAlien.alienInvasion(currentPlayer);
+        /*
+        alienNameLabel.setText(randomAlien.getAlienName());
+        alienDutyLabel.setText(randomAlien.getAlienDuty());
+
+         */
+        int tempTurn = (turn + (names.size() - 1)) % names.size();
+
+        //closeAlien.setVisible(false);
+
+        //black hole alien
+        if(randomAlien.getAlienId() == 1) {
+            //token moves to black hole
+            System.out.println("black hole alien came");
+            boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
+            boardPane.add((tokens.get(tempTurn)).getImageView(), 0, 0);
+            /*
+            if(alienOkButton.isFocused()){
+                alienOkButton.setVisible(false);
+                closeAlien.setVisible(true);
+            }
+
+             */
+        }
+        //money thief alien (-200M)
+        else if(randomAlien.getAlienId() == 2) {
+            System.out.println("money thief alien came");
+            changeTable();
+            /*
+            if(alienOkButton.isFocused()){
+                alienOkButton.setVisible(false);
+                closeAlien.setVisible(true);
+            }
+
+             */
+
+        }
+        //planet thief alien
+        else if(randomAlien.getAlienId() == 3) {
+            System.out.println("planet thief alien came");
+        }
+        /*
+        EventHandler<ActionEvent> current = alienOkButton.getOnAction();
+        alienOkButton.setOnAction(e -> {
+            current.handle(e);
+            alienNameLabel.setText("");
+            alienDutyLabel.setText("");
+        });
+
+         */
+    }
+
+    /*
+    @FXML
+    Button closeAlien;
+
+    @FXML
+    void closeAlienPane(){
+        alienPane.setVisible(false);
+    }
+
+     */
 }
