@@ -14,7 +14,6 @@ public class BuildHouseStrategy implements BuildStrategy {
 
     @Override
     public void build(Property property, Player player) {
-        System.out.println("House is built!" );
         player.makePayment(housePrice);
         property.setRentPrice(property.getRentPrice() + houseRentPrice);
     }
@@ -32,6 +31,11 @@ public class BuildHouseStrategy implements BuildStrategy {
     @Override
     public int getPrice() {
         return housePrice;
+    }
+
+    @Override
+    public void getBuildMessage() {
+        System.out.println("House is built!" );
     }
 
 }

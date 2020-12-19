@@ -14,12 +14,16 @@ public class BuildForestStrategy implements BuildStrategy {
     public void build(Property property, Player player) {
         player.makePayment(forestPrice);
         property.setRentPrice(property.getRentPrice() + forestRentPrice);
-        System.out.println("Forest is built!" );
     }
 
     @Override
     public int getPrice(){
         return this.forestPrice;
+    }
+
+    @Override
+    public void getBuildMessage() {
+        System.out.println("Forest is built!" );
     }
 
     public int getForestPrice() {

@@ -14,13 +14,17 @@ public class BuildHotelStrategy implements BuildStrategy {
     public void build(Property property, Player player) {
         player.makePayment(hotelPrice);
         property.setRentPrice(property.getRentPrice() + hotelRentPrice);
-        System.out.println("Hotel is built!");
     }
 
 
     @Override
     public int getPrice() {
         return hotelPrice;
+    }
+
+    @Override
+    public void getBuildMessage() {
+        System.out.println("Hotel is built!");
     }
 
 

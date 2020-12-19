@@ -71,6 +71,74 @@ public class GameController implements Initializable{
 
     Spaceship [] spaceships = new Spaceship [LOCATION_NUMBER];
 
+    @FXML
+    Label builtMessageLabel;
+
+    @FXML
+    Button buildForestButton;
+
+    @FXML
+    Button buildHotelButton;
+
+    @FXML
+    Button buildHouseButton;
+
+    @FXML
+    Button closeBuildPaneButton;
+
+    @FXML
+    AnchorPane buildStructurePane;
+
+
+    @FXML
+    public void showBuildStructure(){
+        buildForestButton.setVisible(true);
+        buildHotelButton.setVisible(true);
+        buildHouseButton.setVisible(true);
+
+        buildStructurePane.setVisible(true);
+
+
+        if(buildHouseButton.isFocused()){
+            planets[currentPlayer.getPosition()].performBuild(new BuildHouseStrategy());
+            builtMessageLabel.setText("A house is built!");
+
+            buildForestButton.setVisible(false);
+            buildHotelButton.setVisible(false);
+            buildHouseButton.setVisible(false);
+            closeBuildPaneButton.setVisible(true);
+        }
+        if(buildHotelButton.isFocused()){
+            planets[currentPlayer.getPosition()].performBuild(new BuildHotelStrategy());
+            builtMessageLabel.setText("A hotel is built!");
+
+            buildForestButton.setVisible(false);
+            buildHotelButton.setVisible(false);
+            buildHouseButton.setVisible(false);
+            closeBuildPaneButton.setVisible(true);
+        }
+        if(buildForestButton.isFocused()){
+            planets[currentPlayer.getPosition()].performBuild(new BuildForestStrategy());
+            builtMessageLabel.setText("A forest is built!");
+
+            buildForestButton.setVisible(false);
+            buildHotelButton.setVisible(false);
+            buildHouseButton.setVisible(false);
+            closeBuildPaneButton.setVisible(true);
+        }
+
+
+        planets[currentPlayer.getPosition()].getCurrentInfoStructures();
+        System.out.println("-------------------");
+
+
+    }
+
+    @FXML
+    public void closeBuildStructurePane(){
+        //make build structure pane unvisible
+        buildStructurePane.setVisible(false);
+    }
 
     @FXML
     Button buyShip;
@@ -243,7 +311,8 @@ public class GameController implements Initializable{
             }
         }
         if(buildButton.isFocused()){
-
+            builtMessageLabel.setText("");
+            showBuildStructure();
         }
     }
 

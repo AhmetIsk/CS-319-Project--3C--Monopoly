@@ -13,5 +13,10 @@ public class NoBuildStrategy implements BuildStrategy {
         return 0;
     }
 
+    @Override
+    public void getBuildMessage() {
+
+    }
+
 
 }
