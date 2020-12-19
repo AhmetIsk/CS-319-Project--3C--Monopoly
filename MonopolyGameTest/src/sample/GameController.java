@@ -102,6 +102,10 @@ public class GameController implements Initializable{
         if(buildHouseButton.isFocused()){
             planets[currentPlayer.getPosition()].performBuild(new BuildHouseStrategy());
             builtMessageLabel.setText("A house is built!");
+            changeTable();
+
+            propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nPrice is: " + planets[currentPlayer.getPosition()].getPrice()
+                    + "\nRent is " +planets[currentPlayer.getPosition()].getRentPrice());
 
             buildForestButton.setVisible(false);
             buildHotelButton.setVisible(false);
@@ -111,6 +115,10 @@ public class GameController implements Initializable{
         if(buildHotelButton.isFocused()){
             planets[currentPlayer.getPosition()].performBuild(new BuildHotelStrategy());
             builtMessageLabel.setText("A hotel is built!");
+            changeTable();
+
+            propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nPrice is: " + planets[currentPlayer.getPosition()].getPrice()
+                    + "\nRent is " +planets[currentPlayer.getPosition()].getRentPrice());
 
             buildForestButton.setVisible(false);
             buildHotelButton.setVisible(false);
@@ -120,6 +128,10 @@ public class GameController implements Initializable{
         if(buildForestButton.isFocused()){
             planets[currentPlayer.getPosition()].performBuild(new BuildForestStrategy());
             builtMessageLabel.setText("A forest is built!");
+            changeTable();
+
+            propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nPrice is: " + planets[currentPlayer.getPosition()].getPrice()
+                    + "\nRent is " +planets[currentPlayer.getPosition()].getRentPrice());
 
             buildForestButton.setVisible(false);
             buildHotelButton.setVisible(false);
@@ -295,7 +307,7 @@ public class GameController implements Initializable{
         //set text at the top of the pane to show information at current player's location
         //price-rent and planet name will be shown
         propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nPrice is: " + planets[currentPlayer.getPosition()].getPrice()
-                + "\nRent is" +planets[currentPlayer.getPosition()].getRentPrice());
+                + "\nRent is: " +planets[currentPlayer.getPosition()].getRentPrice());
 
         //show rent price of the planet
         rentLabel.setText("Rent :" + planets[currentPlayer.getPosition()].getRentPrice());

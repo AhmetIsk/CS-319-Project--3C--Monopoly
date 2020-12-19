@@ -112,9 +112,9 @@
                   <AnchorPane fx:id="buildStructurePane" onDragDetected="#showBuildStructure" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
                      <children>
                         <Button fx:id="closeBuildPaneButton" layoutX="14.0" layoutY="160.0" mnemonicParsing="false" onAction="#closeBuildStructurePane" text="close" visible="false" />
-                        <Button fx:id="buildHouseButton" layoutX="100.0" layoutY="65.0" mnemonicParsing="false" onAction="#showBuildStructure" text="Build House" visible="false" />
-                        <Button fx:id="buildHotelButton" layoutX="100.0" layoutY="100.0" mnemonicParsing="false" onAction="#showBuildStructure" text="Build Hotel" visible="false" />
-                        <Button fx:id="buildForestButton" layoutX="98.0" layoutY="134.0" mnemonicParsing="false" onAction="#showBuildStructure" text="Build Forest" visible="false" />
+                        <Button fx:id="buildHouseButton" layoutX="100.0" layoutY="65.0" mnemonicParsing="false" onAction="#showBuildStructure" text="House 100$" visible="false" />
+                        <Button fx:id="buildHotelButton" layoutX="100.0" layoutY="100.0" mnemonicParsing="false" onAction="#showBuildStructure" text="Hotel 150$" visible="false" />
+                        <Button fx:id="buildForestButton" layoutX="98.0" layoutY="134.0" mnemonicParsing="false" onAction="#showBuildStructure" text="Forest 200$" visible="false" />
                         <Label fx:id="builtMessageLabel" layoutX="15.0" layoutY="27.0" prefHeight="17.0" prefWidth="169.0" textFill="#e1c6e0">
                            <font>
                               <Font size="19.0" />
