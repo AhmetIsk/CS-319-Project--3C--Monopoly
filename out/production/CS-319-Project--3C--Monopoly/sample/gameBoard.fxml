@@ -26,8 +26,14 @@
         <Button fx:id="replayBtn" layoutX="60.0" layoutY="633.0" mnemonicParsing="false" onAction="#replayGame" opacity="0.0" prefHeight="28.0" prefWidth="163.0" text="Replay" />
         <Button fx:id="finishBtn" layoutX="57.0" layoutY="705.0" mnemonicParsing="false" onAction="#closeGame" opacity="0.0" prefHeight="34.0" prefWidth="169.0" text="Finish" />
       <Button fx:id="rollDiceBtn" layoutX="41.0" layoutY="316.0" mnemonicParsing="false" onAction="#rollDice" prefHeight="28.0" prefWidth="135.0" text="Roll Dice" />
-      <Label fx:id="labelDice1" layoutX="200.0" layoutY="302.0" prefHeight="15.0" prefWidth="89.0" text="Dice 1:" textFill="#f8f7f7" />
-      <Label fx:id="labelDice2" layoutX="200.0" layoutY="330.0" prefHeight="15.0" prefWidth="96.0" text="Dice 2:" textFill="WHITE" />
+      <Label fx:id="labelDice1" layoutX="200.0" layoutY="302.0" prefHeight="15.0" prefWidth="89.0" text="Dice 1:" textFill="#f8f7f7">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Label fx:id="labelDice2" layoutX="200.0" layoutY="330.0" prefHeight="15.0" prefWidth="96.0" text="Dice 2:" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
       <AnchorPane layoutX="323.0" layoutY="13.0">
          <children>
             <GridPane fx:id="boardPane" prefHeight="701.0" prefWidth="670.0">
@@ -69,6 +75,28 @@
                   <Button fx:id="btnMove" mnemonicParsing="false" onAction="#move" text="Move" GridPane.columnIndex="2" GridPane.rowIndex="6" />
                </children>
             </GridPane>
+            <AnchorPane fx:id="shipPane" layoutX="220.0" layoutY="220.0" prefHeight="226.0" prefWidth="232.0" style="-fx-background-color: #8B008B#8B008B; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
+               <children>
+                  <Label fx:id="infoShipLabel" layoutX="10.0" layoutY="40.0" prefHeight="96.0" prefWidth="210.0" text="Owner" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="rentShipLabel" layoutX="75.0" layoutY="175.0" text="Rent" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="titleShipPaneL" layoutX="9.0" layoutY="10.0" prefHeight="25.0" prefWidth="212.0" text="SpaceShip Name" textFill="WHITE">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="closeShipButton" layoutX="160.0" layoutY="175.0" mnemonicParsing="false" onAction="#closePropertyPane" text="Close" />
+                  <Button fx:id="rentShipButton" layoutX="75.0" layoutY="145.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Pay Rent" />
+                  <Button fx:id="buyShip" layoutX="20.0" layoutY="175.0" mnemonicParsing="false" text="Buy" />
+               </children>
+            </AnchorPane>
             <AnchorPane fx:id="propertyPane" layoutX="220.0" layoutY="220.0" prefHeight="200.0" prefWidth="220.0" style="-fx-background-color: grey; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
                <children>
                   <Label fx:id="propertyFeature" layoutX="19.0" layoutY="14.0" prefHeight="80.0" prefWidth="163.0" text="Property" textFill="#fef3ff">
