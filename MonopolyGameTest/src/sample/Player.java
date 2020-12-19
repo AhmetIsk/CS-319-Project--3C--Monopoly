@@ -12,6 +12,7 @@ public class Player {
     private int jailDayCounter;
 
     private ArrayList<Planet> titleDeeds;
+    private ArrayList<Spaceship> spaceShipDeeds;
     //private final Token token; //???
     //comment
 
@@ -33,6 +34,7 @@ public class Player {
         numProperty = 0;
         jailDayCounter = 0;
         titleDeeds = new ArrayList<Planet>();
+        spaceShipDeeds = new ArrayList<Spaceship>();
         //token = new Token();
 
         hasCards = false;
@@ -85,6 +87,10 @@ public class Player {
 
     public ArrayList<Planet> getTitleDeeds() {
         return this.titleDeeds;
+    }
+
+    public ArrayList<Spaceship> getSpaceShipDeeds() {
+        return this.spaceShipDeeds;
     }
 
     /**
@@ -184,6 +190,21 @@ public class Player {
             //balance = balance - p.getPrice()
 
     }
+
+    /**
+     *
+     * @param
+     */
+    public void buySpaceShip(Spaceship s) {
+
+        spaceShipDeeds.add(s);
+        s.setHasOwner(true);
+        this.setBalance(this.getBalance()-s.getPrice());
+
+
+    }
+
+
 
     public boolean checkBuildStructure() {
         return buildStructure;
