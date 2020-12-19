@@ -322,7 +322,7 @@ public class GameController implements Initializable{
             closePropButton.setDisable(true);
             //show information about planet, by adding owner player name
             propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nOwner: " + planets[currentPlayer.getPosition()].getOwnerName()
-                    + "\nRent is" +planets[currentPlayer.getPosition()].getRentPrice());
+                    + "\nRent is: " +planets[currentPlayer.getPosition()].getRentPrice());
 
             //1-----------------MORTGAGE completed
             //1-isMortgaged olayını check edicez (player kira vericek mi diye?
@@ -344,7 +344,7 @@ public class GameController implements Initializable{
             payRentButton.setDisable(true);
             //show information about planet, by adding owner player name
             propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nOwner: " + planets[currentPlayer.getPosition()].getOwnerName()
-                    + "\nRent is" +planets[currentPlayer.getPosition()].getRentPrice());
+                    + "\nRent is: " +planets[currentPlayer.getPosition()].getRentPrice());
         }
 
         //if planet has no owner, pay rent button is not visible
@@ -509,46 +509,6 @@ public class GameController implements Initializable{
     //3-------make progress
     @FXML
     public void mortgageOperation(){
-
-        ArrayList<String> mortgagedPropertiesNames = new ArrayList<String>();
-        //first check planets
-        int totalAmountNeeded = 0;
-        //iterate planets
-        if(currentPlayer.getTitleDeeds().size() > 0){
-            for(int i = 0; i < currentPlayer.getTitleDeeds().size(); i++){
-                currentPlayer.getTitleDeeds().get(i).performMortgage();
-                totalAmountNeeded = totalAmountNeeded + currentPlayer.getTitleDeeds().get(i).getMortgagePrice();
-                mortgagedPropertiesNames.add(currentPlayer.getTitleDeeds().get(i).getPropName());
-                if( totalAmountNeeded >= planets[currentPlayer.getPosition()].getRentPrice() ){
-                    break;
-                }
-            }
-        }
-
-        //iterate ships
-        if(currentPlayer.getSpaceShipDeeds().size() > 0 && totalAmountNeeded
-                < planets[currentPlayer.getPosition()].getRentPrice()){
-            for(int i = 0; i < currentPlayer.getSpaceShipDeeds().size(); i++){
-                currentPlayer.getSpaceShipDeeds().get(i).performMortgage();
-                totalAmountNeeded = totalAmountNeeded + currentPlayer.getSpaceShipDeeds().get(i).getMortgagePrice();
-                mortgagedPropertiesNames.add(currentPlayer.getSpaceShipDeeds().get(i).getPropName());
-                if (totalAmountNeeded >= planets[currentPlayer.getPosition()].getRentPrice() ){
-                    break;
-                }
-            }
-        }
-        // player is bankrupt
-        if(totalAmountNeeded < planets[currentPlayer.getPosition()].getRentPrice()){
-            //declare player as bankrupt
-
-        }
-        //3.1for loop içinde gez ve mortgage pricelarına bak uygun olanı al
-        //3.2 if(okMortgageButton.isfocused)
-        //{
-
-        //}
-        // ok butona bastıktan sonra hangi propertylerinin mortgage olduğunu bassın(labelde)
-        //planet.isMortgaged=true yap
     }
 
 
