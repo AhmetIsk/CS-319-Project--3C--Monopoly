@@ -982,6 +982,12 @@ public class GameController implements Initializable{
                     System.out.println(currentPlayer.getName());
                     System.out.println("bank account: " + currentPlayer.getBalance());
 
+                    System.out.println("chanceCard alien invasion came");
+                    if(randomCard.equals(card1)){
+                        //alien invasion
+                        showAlien();
+                    }
+
 
                     System.out.println("inJail = " + currentPlayer.checkJail());
                     if (randomCard.equals(card2)) {
