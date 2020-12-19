@@ -223,6 +223,22 @@ public class GameController implements Initializable{
                 closeShipButton.setDisable(true);
                 rentShipButton.setDisable(false);
                 //pay rent action will be handled in the payShip method
+
+                //////MORTGAGE FOR SPACESHIP
+                buyShip.setDisable(true);
+
+                //1-----------------MORTGAGE completed
+                //1-isMortgaged olayını check edicez (player kira vericek mi diye?
+                if(spaceships[currentPlayer.getPosition()].checkMortgaged()){
+                    rentShipButton.setDisable(true);
+                    closeShipButton.setDisable(false);
+                    infoShipLabel.setText( spaceships[currentPlayer.getPosition()].getPropName() +
+                            "\nThis spaceship is mortgaged");
+
+                }
+
+
+
             }
 
         }
@@ -258,6 +274,68 @@ public class GameController implements Initializable{
 
         //spaceship's rent  that is at the currentPlayer's location
         int temp1 = spaceships[currentPlayer.getPosition()].getRentPrice();
+
+        //MORTGAGE
+        //22222222-eğer current playerin balance < spaceship.rent--->mortgage (currentPlayer'a yap)
+        if(currentPlayer.getBalance() < temp1){
+
+            //1-open new pane for mortgage
+            //2-methodu çağırmadan gerekli olanlar
+            okMortgageButton.setDisable(false); //okMortgage is available
+            closeMortgageButton.setDisable(true); //close is available after mortgage
+            mortgagePane.setVisible(true);
+
+
+            //---------MORTGAGE FOR PAY RENT FOR PLANET-----------
+            ArrayList<String> mortgagedPropertiesNames = new ArrayList<String>();
+            //first check planets
+            int totalAmountNeeded = 0;
+            //iterate planets
+            if(currentPlayer.getTitleDeeds().size() > 0){
+                for(int i = 0; i < currentPlayer.getTitleDeeds().size(); i++){
+                    currentPlayer.getTitleDeeds().get(i).performMortgage();
+                    totalAmountNeeded = totalAmountNeeded + currentPlayer.getTitleDeeds().get(i).getMortgagePrice();
+                    mortgagedPropertiesNames.add(currentPlayer.getTitleDeeds().get(i).getPropName());
+                    if( totalAmountNeeded >= spaceships[currentPlayer.getPosition()].getRentPrice() ){
+                        break;
+                    }
+                }
+            }
+
+            //iterate ships
+            if(currentPlayer.getSpaceShipDeeds().size() > 0 && totalAmountNeeded
+                    < spaceships[currentPlayer.getPosition()].getRentPrice()){
+                for(int i = 0; i < currentPlayer.getSpaceShipDeeds().size(); i++){
+                    currentPlayer.getSpaceShipDeeds().get(i).performMortgage();
+                    totalAmountNeeded = totalAmountNeeded + currentPlayer.getSpaceShipDeeds().get(i).getMortgagePrice();
+                    mortgagedPropertiesNames.add(currentPlayer.getSpaceShipDeeds().get(i).getPropName());
+                    if (totalAmountNeeded >= spaceships[currentPlayer.getPosition()].getRentPrice() ){
+                        break;
+                    }
+                }
+            }
+            // player is bankrupt
+            if(totalAmountNeeded < spaceships[currentPlayer.getPosition()].getRentPrice()){
+                //declare player as bankrupt
+                System.out.println("GO BANKRUPT");
+            }
+
+            String nameOfMortgaged = "";
+            for(int i =0; i < mortgagedPropertiesNames.size() ; i++){
+
+                nameOfMortgaged += "\nYour planet\n" + mortgagedPropertiesNames.get(i)
+                        + " is mortgaged";
+
+
+            }
+            showMortgagedPLabel.setText(nameOfMortgaged + "\n Now you cant receive rent payments");
+
+            //3- call a method that makes mortgage(this process is handled in pane with "ok" button)
+            //mortgageOperation()
+
+        }
+
+
         //temp2 = currentPlayers bank account after payment
         int temp2 = currentPlayer.getBalance() -temp1;
         //set current players bank account after payment for rent
