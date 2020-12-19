@@ -616,24 +616,20 @@ public class GameController implements Initializable{
     CardDecorator card3 = new ChangeBankAccount(new ChanceCard(3));
     CardDecorator card4 = new ChangePosition(new ChanceCard(4));
     CardDecorator card5 = new ChangeBankAccount(new ChangePosition(new ChanceCard(5)));
+    CardDecorator[] chanceCardsArray =  new CardDecorator[]{card1, card2, card3, card4, card5};
 
 
     CardDecorator card6 = new FoundMoney(new ChestCard(6));
     CardDecorator card7 = new FoundMoney(new ChangePosition(new ChestCard(7)));
     CardDecorator card8 = new CovidHelp(new ChestCard(8));
     CardDecorator card9 = new CovidHelp(new FoundMoney(new ChestCard(9)));
+    CardDecorator[] chestCardsArray =  new CardDecorator[]{card6, card7, card8, card9};
 
 
-
-
-    CardDecorator[] chanceCardsArray =  new CardDecorator[]{card1, card2, card3, card4, card5};
-            //card6,card7,card8,card9};
-
-    public CardDecorator getRandomCard(int num) {
+    public CardDecorator getRandomCard(int num, CardDecorator[] cd) {
         int randomNum = (int)((1 + Math.random()*num) - 1);
-        return chanceCardsArray[randomNum];
+        return cd[randomNum];
     }
-
 
     int totalDice;
 
@@ -976,14 +972,10 @@ public class GameController implements Initializable{
         // comment & displays a random card name
     void takeChanceCard() throws Exception{
         try{
-
-            //FXMLLoader fxmlLoader3 = new FXMLLoader(getClass().getResource("cardWindow.fxml"));
-            //Parent cardRoot = (Parent) fxmlLoader3.load();
-
             //When card is drawn card duty section comes
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Monopoly Space EDITION - Card");
-            CardDecorator randomCard = getRandomCard(chanceCardsArray.length);
+            CardDecorator randomCard = getRandomCard(chanceCardsArray.length, chanceCardsArray);
             alert.setContentText(randomCard.getContent());
             Button okButton = (Button) alert.getDialogPane().lookupButton(ButtonType.OK);
             okButton.setId("alertOkButton");
@@ -1022,22 +1014,9 @@ public class GameController implements Initializable{
 
                     if(randomCard.equals(card5)) {
                         System.out.println("balance ikili: " + currentPlayer.getBalance());
-                        //fonk
                         boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
                         boardPane.add((tokens.get(tempTurn)).getImageView(), 10, 10);
-                        //fonk
-                        if (currentPlayer.equals(names.get(0))) {
-                            p1AccountLabel.setText("" + currentPlayer.getBalance());
-                        }
-                        else if (currentPlayer.equals(names.get(1))) {
-                            p2AccountLabel.setText("" + currentPlayer.getBalance());
-                        }
-                        else if (currentPlayer.equals(names.get(2))){
-                            p3AccountLabel.setText("" + currentPlayer.getBalance());
-                        }
-                        else if (currentPlayer.equals(names.get(3))){
-                            p4AccountLabel.setText("" + currentPlayer.getBalance());
-                        }
+                        changeTable();
                     }
                     System.out.println("current player position: " + currentPlayer.getPosition());
                     System.out.println();
@@ -1045,27 +1024,7 @@ public class GameController implements Initializable{
                 }
             });
 
-            /*
-            //card6,chest card,
-            if(randomCard.equals(card6)){
-                System.out.println("You found money in Space " + currentPlayer.getBalance());
-                changeTable();
-            }
-             */
-
-
             alert.show();
-
-            // update
-            /*
-            System.out.println(card1.getContent());
-            System.out.println(card2.getContent());
-            System.out.println(card3.getContent());
-            System.out.println(card4.getContent());
-            System.out.println(card5.getContent());
-            System.out.println(names.get(0).getName());
-            System.out.println(tokens.get(0).getDirectory());
-             */
 
         } catch(Exception e3){
             System.out.println("operation can not be done");
@@ -1077,6 +1036,60 @@ public class GameController implements Initializable{
         // comment & displays a random card name
     void takeChestCard() throws Exception{
         try{
+            //When card is drawn card duty section comes
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Monopoly Space EDITION - Card");
+            CardDecorator randomCard = getRandomCard(chestCardsArray.length, chestCardsArray);
+            alert.setContentText(randomCard.getContent());
+            Button okChestButton = (Button) alert.getDialogPane().lookupButton(ButtonType.OK);
+            okChestButton.setId("alertOkButton");
+
+            //When ok button is clicked duty is done.
+
+            okChestButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    randomCard.setTakenBy(currentPlayer);
+                    randomCard.duty();
+                    int tempTurn = (turn + (names.size() - 1)) % names.size();
+                    System.out.println(currentPlayer.getName());
+                    System.out.println("bank account: " + currentPlayer.getBalance());
+
+                    //found money
+                    if (randomCard.equals(card6)) {
+                        System.out.println("card6");
+                        System.out.println("You found money in Space " + currentPlayer.getBalance());
+                        changeTable();
+                    }
+                    //found money + change position
+                    if (randomCard.equals(card7)) {
+                        System.out.println("card7");
+                        changeTable();
+                        boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
+                        boardPane.add((tokens.get(tempTurn)).getImageView(), 10, 10);
+                    }
+
+                    //covid help
+                    if(randomCard.equals(card8)) {
+                        System.out.println("card8");
+                        boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
+                        boardPane.add((tokens.get(tempTurn)).getImageView(), 7, 10);
+                    }
+
+                    //covid help + found money
+                    if(randomCard.equals(card9)) {
+                        System.out.println("card9");
+                        boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
+                        boardPane.add((tokens.get(tempTurn)).getImageView(), 7, 10);
+                        changeTable();
+                    }
+                    System.out.println("current player position: " + currentPlayer.getPosition());
+                    System.out.println();
+
+                }
+            });
+
+            alert.show();
 
         } catch(Exception e3){
             System.out.println("operation can not be done");
@@ -1200,6 +1213,10 @@ public class GameController implements Initializable{
                 takeChanceCard();
             }
 
+            if(currentPlayer.getPosition()==2 || currentPlayer.getPosition()==17 || currentPlayer.getPosition()==33  ){
+                takeChestCard();
+            }
+
             turn = (turn + 1) % names.size();
 
             if (!currentPlayer.checkJail() && (currentPlayer.getPosition() == 30 || currentPlayer.getPosition() == 20))  {
@@ -1294,7 +1311,6 @@ public class GameController implements Initializable{
     void closeAlienPane(){
         alienPane.setVisible(false);
     }
-
 
 
 }
