@@ -219,7 +219,7 @@ public class PlayerInfoController implements Initializable{
             //GameController gameController = new GameController(names, tokens);
 //            Parent newRoot2 = (Parent) fxmlLoader2.load();
             Stage stage2 = new Stage();
-            stage2.setTitle("Monopoly Space EDITION - Enter Info");
+            stage2.setTitle("Monopoly Space EDITION - Game Board");
             stage2.setScene(PlayerInfo);
             stage2.setResizable(false);
             stage2.show();

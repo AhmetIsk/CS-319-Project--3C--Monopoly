@@ -1,5 +1,7 @@
 package sample;
 
+import FileControllerManager.GameInfoReader;
+import FileControllerManager.MusicPlayer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,6 +24,7 @@ public class MainSceneController implements Initializable {
     @FXML
     Button plyBtn;
 
+    MusicPlayer musicPlayer = new MusicPlayer(GameInfoReader.getMusics());
 
     @FXML
     void closeView(){

@@ -144,4 +144,30 @@ public class GameInfoReader implements Serializable
             return null;
         }
     }
+
+    public static ArrayList<String> getMusics()
+    {
+        final int MUSIC_NUMBER = 2;
+
+        try
+        {
+            ArrayList<String> musics;
+            FileReader fr;
+            BufferedReader br;
+
+            musics = new ArrayList<String>();
+            fr = new FileReader( "src/Game Files/Musics.txt" );
+            br = new BufferedReader( fr );
+            for ( int i = 0; i < MUSIC_NUMBER; i++ )
+            {
+                musics.add( br.readLine() );
+            }
+
+            return musics;
+        }
+        catch (IOException e)
+        {
+            return null;
+        }
+    }
 }
