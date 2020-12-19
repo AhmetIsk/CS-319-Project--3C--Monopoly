@@ -345,32 +345,36 @@ public class GameController implements Initializable{
         if( !(planets[currentPlayer.getPosition()].checkHasOwner())){
             payRentButton.setDisable(true);
             buildButton.setDisable(true);
-            //if buy button is clicked, player buy the planet property
-            if(buyButton.isFocused()){
-                //if planet has no owner, add it to players title list
-                if(!planets[currentPlayer.getPosition()].checkHasOwner()){
-                    //player buy the planet with buy property method
-                    currentPlayer.buyProperty(planets[currentPlayer.getPosition()]);
-
-
-                    //make planet hasOwner true
-                    planets[currentPlayer.getPosition()].setHasOwner(true);
-                    //buy button will be invisible, since it has owner now
-
-                    buyButton.setDisable(true);
-                    //set owner of the planet
-
-                    planets[currentPlayer.getPosition()].setOwner(currentPlayer);
-
-                    System.out.println(currentPlayer.getName() + " buy " +currentPlayer.getTitleDeeds().get(0).getPropName());
-                    //update bank account in bank account table
-                    changeTable();
-                }
-            }
+            
         }
         if(buildButton.isFocused()){
             builtMessageLabel.setText("");
             showBuildStructure();
+        }
+    }
+
+    @FXML
+    public void buyPlanet(){
+        if(buyButton.isFocused()){
+            //if planet has no owner, add it to players title list
+            if(!planets[currentPlayer.getPosition()].checkHasOwner()){
+                //player buy the planet with buy property method
+                currentPlayer.buyProperty(planets[currentPlayer.getPosition()]);
+
+
+                //make planet hasOwner true
+                planets[currentPlayer.getPosition()].setHasOwner(true);
+                //buy button will be invisible, since it has owner now
+
+                buyButton.setDisable(true);
+                //set owner of the planet
+
+                planets[currentPlayer.getPosition()].setOwner(currentPlayer);
+
+                System.out.println(currentPlayer.getName() + " buy " +currentPlayer.getTitleDeeds().get(0).getPropName());
+                //update bank account in bank account table
+                changeTable();
+            }
         }
     }
 
