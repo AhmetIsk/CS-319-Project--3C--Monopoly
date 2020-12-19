@@ -14,7 +14,7 @@ public class Spaceship extends Property{
             super.setMortgagePrice(super.getPrice());
             super.getMortgageStrategy().mortgage();
             super.setIsMortgage(true);
-            super.getOwner().deleteTitleDeed(this);
+            //super.getOwner().deleteTitleDeed(this);
         }
 
     }

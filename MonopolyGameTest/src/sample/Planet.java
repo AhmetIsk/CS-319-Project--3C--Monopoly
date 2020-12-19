@@ -30,7 +30,7 @@ public class Planet extends Property {
             super.setMortgagePrice(super.getPrice() + addedMortgagePrice);
             super.getMortgageStrategy().mortgage();
             super.setIsMortgage(true);
-            super.getOwner().deleteTitleDeed(this);
+            //super.getOwner().deleteTitleDeed(this);
         }
     }
 

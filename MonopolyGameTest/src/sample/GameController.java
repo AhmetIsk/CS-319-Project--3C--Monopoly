@@ -295,6 +295,7 @@ public class GameController implements Initializable{
 
     @FXML
     //this method opens a new window for Property
+    //BUNU PLANET YAP----------------
     public void showProperty(){
 
         //first make buttons visible, they will be unvisible if neccessary
@@ -321,12 +322,26 @@ public class GameController implements Initializable{
         //buy button will be unvisible since buy option is not available
         if( planets[currentPlayer.getPosition()].checkHasOwner()
                 && planets[currentPlayer.getPosition()].getOwnerName() != currentPlayer.getName()){
+
+
+
             buyButton.setDisable(true);
             buildButton.setDisable(true);
             closePropButton.setDisable(true);
             //show information about planet, by adding owner player name
             propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nOwner: " + planets[currentPlayer.getPosition()].getOwnerName()
                     + "\nRent is" +planets[currentPlayer.getPosition()].getRentPrice());
+
+            //1-----------------MORTGAGE okey
+            //1-isMortgaged olayını check edicez (player kira vericek mi diye?
+            if(planets[currentPlayer.getPosition()].checkMortgaged()){
+                payRentButton.setDisable(true);
+                closePropButton.setDisable(false);
+                propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() +
+                        "\nThis planet is mortgaged");
+
+            }
+
         }
 
         //if player comes to his/her own property
@@ -345,7 +360,7 @@ public class GameController implements Initializable{
         if( !(planets[currentPlayer.getPosition()].checkHasOwner())){
             payRentButton.setDisable(true);
             buildButton.setDisable(true);
-            
+
         }
         if(buildButton.isFocused()){
             builtMessageLabel.setText("");
@@ -393,8 +408,25 @@ public class GameController implements Initializable{
     //this method is to make payment for rent of the planets
     public void payRent(){
 
+
+
         //planet's rent  that is at the currentPlayer's location
         int temp1 = planets[currentPlayer.getPosition()].getRentPrice();
+
+
+        //MORTGAGE
+        //22222222-eğer current playerin balance < planet.rent--->mortgage (currentPlayer'a yap)
+        if(currentPlayer.getBalance() < temp1){
+            //1-open new pane for mortgage
+            //2- call a method that makes mortgage(this process is handled in pane with "ok" button)
+            //method name is mortgageOperation()
+
+
+
+
+        }
+
+
         //temp2 = currentPlayers bank account after payment
         int temp2 = currentPlayer.getBalance() -temp1;
         //set current players bank account after payment for rent
@@ -425,6 +457,19 @@ public class GameController implements Initializable{
         //message in the label that indicates payment is done
         rentLabel.setText("payment is \n done!");
 
+    }
+
+    //3-------make progress
+    @FXML
+    public void mortgageOperation(){
+
+        //3.1for loop içinde gez ve mortgage pricelarına bak uygun olanı al
+        //3.2 if(okMortgageButton.isfocused)
+        //{
+
+        //}
+        // ok butona bastıktan sonra hangi propertylerinin mortgage olduğunu bassın(labelde)
+        //planet.isMortgaged=true yap
     }
 
     public void changeTable(){
