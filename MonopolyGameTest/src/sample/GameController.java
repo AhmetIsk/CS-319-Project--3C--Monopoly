@@ -324,7 +324,7 @@ public class GameController implements Initializable{
             propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nOwner: " + planets[currentPlayer.getPosition()].getOwnerName()
                     + "\nRent is" +planets[currentPlayer.getPosition()].getRentPrice());
 
-            //1-----------------MORTGAGE okey
+            //1-----------------MORTGAGE completed
             //1-isMortgaged olayını check edicez (player kira vericek mi diye?
             if(planets[currentPlayer.getPosition()].checkMortgaged()){
                 payRentButton.setDisable(true);
@@ -394,6 +394,19 @@ public class GameController implements Initializable{
     }
 
     @FXML
+    AnchorPane mortgagePane;
+
+    @FXML
+    Button closeMortgageButton;
+
+    @FXML
+    Button okMortgageButton;
+
+    @FXML
+    Label showMortgagedPLabel;
+
+
+    @FXML
     //this method is to make payment for rent of the planets
     public void payRent(){
 
@@ -403,9 +416,60 @@ public class GameController implements Initializable{
         //MORTGAGE
         //22222222-eğer current playerin balance < planet.rent--->mortgage (currentPlayer'a yap)
         if(currentPlayer.getBalance() < temp1){
+
             //1-open new pane for mortgage
-            //2- call a method that makes mortgage(this process is handled in pane with "ok" button)
-            //method name is mortgageOperation()
+            //2-methodu çağırmadan gerekli olanlar
+            okMortgageButton.setDisable(false); //okMortgage is available
+            closeMortgageButton.setDisable(true); //close is available after mortgage
+            mortgagePane.setVisible(true);
+
+
+            //---------MORTGAGE FOR PAY RENT FOR PLANET-----------
+            ArrayList<String> mortgagedPropertiesNames = new ArrayList<String>();
+            //first check planets
+            int totalAmountNeeded = 0;
+            //iterate planets
+            if(currentPlayer.getTitleDeeds().size() > 0){
+                for(int i = 0; i < currentPlayer.getTitleDeeds().size(); i++){
+                    currentPlayer.getTitleDeeds().get(i).performMortgage();
+                    totalAmountNeeded = totalAmountNeeded + currentPlayer.getTitleDeeds().get(i).getMortgagePrice();
+                    mortgagedPropertiesNames.add(currentPlayer.getTitleDeeds().get(i).getPropName());
+                    if( totalAmountNeeded >= planets[currentPlayer.getPosition()].getRentPrice() ){
+                        break;
+                    }
+                }
+            }
+
+            //iterate ships
+            if(currentPlayer.getSpaceShipDeeds().size() > 0 && totalAmountNeeded
+                    < planets[currentPlayer.getPosition()].getRentPrice()){
+                for(int i = 0; i < currentPlayer.getSpaceShipDeeds().size(); i++){
+                    currentPlayer.getSpaceShipDeeds().get(i).performMortgage();
+                    totalAmountNeeded = totalAmountNeeded + currentPlayer.getSpaceShipDeeds().get(i).getMortgagePrice();
+                    mortgagedPropertiesNames.add(currentPlayer.getSpaceShipDeeds().get(i).getPropName());
+                    if (totalAmountNeeded >= planets[currentPlayer.getPosition()].getRentPrice() ){
+                        break;
+                    }
+                }
+            }
+            // player is bankrupt
+            if(totalAmountNeeded < planets[currentPlayer.getPosition()].getRentPrice()){
+                //declare player as bankrupt
+                System.out.println("GO BANKRUPT");
+            }
+
+            String nameOfMortgaged = "";
+            for(int i =0; i < mortgagedPropertiesNames.size() ; i++){
+
+                nameOfMortgaged += "\nYour planet\n" + mortgagedPropertiesNames.get(i)
+                        + " is mortgaged";
+
+
+            }
+            showMortgagedPLabel.setText(nameOfMortgaged + "\n Now you cant receive rent payments");
+
+            //3- call a method that makes mortgage(this process is handled in pane with "ok" button)
+            //mortgageOperation()
 
         }
 
@@ -441,10 +505,43 @@ public class GameController implements Initializable{
 
     }
 
+    ArrayList<String> mortgagedPropertiesNames;
     //3-------make progress
     @FXML
     public void mortgageOperation(){
 
+        ArrayList<String> mortgagedPropertiesNames = new ArrayList<String>();
+        //first check planets
+        int totalAmountNeeded = 0;
+        //iterate planets
+        if(currentPlayer.getTitleDeeds().size() > 0){
+            for(int i = 0; i < currentPlayer.getTitleDeeds().size(); i++){
+                currentPlayer.getTitleDeeds().get(i).performMortgage();
+                totalAmountNeeded = totalAmountNeeded + currentPlayer.getTitleDeeds().get(i).getMortgagePrice();
+                mortgagedPropertiesNames.add(currentPlayer.getTitleDeeds().get(i).getPropName());
+                if( totalAmountNeeded >= planets[currentPlayer.getPosition()].getRentPrice() ){
+                    break;
+                }
+            }
+        }
+
+        //iterate ships
+        if(currentPlayer.getSpaceShipDeeds().size() > 0 && totalAmountNeeded
+                < planets[currentPlayer.getPosition()].getRentPrice()){
+            for(int i = 0; i < currentPlayer.getSpaceShipDeeds().size(); i++){
+                currentPlayer.getSpaceShipDeeds().get(i).performMortgage();
+                totalAmountNeeded = totalAmountNeeded + currentPlayer.getSpaceShipDeeds().get(i).getMortgagePrice();
+                mortgagedPropertiesNames.add(currentPlayer.getSpaceShipDeeds().get(i).getPropName());
+                if (totalAmountNeeded >= planets[currentPlayer.getPosition()].getRentPrice() ){
+                    break;
+                }
+            }
+        }
+        // player is bankrupt
+        if(totalAmountNeeded < planets[currentPlayer.getPosition()].getRentPrice()){
+            //declare player as bankrupt
+
+        }
         //3.1for loop içinde gez ve mortgage pricelarına bak uygun olanı al
         //3.2 if(okMortgageButton.isfocused)
         //{
@@ -453,6 +550,33 @@ public class GameController implements Initializable{
         // ok butona bastıktan sonra hangi propertylerinin mortgage olduğunu bassın(labelde)
         //planet.isMortgaged=true yap
     }
+
+
+    @FXML
+    Button fakeCodeButton1;
+
+    public void fakeTestMortgage(){
+
+        names.get(0).setBalance(0);
+        changeTable();
+
+
+    }
+
+    @FXML
+    public void acceptMortgage(){
+
+        if(okMortgageButton.isFocused()){
+            okMortgageButton.setDisable(true);
+            closeMortgageButton.setDisable(false);
+            closePropButton.setDisable(false);
+        }
+        if(closeMortgageButton.isFocused()){
+            mortgagePane.setVisible(false);
+        }
+    }
+
+
 
     public void changeTable(){
         if (currentPlayer.equals(names.get(0))) {
@@ -513,7 +637,7 @@ public class GameController implements Initializable{
         for (int i = 0; i < LOCATION_NUMBER; i++) {
             if ( planetsPositions[locationCounter] == i) {
                 equal = true;
-                planets[i] = new Planet(planetsNames[locationCounter], ms, planetsPrices[locationCounter],
+                planets[i] = new Planet(planetsNames[locationCounter], new PlanetMortgageStrategy(), planetsPrices[locationCounter],
                         planetsPositions[locationCounter], planetsMortgagePrices[locationCounter], planetsRentPrices[locationCounter]);
             }
             if (equal) {
@@ -523,7 +647,7 @@ public class GameController implements Initializable{
 
             if ( SpaceshipsPositions[locationCounter1] == i) {
                 equal1 = true;
-                spaceships[i] = new Spaceship(SpaceshipsNames[locationCounter1], ms, SpaceshipsPrices[locationCounter1],
+                spaceships[i] = new Spaceship(SpaceshipsNames[locationCounter1], new ShipMortgageStrategy(), SpaceshipsPrices[locationCounter1],
                         SpaceshipsPositions[locationCounter1], SpaceshipsPrices[locationCounter1], SpaceshipsRentPrices[locationCounter1]);
             }
             if (equal1) {
