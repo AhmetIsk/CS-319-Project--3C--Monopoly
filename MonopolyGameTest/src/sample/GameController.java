@@ -643,6 +643,20 @@ public class GameController implements Initializable{
     @FXML
     Pane replayPane;
 
+    //alien
+    @FXML
+    Pane alienPane;
+    @FXML
+    Button alienOkButton;
+    @FXML
+    Button closeAlien;
+    @FXML
+    Label alienLabel;
+    @FXML
+    Label alienNameLabel;
+    @FXML
+    Label alienDutyLabel;
+
 
 
 
@@ -1065,24 +1079,21 @@ public class GameController implements Initializable{
     }
 
 
+
     @FXML
     public void showAlien() {
-        /*
-        alienOkButton.setVisible(true);
-        closeAlien.setVisible(true);
 
-         */
+        alienPane.setVisible(true);
+        alienOkButton.setVisible(true);
+        closeAlien.setVisible(false);
 
         Alien randomAlien = getRandomAlien();
         randomAlien.alienInvasion(currentPlayer);
-        /*
+
         alienNameLabel.setText(randomAlien.getAlienName());
         alienDutyLabel.setText(randomAlien.getAlienDuty());
 
-         */
         int tempTurn = (turn + (names.size() - 1)) % names.size();
-
-        //closeAlien.setVisible(false);
 
         //black hole alien
         if(randomAlien.getAlienId() == 1) {
@@ -1090,32 +1101,29 @@ public class GameController implements Initializable{
             System.out.println("black hole alien came");
             boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
             boardPane.add((tokens.get(tempTurn)).getImageView(), 0, 0);
-            /*
+
             if(alienOkButton.isFocused()){
                 alienOkButton.setVisible(false);
                 closeAlien.setVisible(true);
             }
 
-             */
         }
         //money thief alien (-200M)
         else if(randomAlien.getAlienId() == 2) {
             System.out.println("money thief alien came");
             changeTable();
-            /*
+
             if(alienOkButton.isFocused()){
                 alienOkButton.setVisible(false);
                 closeAlien.setVisible(true);
             }
-
-             */
 
         }
         //planet thief alien
         else if(randomAlien.getAlienId() == 3) {
             System.out.println("planet thief alien came");
         }
-        /*
+
         EventHandler<ActionEvent> current = alienOkButton.getOnAction();
         alienOkButton.setOnAction(e -> {
             current.handle(e);
@@ -1123,17 +1131,13 @@ public class GameController implements Initializable{
             alienDutyLabel.setText("");
         });
 
-         */
     }
 
-    /*
-    @FXML
-    Button closeAlien;
 
     @FXML
     void closeAlienPane(){
         alienPane.setVisible(false);
     }
 
-     */
+
 }

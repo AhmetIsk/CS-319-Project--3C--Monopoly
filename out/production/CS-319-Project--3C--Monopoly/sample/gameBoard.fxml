@@ -101,6 +101,18 @@
                   <Label fx:id="rentLabel" layoutX="141.0" layoutY="127.0" prefHeight="46.0" prefWidth="65.0" text="Rent:" textFill="WHITE" />
                </children>
             </AnchorPane>
+            <AnchorPane fx:id="alienPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: pink; visibility: false;">
+               <children>
+                  <Label fx:id="alienLabel" layoutX="40.0" layoutY="27.0" prefHeight="46.0" prefWidth="148.0" text="Alien Invasion" textFill="#ac3030">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
+                  <Label fx:id="alienNameLabel" layoutX="10.0" layoutY="69.0" prefHeight="46.0" prefWidth="179.0" text="Alien Name" />
+                  <Label fx:id="alienDutyLabel" layoutX="10.0" layoutY="115.0" prefHeight="46.0" prefWidth="179.0" text="Alien Duty" />
+                  <Button fx:id="alienOkButton" layoutX="114.0" layoutY="161.0" mnemonicParsing="false" onAction="#showAlien" text="Ok" />
+                  <Button fx:id="closeAlien" layoutX="25.0" layoutY="161.0" mnemonicParsing="false" onAction="#closeAlienPane" text="Close" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
       <GridPane fx:id="infoTable" layoutX="3.0" layoutY="419.0" prefHeight="194.0" prefWidth="305.0" style="-fx-background-color: #d9b3ff#d9b3ff#884dff#884dff;">
