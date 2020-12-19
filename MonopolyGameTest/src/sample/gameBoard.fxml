@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="bigPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameController">
     <children>
@@ -18,20 +28,6 @@
       <Button fx:id="rollDiceBtn" layoutX="41.0" layoutY="316.0" mnemonicParsing="false" onAction="#rollDice" prefHeight="28.0" prefWidth="135.0" text="Roll Dice" />
       <Label fx:id="labelDice1" layoutX="200.0" layoutY="302.0" prefHeight="15.0" prefWidth="89.0" text="Dice 1:" textFill="#f8f7f7" />
       <Label fx:id="labelDice2" layoutX="200.0" layoutY="330.0" prefHeight="15.0" prefWidth="96.0" text="Dice 2:" textFill="WHITE" />
-      <AnchorPane fx:id="propertyPane" layoutX="32.0" layoutY="181.0" prefHeight="200.0" prefWidth="220.0" style="-fx-background-color: grey; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
-         <children>
-            <Label fx:id="propertyFeature" layoutX="19.0" layoutY="14.0" prefHeight="80.0" prefWidth="163.0" text="Property" textFill="#fef3ff">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Label>
-            <Button fx:id="buyButton" layoutX="11.0" layoutY="127.0" mnemonicParsing="false" onAction="#showProperty" prefHeight="25.0" prefWidth="45.0" text="Buy" />
-            <Button fx:id="buildButton" layoutX="11.0" layoutY="161.0" mnemonicParsing="false" onAction="#showProperty" text="Build" />
-            <Button fx:id="closePropButton" layoutX="68.0" layoutY="161.0" mnemonicParsing="false" onAction="#closePropertyPane" prefHeight="25.0" prefWidth="65.0" text="Close" />
-            <Button fx:id="payRentButton" layoutX="68.0" layoutY="127.0" mnemonicParsing="false" onAction="#payRent" text="Pay Rent" />
-            <Label fx:id="rentLabel" layoutX="141.0" layoutY="127.0" prefHeight="46.0" prefWidth="65.0" text="Rent:" textFill="WHITE" />
-         </children>
-      </AnchorPane>
       <AnchorPane layoutX="323.0" layoutY="13.0">
          <children>
             <GridPane fx:id="boardPane" prefHeight="701.0" prefWidth="670.0">
@@ -73,6 +69,20 @@
                   <Button fx:id="btnMove" mnemonicParsing="false" onAction="#move" text="Move" GridPane.columnIndex="2" GridPane.rowIndex="6" />
                </children>
             </GridPane>
+            <AnchorPane fx:id="propertyPane" layoutX="220.0" layoutY="220.0" prefHeight="200.0" prefWidth="220.0" style="-fx-background-color: grey; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
+               <children>
+                  <Label fx:id="propertyFeature" layoutX="19.0" layoutY="14.0" prefHeight="80.0" prefWidth="163.0" text="Property" textFill="#fef3ff">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="buyButton" layoutX="11.0" layoutY="127.0" mnemonicParsing="false" onAction="#showProperty" prefHeight="25.0" prefWidth="45.0" text="Buy" />
+                  <Button fx:id="buildButton" layoutX="11.0" layoutY="161.0" mnemonicParsing="false" onAction="#showProperty" text="Build" />
+                  <Button fx:id="closePropButton" layoutX="68.0" layoutY="161.0" mnemonicParsing="false" onAction="#closePropertyPane" prefHeight="25.0" prefWidth="65.0" text="Close" />
+                  <Button fx:id="payRentButton" layoutX="68.0" layoutY="127.0" mnemonicParsing="false" onAction="#payRent" text="Pay Rent" />
+                  <Label fx:id="rentLabel" layoutX="141.0" layoutY="127.0" prefHeight="46.0" prefWidth="65.0" text="Rent:" textFill="WHITE" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
       <GridPane fx:id="infoTable" layoutX="3.0" layoutY="419.0" prefHeight="194.0" prefWidth="305.0" style="-fx-background-color: #d9b3ff#d9b3ff#884dff#884dff;">

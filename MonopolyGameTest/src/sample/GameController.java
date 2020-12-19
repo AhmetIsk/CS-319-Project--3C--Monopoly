@@ -341,16 +341,16 @@ public class GameController implements Initializable{
     CardDecorator card5 = new ChangeBankAccount(new ChangePosition(new ChanceCard(5)));
 
     //Chest Cards
-    CardDecorator card6 = new FoundMoney(new ChestCard(6));
+   /* CardDecorator card6 = new FoundMoney(new ChestCard(6));
     CardDecorator card7 = new FoundMoney(new ChangePosition(new ChestCard(7)));
     CardDecorator card8 = new CovidHelp(new ChestCard(8));
-    CardDecorator card9 = new CovidHelp(new FoundMoney(new ChestCard(9)));
+    CardDecorator card9 = new CovidHelp(new FoundMoney(new ChestCard(9)));*/
 
 
 
 
-    CardDecorator[] cardsArray =  new CardDecorator[]{card1, card2, card3, card4,
-                                        card5,card6,card7,card8,card9};
+    CardDecorator[] cardsArray =  new CardDecorator[]{card1, card2, card3, card4, card5};
+            //card6,card7,card8,card9};
 
     public CardDecorator getRandomCard() {
         int randomNum = (int)((1 + Math.random()*5) - 1);
@@ -763,13 +763,13 @@ public class GameController implements Initializable{
                     System.out.println();
 
                     //card6,chest card,
-                    if(randomCard.equals(card6)){
+                    /*if(randomCard.equals(card6)){
                         System.out.println("You found money in Space " + currentPlayer.getBalance());
                         //fonk
                         boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
                         boardPane.add((tokens.get(tempTurn)).getImageView(), 10, 10);
                         changeTable();
-                    }
+                    }*/
 
                 }
             });
