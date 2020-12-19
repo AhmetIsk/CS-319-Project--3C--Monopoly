@@ -801,8 +801,6 @@ public class GameController implements Initializable{
     @FXML
     Pane alienPane;
     @FXML
-    Button alienOkButton;
-    @FXML
     Button closeAlien;
     @FXML
     Label alienLabel;
@@ -1250,8 +1248,6 @@ public class GameController implements Initializable{
     public void showAlien() {
 
         alienPane.setVisible(true);
-        alienOkButton.setVisible(true);
-        closeAlien.setVisible(false);
 
         Alien randomAlien = getRandomAlien();
         randomAlien.alienInvasion(currentPlayer);
@@ -1267,34 +1263,19 @@ public class GameController implements Initializable{
             System.out.println("black hole alien came");
             boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
             boardPane.add((tokens.get(tempTurn)).getImageView(), 0, 0);
+            currentPlayer.setPosition(20);
 
-            if(alienOkButton.isFocused()){
-                alienOkButton.setVisible(false);
-                closeAlien.setVisible(true);
-            }
         }
         //money thief alien (-200M)
         else if(randomAlien.getAlienId() == 2) {
             System.out.println("money thief alien came");
             changeTable();
 
-            if(alienOkButton.isFocused()){
-                alienOkButton.setVisible(false);
-                closeAlien.setVisible(true);
-            }
-
         }
         //planet thief alien
         else if(randomAlien.getAlienId() == 3) {
             System.out.println("planet thief alien came");
         }
-
-        EventHandler<ActionEvent> current = alienOkButton.getOnAction();
-        alienOkButton.setOnAction(e -> {
-            current.handle(e);
-            alienNameLabel.setText("");
-            alienDutyLabel.setText("");
-        });
 
     }
 
