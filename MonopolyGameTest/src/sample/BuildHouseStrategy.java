@@ -1,5 +1,7 @@
 package sample;
 
+import java.util.PropertyPermission;
+
 public class BuildHouseStrategy implements BuildStrategy {
 
     private final int housePrice;
@@ -10,8 +12,11 @@ public class BuildHouseStrategy implements BuildStrategy {
         houseRentPrice = 50;
     }
 
-    public void build() {
-        System.out.println("House is built!");
+    @Override
+    public void build(Property property, Player player) {
+        System.out.println("House is built!" );
+        player.makePayment(housePrice);
+        property.setRentPrice(property.getRentPrice() + houseRentPrice);
     }
 
     public int getHousePrice() {
@@ -22,13 +27,11 @@ public class BuildHouseStrategy implements BuildStrategy {
         return this.houseRentPrice;
     }
 
+
+
     @Override
     public int getPrice() {
         return housePrice;
     }
 
-    @Override
-    public int getRentPrice(){
-        return houseRentPrice;
-    }
 }

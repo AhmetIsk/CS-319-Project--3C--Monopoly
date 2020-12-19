@@ -1,7 +1,6 @@
 package sample;
 
 public interface BuildStrategy {
-    void build();
+    void build(Property property, Player player);
     int getPrice();
-    int getRentPrice();
 }

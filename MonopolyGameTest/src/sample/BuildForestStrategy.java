@@ -9,18 +9,17 @@ public class BuildForestStrategy implements BuildStrategy {
         forestPrice = 200;
         forestRentPrice = 150;
     }
-    public void build() {
-        System.out.println("Forest is built!");
+
+    @Override
+    public void build(Property property, Player player) {
+        player.makePayment(forestPrice);
+        property.setRentPrice(property.getRentPrice() + forestRentPrice);
+        System.out.println("Forest is built!" );
     }
 
     @Override
-    public int getPrice() {
-        return forestPrice;
-    }
-
-    @Override
-    public int getRentPrice() {
-        return forestRentPrice;
+    public int getPrice(){
+        return this.forestPrice;
     }
 
     public int getForestPrice() {

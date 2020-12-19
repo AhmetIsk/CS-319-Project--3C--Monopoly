@@ -3,8 +3,7 @@ package sample;
 public class PlanetMortgageStrategy implements MortgageStrategy {
 
     public void mortgage() {
-        // TODO - implement PlanetMortgageStrategy.mortgage
-        throw new UnsupportedOperationException();
+        System.out.println("Planet is mortgaged!");
     }
 
 }

@@ -235,7 +235,7 @@ public class GameController implements Initializable{
         for (int i = 0; i < LOCATION_NUMBER; i++) {
             if ( planetsPositions[locationCounter] == i) {
                 equal = true;
-                planets[i] = new Planet(planetsNames[locationCounter], bs, ms, planetsPrices[locationCounter],
+                planets[i] = new Planet(planetsNames[locationCounter], ms, planetsPrices[locationCounter],
                         planetsPositions[locationCounter], planetsMortgagePrices[locationCounter], planetsRentPrices[locationCounter]);
             }
             if (equal)

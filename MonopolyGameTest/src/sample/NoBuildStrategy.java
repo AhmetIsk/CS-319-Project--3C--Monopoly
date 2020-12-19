@@ -2,9 +2,10 @@ package sample;
 
 public class NoBuildStrategy implements BuildStrategy {
 
-    public void build() {
-        // TODO - implement NoBuildStrategy.build
-        throw new UnsupportedOperationException();
+
+    @Override
+    public void build(Property property, Player player) {
+        System.out.println("Nothing is built!");
     }
 
     @Override
@@ -12,9 +13,5 @@ public class NoBuildStrategy implements BuildStrategy {
         return 0;
     }
 
-    @Override
-    public int getRentPrice() {
-        return 0;
-    }
 
 }
