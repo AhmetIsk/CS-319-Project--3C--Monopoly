@@ -682,7 +682,7 @@ public class GameController implements Initializable{
         //this method closes titleDeeds
     void closeDeeds(){
 
-        deedPane.setVisible(false);
+        deedPane.setVisible(true);
 
     }
     @FXML
@@ -782,7 +782,7 @@ public class GameController implements Initializable{
 
             alert.show();
 
-
+            // update
             /*
             System.out.println(card1.getContent());
             System.out.println(card2.getContent());
