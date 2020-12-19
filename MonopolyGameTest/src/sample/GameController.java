@@ -683,6 +683,7 @@ public class GameController implements Initializable{
     void closeDeeds(){
 
         deedPane.setVisible(true);
+        // comment
 
     }
     @FXML
