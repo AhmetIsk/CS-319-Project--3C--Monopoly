@@ -1033,6 +1033,7 @@ public class GameController implements Initializable{
         //if first players button is clicked, show players' title deed
         String printedDeed = ""; //to print planet names as string
         if(p1DeedButton.isFocused()){
+            printedDeed = "";
             //set title of the opened title deed's pane
             deedPaneTitle.setText(p1NameLabel.getText() + "'s TitleDeeds");
 
@@ -1040,17 +1041,16 @@ public class GameController implements Initializable{
             //if player has no propety(players' title deed array is empty)
             if(names.get(0).getTitleDeeds().size() == 0){
                 //indicate in the title that player has no property
-                deedPaneTitle.setText(p1NameLabel.getText() + " has no Property");
+                deedPaneTitle.setText(p1NameLabel.getText() + " has no Planet");
                 //scrollPaneDeeds.setContent(deedInfo);
             }
-            else{
 
+            else{
+                printedDeed = "PLANETS\n" ;
                 for(int i = 0; i< names.get(0).getTitleDeeds().size(); i++ ){
                     printedDeed = printedDeed + "\n" + names.get(0).getTitleDeeds().get(i).getPropName();
-//                    Tam anlayamadım düzeni, iki opsiyon denedim ama ikisi de çalışmadı
-//                    deedInfo.setText(propertyNames.get(i));
-//                    deedInfo.setText((((names.get(0)).getTitleDeeds()).get(i)).getPropName());
                 }
+
                 deedInfo.clear();
                 deedInfo.appendText(printedDeed);
                 scrollPaneDeeds.setContent(deedInfo);
@@ -1060,11 +1060,13 @@ public class GameController implements Initializable{
         else if(p2DeedButton.isFocused() && names.get(1) != null){
             //set title of the opened title deed's pane
             deedPaneTitle.setText(p2NameLabel.getText() + "'s TitleDeeds");
+            printedDeed = "";
             //if player has no propety(players' title deed array is empty)
             if(names.get(1).getTitleDeeds().size() == 0){
                 deedPaneTitle.setText(p2NameLabel.getText() + " has no Property");
             }
             else{
+                printedDeed = "PLANETS\n" ;
                 for(int i = 0; i< names.get(1).getTitleDeeds().size(); i++ ){
                     printedDeed = printedDeed + "\n" + names.get(1).getTitleDeeds().get(i).getPropName();
 //
@@ -1078,12 +1080,14 @@ public class GameController implements Initializable{
         }else if(p3DeedButton.isFocused() && names.get(2) != null ){
             //set title of the opened title deed's pane
             deedPaneTitle.setText(p3NameLabel.getText() + "'s TitleDeeds");
+            printedDeed = "";
             //if player has no propety(players' title deed array is empty)
             if(names.get(2).getTitleDeeds().size() == 0){
                 deedPaneTitle.setText(p3NameLabel.getText() + " has no Property");
             }
             else{
                 //print player's title deed in the scroll pane
+                printedDeed = "PLANETS\n" ;
                 for(int i = 0; i< names.get(2).getTitleDeeds().size(); i++ ){
                     printedDeed = printedDeed + "\n" + names.get(2).getTitleDeeds().get(i).getPropName();
 //
@@ -1095,6 +1099,7 @@ public class GameController implements Initializable{
             }
             deedPane.setVisible(true);
         }else if(p3DeedButton.isFocused() && names.get(3) != null){
+            printedDeed = "";
             //set title of the opened title deed's pane
             deedPaneTitle.setText(p4NameLabel.getText() + "'s TitleDeeds");
             //if player has no propety(players' title deed array is empty)
@@ -1102,6 +1107,7 @@ public class GameController implements Initializable{
                 deedPaneTitle.setText(p4NameLabel.getText() + " has no Property");
             }
             else{
+                printedDeed = "PLANETS\n" ;
                 //print player's title deed in the scroll pane
                 for(int i = 0; i< names.get(3).getTitleDeeds().size(); i++ ){
                     printedDeed = printedDeed + "\n" + names.get(3).getTitleDeeds().get(i).getPropName();
