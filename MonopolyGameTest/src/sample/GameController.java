@@ -203,7 +203,7 @@ public class GameController implements Initializable{
         //case1: player comes to a spaceship that has no owner
         if( !(spaceships[currentPlayer.getPosition()].checkHasOwner()) ){
 
-            rentShipButton.setDisable(true);
+            rentShipButton.setDisable(false);
             //player has no enough money to buy ship
             if(currentPlayer.getBalance()<spaceships[currentPlayer.getPosition()].getPrice()){
                 infoShipLabel.setText("You don't have money \n to buy ");
@@ -461,6 +461,9 @@ public class GameController implements Initializable{
             //added here
             if(currentPlayer.getBalance() > 100 && buildButton.isFocused()){
                 //buildButton.setDisable(false);
+                buildHouseButton.setDisable(false);
+                buildForestButton.setDisable(false);
+                buildHotelButton.setDisable(false);
                 builtMessageLabel.setText("");
                 showBuildStructure();
             }
