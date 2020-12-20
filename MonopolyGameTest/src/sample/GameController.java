@@ -97,6 +97,14 @@ public class GameController implements Initializable{
 
         buildStructurePane.setVisible(true);
 
+        //check player's balance conditions to build structures
+        if( currentPlayer.getBalance() > 100 && currentPlayer.getBalance() < 150){
+            buildHotelButton.setDisable(true);
+            buildForestButton.setDisable(true);
+        }
+        if( currentPlayer.getBalance() >= 150 && currentPlayer.getBalance() < 200){
+            buildForestButton.setDisable(true);
+        }
 
         if(buildHouseButton.isFocused()){
             planets[currentPlayer.getPosition()].performBuild(new BuildHouseStrategy());
@@ -394,7 +402,7 @@ public class GameController implements Initializable{
         buildButton.setDisable(false);
         rollDiceBtn.setDisable(true);
         rollDiceBtn.setText("");
-
+        mortgageShowLabel.setText("-----------");
         //set text at the top of the pane to show information at current player's location
         //price-rent and planet name will be shown
         propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName()
@@ -438,11 +446,19 @@ public class GameController implements Initializable{
         //if player comes to his/her own property
         if( planets[currentPlayer.getPosition()].checkHasOwner()
                 && planets[currentPlayer.getPosition()].getOwnerName() == currentPlayer.getName()){
+
             buyButton.setDisable(true);
             buildButton.setDisable(false);
             payRentButton.setDisable(true);
             //show information about planet, by adding owner player name
             propertyFeature.setText("Welcome to your planet\n" );
+
+            //added here
+            if(currentPlayer.getBalance() > 100 && buildButton.isFocused()){
+                builtMessageLabel.setText("");
+                showBuildStructure();
+            }
+
         }
 
         //if planet has no owner, pay rent button is not visible
@@ -462,10 +478,10 @@ public class GameController implements Initializable{
             closePropButton.setDisable(false);
 
         }
-        if(buildButton.isFocused()){
+        /*if(buildButton.isFocused()){
             builtMessageLabel.setText("");
             showBuildStructure();
-        }
+        }*/
     }
 
     @FXML
