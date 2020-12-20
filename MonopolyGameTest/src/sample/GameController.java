@@ -180,6 +180,12 @@ public class GameController implements Initializable{
     Button closeShipButton;
 
     @FXML
+    Button quitBtn;
+
+    @FXML
+    Button finishReplay;
+
+    @FXML
     Label titleShipPaneL;
 
     @FXML
@@ -192,6 +198,9 @@ public class GameController implements Initializable{
     AnchorPane shipPane;
 
     @FXML
+    ImageView spaceshipImg;
+
+    @FXML
 //this method opens a new window for SpaceShip
     public void showSpaceShip(){
 
@@ -201,6 +210,9 @@ public class GameController implements Initializable{
         rollDiceBtn.setDisable(true);
         rollDiceBtn.setText("");
         rentShipLabel.setText("rent:\n"+spaceships[currentPlayer.getPosition()].getRentPrice());
+
+        Image image = new Image(getClass().getResourceAsStream("../img/" + spaceships[currentPlayer.getPosition()].getPropName() +  ".jpg"));
+        spaceshipImg.setImage(image);
 
         Spaceship currentShip;
 
@@ -1058,6 +1070,9 @@ public class GameController implements Initializable{
     Label alienDutyLabel;
     @FXML
     Button alienOk;
+    @FXML
+    Label alienDutyLabel1;
+
 
     @FXML
     void closeGame(){
@@ -1496,11 +1511,11 @@ public class GameController implements Initializable{
 
             if (!currentPlayer.checkJail() && (currentPlayer.getPosition() == 30 || currentPlayer.getPosition() == 20))  {
                 if (currentPlayer.getPosition() == 20) {
-                    Image image = new Image(getClass().getResourceAsStream("../img/blackhole.jpg"));
+                    Image image = new Image(getClass().getResourceAsStream("../img/blackhole.jpeg"));
                     paneImage.setImage(image);
                     jailPane.setVisible(true);
                 } else {
-                    Image image = new Image(getClass().getResourceAsStream("../img/goToJail.jpg"));
+                    Image image = new Image(getClass().getResourceAsStream("../img/goToJail.jpeg"));
                     paneImage.setImage(image);
                     jailPane.setVisible(true);
                 }
@@ -1564,13 +1579,15 @@ public class GameController implements Initializable{
 //                    System.out.println(planets[removedPlanetLocation].checkHasOwner());
 //                    System.out.println(planets[removedPlanetLocation].getRentPrice());
                     planets[removedPlanetLocation] = new Planet(removed.getPropName(), ms, removed.getPrice(), removed.getPosition(),
-                            removed.getDefaultMortgagePrice(), removed.getDefaultRentPrice());
+                             removed.getDefaultMortgagePrice(), removed.getDefaultRentPrice());
+                    alienDutyLabel1.setText((removed.getPropName() + " is seized by aliens"));
                     System.out.println("Planet " + (removed.getPropName() + " is seized by aliens"));
 //                    System.out.println(planets[removedPlanetLocation].checkHasOwner());
 //                    System.out.println(planets[removedPlanetLocation].getRentPrice());
                     currentPlayer.deleteTitleDeed(removed);
                 }
                 else{
+                    alienDutyLabel1.setText(("What a shame! You got no planet, Poor you!"));
                     System.out.println(" What a shame! Poor you! ");
                 }
             }
@@ -1587,6 +1604,7 @@ public class GameController implements Initializable{
     void closeAlienPane(){
         alienNameLabel.setText("");
         alienDutyLabel.setText("");
+        alienDutyLabel1.setText("");
         alienPane.setVisible(false);
     }
 

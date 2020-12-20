@@ -75,47 +75,51 @@
                   <Button fx:id="btnMove" mnemonicParsing="false" onAction="#move" text="Move" GridPane.columnIndex="2" GridPane.rowIndex="6" />
                </children>
             </GridPane>
-            <AnchorPane fx:id="shipPane" layoutX="220.0" layoutY="220.0" prefHeight="226.0" prefWidth="232.0" style="-fx-background-color: #8B008B#8B008B; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
+            <AnchorPane fx:id="shipPane" layoutX="115.0" layoutY="160.0" prefHeight="379.0" prefWidth="428.0" style="-fx-background-color: #8B008B#8B008B; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
                <children>
-                  <Label fx:id="infoShipLabel" layoutX="10.0" layoutY="67.0" prefHeight="69.0" prefWidth="210.0" text="Owner" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="rentShipLabel" layoutX="75.0" layoutY="175.0" text="Rent" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="titleShipPaneL" layoutX="9.0" layoutY="10.0" prefHeight="54.0" prefWidth="212.0" text="SpaceShip Name" textFill="WHITE">
-                     <font>
-                        <Font size="21.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="closeShipButton" layoutX="160.0" layoutY="175.0" mnemonicParsing="false" onAction="#closePropertyPane" text="Close" />
-                  <Button fx:id="rentShipButton" layoutX="75.0" layoutY="145.0" mnemonicParsing="false" onAction="#payRentShip" prefHeight="25.0" prefWidth="75.0" text="Pay Rent" />
-                  <Button fx:id="buyShip" layoutX="20.0" layoutY="175.0" mnemonicParsing="false" onAction="#buySpaceShip" text="Buy" />
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="propertyPane" layoutX="220.0" layoutY="220.0" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: grey; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
-               <children>
-                  <Label fx:id="propertyFeature" layoutX="12.0" layoutY="14.0" prefHeight="137.0" prefWidth="222.0" text="Property" textFill="#fef3ff">
+                  <Label fx:id="infoShipLabel" layoutX="21.0" layoutY="161.0" prefHeight="114.0" prefWidth="387.0" text="Owner" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="buyButton" layoutX="11.0" layoutY="170.0" mnemonicParsing="false" onAction="#buyPlanet" prefHeight="25.0" prefWidth="45.0" text="Buy" />
-                  <Button fx:id="buildButton" layoutX="11.0" layoutY="201.0" mnemonicParsing="false" onAction="#showProperty" text="Build" />
-                  <Button fx:id="closePropButton" layoutX="68.0" layoutY="201.0" mnemonicParsing="false" onAction="#closePropertyPane" prefHeight="25.0" prefWidth="65.0" text="Close" />
-                  <Label fx:id="mortgageShowLabel" layoutX="10.0" layoutY="150.0" prefHeight="18.0" prefWidth="193.0" text="-----------" textFill="WHITE" />
-                  <Button fx:id="payRentButton" layoutX="68.0" layoutY="170.0" mnemonicParsing="false" onAction="#payRent" text="Pay Rent" />
-                  <Label fx:id="rentLabel" layoutX="141.0" layoutY="160.0" prefHeight="46.0" prefWidth="65.0" text="Rent:" textFill="WHITE" />
-                  <AnchorPane fx:id="buildStructurePane" layoutY="30.0" onDragDetected="#showBuildStructure" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
+                  <Label fx:id="rentShipLabel" layoutX="190.0" layoutY="317.0" text="Rent" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="titleShipPaneL" layoutX="30.0" layoutY="14.0" prefHeight="138.0" prefWidth="186.0" style="-fx-alignment: center;" text="SpaceShip Name" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="closeShipButton" layoutX="296.0" layoutY="318.0" mnemonicParsing="false" onAction="#closePropertyPane" prefHeight="28.0" prefWidth="96.0" text="Close" />
+                  <Button fx:id="rentShipButton" layoutX="170.0" layoutY="283.0" mnemonicParsing="false" onAction="#payRentShip" prefHeight="28.0" prefWidth="89.0" text="Pay Rent" />
+                  <Button fx:id="buyShip" layoutX="36.0" layoutY="320.0" mnemonicParsing="false" onAction="#buySpaceShip" prefHeight="28.0" prefWidth="79.0" text="Buy" />
+                  <ImageView fx:id="spaceshipImg" fitHeight="147.0" fitWidth="186.0" layoutX="226.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="propertyPane" layoutX="133.0" layoutY="181.0" prefHeight="367.0" prefWidth="387.0" style="-fx-background-color: grey; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
+               <children>
+                  <Label fx:id="propertyFeature" layoutX="12.0" layoutY="14.0" prefHeight="185.0" prefWidth="371.0" style="-fx-alignment: center;" text="Property" textAlignment="CENTER" textFill="#fef3ff">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="buyButton" layoutX="24.0" layoutY="288.0" mnemonicParsing="false" onAction="#buyPlanet" prefHeight="25.0" prefWidth="142.0" text="Buy" />
+                  <Button fx:id="buildButton" layoutX="25.0" layoutY="328.0" mnemonicParsing="false" onAction="#showProperty" prefHeight="25.0" prefWidth="142.0" text="Build" />
+                  <Button fx:id="closePropButton" layoutX="207.0" layoutY="328.0" mnemonicParsing="false" onAction="#closePropertyPane" prefHeight="25.0" prefWidth="163.0" text="Close" />
+                  <Label fx:id="mortgageShowLabel" layoutX="14.0" layoutY="230.0" prefHeight="18.0" prefWidth="242.0" text="------------------------------------------------" textFill="WHITE" />
+                  <Button fx:id="payRentButton" layoutX="205.0" layoutY="288.0" mnemonicParsing="false" onAction="#payRent" prefHeight="25.0" prefWidth="163.0" text="Pay Rent" />
+                  <Label fx:id="rentLabel" layoutX="268.0" layoutY="216.0" prefHeight="46.0" prefWidth="102.0" text="Rent:" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <AnchorPane fx:id="buildStructurePane" layoutX="10.0" layoutY="7.0" onDragDetected="#showBuildStructure" prefHeight="360.0" prefWidth="377.0" style="-fx-background-color: grey; -fx-border-color: white; -fx-border-width: 0; visibility: false;">
                      <children>
-                        <Button fx:id="closeBuildPaneButton" layoutX="14.0" layoutY="160.0" mnemonicParsing="false" onAction="#closeBuildStructurePane" text="close" visible="false" />
-                        <Button fx:id="buildHouseButton" layoutX="100.0" layoutY="65.0" mnemonicParsing="false" onAction="#showBuildStructure" text="House 100$" visible="false" />
-                        <Button fx:id="buildHotelButton" layoutX="100.0" layoutY="100.0" mnemonicParsing="false" onAction="#showBuildStructure" text="Hotel 150$" visible="false" />
-                        <Button fx:id="buildForestButton" layoutX="98.0" layoutY="134.0" mnemonicParsing="false" onAction="#showBuildStructure" text="Forest 200$" visible="false" />
+                        <Button fx:id="closeBuildPaneButton" layoutX="14.0" layoutY="160.0" mnemonicParsing="false" onAction="#closeBuildStructurePane" prefHeight="59.0" prefWidth="113.0" text="close" visible="false" />
+                        <Button fx:id="buildHouseButton" layoutX="212.0" layoutY="55.0" mnemonicParsing="false" onAction="#showBuildStructure" prefHeight="68.0" prefWidth="142.0" text="House 100$" visible="false" />
+                        <Button fx:id="buildHotelButton" layoutX="210.0" layoutY="142.0" mnemonicParsing="false" onAction="#showBuildStructure" prefHeight="68.0" prefWidth="142.0" text="Hotel 150$" visible="false" />
+                        <Button fx:id="buildForestButton" layoutX="212.0" layoutY="231.0" mnemonicParsing="false" onAction="#showBuildStructure" prefHeight="68.0" prefWidth="142.0" text="Forest 200$" visible="false" />
                         <Label fx:id="builtMessageLabel" layoutX="15.0" layoutY="27.0" prefHeight="17.0" prefWidth="169.0" textFill="#e1c6e0">
                            <font>
                               <Font size="19.0" />
@@ -125,16 +129,38 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="alienPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: pink; visibility: true;">
+            <AnchorPane fx:id="alienPane" layoutX="-297.0" prefHeight="398.0" prefWidth="688.0" style="-fx-background-color: pink; visibility: false;">
                <children>
-                  <Label fx:id="alienLabel" layoutX="40.0" layoutY="27.0" prefHeight="46.0" prefWidth="148.0" text="Alien Invasion" textFill="#ac3030">
+                  <Label fx:id="alienLabel" layoutX="112.0" layoutY="14.0" prefHeight="69.0" prefWidth="461.0" style="-fx-alignment: center;" text="Alien Invasion" textAlignment="CENTER" textFill="#ac3030">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="53.0" />
                      </font></Label>
-                  <Label fx:id="alienNameLabel" layoutX="10.0" layoutY="69.0" prefHeight="46.0" prefWidth="179.0" />
-                  <Label fx:id="alienDutyLabel" layoutX="10.0" layoutY="115.0" prefHeight="46.0" prefWidth="179.0" />
-                  <Button fx:id="closeAlien" layoutX="25.0" layoutY="161.0" mnemonicParsing="false" onAction="#closeAlienPane" text="Close" />
-                  <Button fx:id="alienOk" layoutX="140.0" layoutY="160.0" mnemonicParsing="false" onAction="#showAlien" text="Ok" />
+                  <Label fx:id="alienNameLabel" layoutX="325.0" layoutY="118.0" prefHeight="46.0" prefWidth="337.0">
+                     <font>
+                        <Font name="Calibri Bold" size="20.0" />
+                     </font></Label>
+                  <Label fx:id="alienDutyLabel" layoutX="325.0" layoutY="176.0" prefHeight="46.0" prefWidth="337.0">
+                     <font>
+                        <Font name="Calibri Bold" size="20.0" />
+                     </font></Label>
+                  <Button fx:id="closeAlien" layoutX="388.0" layoutY="300.0" mnemonicParsing="false" onAction="#closeAlienPane" prefHeight="80.0" prefWidth="120.0" text="Close">
+                     <font>
+                        <Font size="27.0" />
+                     </font></Button>
+                  <Button fx:id="alienOk" layoutX="542.0" layoutY="300.0" mnemonicParsing="false" onAction="#showAlien" prefHeight="80.0" prefWidth="129.0" text="Ok">
+                     <font>
+                        <Font size="27.0" />
+                     </font></Button>
+                  <ImageView fitHeight="265.0" fitWidth="200.0" layoutX="31.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/allien.jpeg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="alienDutyLabel1" layoutX="227.0" layoutY="242.0" prefHeight="46.0" prefWidth="447.0" textFill="RED">
+                     <font>
+                        <Font name="Calibri Bold" size="20.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="mortgagePane" layoutX="220.0" layoutY="220.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: mediumpurple; visibility: false;">
@@ -243,22 +269,23 @@
               </content>
             </ScrollPane>
          </children></AnchorPane>
-      <Pane fx:id="jailPane" layoutX="15.0" layoutY="178.0" prefHeight="206.0" prefWidth="282.0" style="-fx-background-color: gray;" visible="false">
+      <Pane fx:id="jailPane" layoutX="14.0" layoutY="126.0" prefHeight="476.0" prefWidth="746.0" style="-fx-background-color: gray;" visible="false">
          <children>
-            <ImageView fx:id="paneImage" fitHeight="206.0" fitWidth="236.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="jailButton" defaultButton="true" layoutX="213.0" layoutY="158.0" mnemonicParsing="false" onAction="#putJail" prefHeight="34.0" prefWidth="55.0" text="OKAY" />
+            <ImageView fx:id="paneImage" fitHeight="476.0" fitWidth="753.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="jailButton" defaultButton="true" layoutX="607.0" layoutY="406.0" mnemonicParsing="false" onAction="#putJail" prefHeight="46.0" prefWidth="113.0" text="OKAY" />
          </children>
       </Pane>
-      <Pane fx:id="replayPane" layoutX="281.0" layoutY="223.0" prefHeight="288.0" prefWidth="447.0" style="-fx-background-color: orange;" visible="false">
+      <Pane fx:id="replayPane" layoutX="281.0" layoutY="183.0" prefHeight="328.0" prefWidth="447.0" style="-fx-background-color: orange;" visible="false">
          <children>
-            <Button fx:id="noButton" defaultButton="true" layoutX="265.0" layoutY="198.0" mnemonicParsing="false" onAction="#giveUpReplay" prefHeight="46.0" prefWidth="135.0" text="NO" textFill="RED" />
-            <Button fx:id="yesButton" layoutX="47.0" layoutY="197.0" mnemonicParsing="false" onAction="#replay" prefHeight="46.0" prefWidth="135.0" text="YES" />
-            <Text fill="WHITE" layoutX="39.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do you want to replay the game?" wrappingWidth="353.14453125">
+            <Button fx:id="noButton" defaultButton="true" layoutX="265.0" layoutY="229.0" mnemonicParsing="false" onAction="#giveUpReplay" prefHeight="46.0" prefWidth="135.0" text="NO" textFill="RED" />
+            <Button fx:id="yesButton" layoutX="39.0" layoutY="229.0" mnemonicParsing="false" onAction="#replay" prefHeight="46.0" prefWidth="135.0" text="YES" />
+            <Text fill="WHITE" layoutX="39.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do you want to replay the game?" textAlignment="CENTER" wrappingWidth="353.14453125">
                <font>
-                  <Font size="30.0" />
+                  <Font size="43.0" />
                </font>
             </Text>
-         </children></Pane>
+         </children>
+      </Pane>
       <Label fx:id="nextPlayerName" alignment="CENTER" layoutX="596.0" layoutY="722.0" prefHeight="34.0" prefWidth="242.0" style="-fx-font-weight: bold; -fx-background-color: #433f3f;">
          <font>
             <Font size="18.0" />
@@ -272,5 +299,29 @@
             </LinearGradient>
          </textFill>
       </Label>
+      <Pane fx:id="finishPane" layoutX="60.0" layoutY="17.0" prefHeight="720.0" prefWidth="891.0" style="-fx-background-color: red;" visible="false">
+         <children>
+            <ImageView fitHeight="736.0" fitWidth="891.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../img/winScreen.jpeg" />
+               </image>
+            </ImageView>
+            <Button fx:id="finishReplay" layoutX="56.0" layoutY="571.0" mnemonicParsing="false" onAction="#replayGame" prefHeight="55.0" prefWidth="200.0" text="REPLAY">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="quitBtn" layoutX="622.0" layoutY="569.0" mnemonicParsing="false" onAction="#closeGame" prefHeight="55.0" prefWidth="193.0" text="QUIT">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Button>
+            <Button fx:id="bankruptButton" layoutX="307.0" layoutY="571.0" mnemonicParsing="false" onAction="#removePlayer" prefHeight="86.0" prefWidth="277.0" text="OK">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
     </children>
 </AnchorPane>
