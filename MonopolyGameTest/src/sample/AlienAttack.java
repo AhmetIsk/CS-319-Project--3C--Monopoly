@@ -17,12 +17,12 @@ public class AlienAttack extends CardDecorator{
     }
 
     @Override
-    public void duty() {
+    public void duty(Player player) {
 
         int[] alienPositonArray = new int[]{4,12,28,38};
         int randomNum = (int)((1 + Math.random()*4) - 1);
         System.out.println("*******************" + alienPositonArray[randomNum]);
-        takenBy.setPosition(alienPositonArray[randomNum]);
+        player.setPosition(alienPositonArray[randomNum]);
 
     }
 

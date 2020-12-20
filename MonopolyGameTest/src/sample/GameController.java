@@ -1009,6 +1009,8 @@ public class GameController implements Initializable{
     Label alienNameLabel;
     @FXML
     Label alienDutyLabel;
+    @FXML
+    Button alienOk;
 
     @FXML
     void closeGame(){
@@ -1199,7 +1201,7 @@ public class GameController implements Initializable{
                 @Override
                 public void handle(ActionEvent event) {
                     randomCard.setTakenBy(currentPlayer);
-                    randomCard.duty();
+                    randomCard.duty(currentPlayer);
                     int tempTurn = (turn + (names.size() - 1)) % names.size();
                     //Balance is changing
                     System.out.println(currentPlayer.getName());
@@ -1208,7 +1210,9 @@ public class GameController implements Initializable{
                     System.out.println("chanceCard alien invasion came");
                     if(randomCard.equals(card1)){
                         //alien invasion
-                        showAlien();
+                        alienPane.setVisible(true);
+                        alienOk.setVisible(true);
+                        closeAlien.setVisible(false);
                     }
 
 
@@ -1268,7 +1272,7 @@ public class GameController implements Initializable{
                 @Override
                 public void handle(ActionEvent event) {
                     randomCard.setTakenBy(currentPlayer);
-                    randomCard.duty();
+                    randomCard.duty(currentPlayer);
                     int tempTurn = (turn + (names.size() - 1)) % names.size();
                     System.out.println(currentPlayer.getName());
                     System.out.println("bank account: " + currentPlayer.getBalance());
@@ -1285,6 +1289,7 @@ public class GameController implements Initializable{
                         changeTable();
                         boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
                         boardPane.add((tokens.get(tempTurn)).getImageView(), 10, 10);
+
                     }
 
                     //covid help
@@ -1426,8 +1431,9 @@ public class GameController implements Initializable{
 
             if(currentPlayer.getPosition()==4 || currentPlayer.getPosition()==12 || currentPlayer.getPosition()==28 ||
                     currentPlayer.getPosition()==38){
-                //alienPane.setVisible(true);
-                showAlien();
+                alienPane.setVisible(true);
+                alienOk.setVisible(true);
+                closeAlien.setVisible(false);
             }
 
             if(currentPlayer.getPosition()==7 || currentPlayer.getPosition()==22 || currentPlayer.getPosition()==36  ){
@@ -1476,41 +1482,47 @@ public class GameController implements Initializable{
 
     @FXML
     public void showAlien() {
-
-        alienPane.setVisible(true);
+        int tempTurn = (turn + (names.size() - 1)) % names.size();
 
         Alien randomAlien = getRandomAlien();
         randomAlien.alienInvasion(currentPlayer);
 
-        alienNameLabel.setText(randomAlien.getAlienName());
-        alienDutyLabel.setText(randomAlien.getAlienDuty());
+        if(alienOk.isFocused()) {
+            alienNameLabel.setText(randomAlien.getAlienName());
+            alienDutyLabel.setText(randomAlien.getAlienDuty());
 
-        int tempTurn = (turn + (names.size() - 1)) % names.size();
+            //black hole alien
+            if(randomAlien.getAlienId() == 1) {
+                //token moves to black hole
+                System.out.println("black hole alien came");
+                boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
+                boardPane.add((tokens.get(tempTurn)).getImageView(), 0, 0);
+                currentPlayer.setPosition(20);
 
-        //black hole alien
-        if(randomAlien.getAlienId() == 1) {
-            //token moves to black hole
-            System.out.println("black hole alien came");
-            boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
-            boardPane.add((tokens.get(tempTurn)).getImageView(), 0, 0);
-            currentPlayer.setPosition(20);
+            }
+            //money thief alien (-200M)
+            else if(randomAlien.getAlienId() == 2) {
+                System.out.println("money thief alien came");
+                changeTable();
+
+            }
+            //planet thief alien
+            else if(randomAlien.getAlienId() == 3) {
+                System.out.println("planet thief alien came");
+            }
+
+            closeAlien.setVisible(true);
+            alienOk.setVisible(false);
 
         }
-        //money thief alien (-200M)
-        else if(randomAlien.getAlienId() == 2) {
-            System.out.println("money thief alien came");
-            changeTable();
 
-        }
-        //planet thief alien
-        else if(randomAlien.getAlienId() == 3) {
-            System.out.println("planet thief alien came");
-        }
 
     }
 
     @FXML
     void closeAlienPane(){
+        alienNameLabel.setText("");
+        alienDutyLabel.setText("");
         alienPane.setVisible(false);
     }
 

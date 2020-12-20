@@ -125,15 +125,16 @@
                   <Label fx:id="mortgageShowLabel" layoutX="10.0" layoutY="105.0" text="-----------" textFill="WHITE" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="alienPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: pink; visibility: false;">
+            <AnchorPane fx:id="alienPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: pink; visibility: true;">
                <children>
                   <Label fx:id="alienLabel" layoutX="40.0" layoutY="27.0" prefHeight="46.0" prefWidth="148.0" text="Alien Invasion" textFill="#ac3030">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font></Label>
-                  <Label fx:id="alienNameLabel" layoutX="10.0" layoutY="69.0" prefHeight="46.0" prefWidth="179.0" text="Alien Name" />
-                  <Label fx:id="alienDutyLabel" layoutX="10.0" layoutY="115.0" prefHeight="46.0" prefWidth="179.0" text="Alien Duty" />
+                  <Label fx:id="alienNameLabel" layoutX="10.0" layoutY="69.0" prefHeight="46.0" prefWidth="179.0" />
+                  <Label fx:id="alienDutyLabel" layoutX="10.0" layoutY="115.0" prefHeight="46.0" prefWidth="179.0" />
                   <Button fx:id="closeAlien" layoutX="25.0" layoutY="161.0" mnemonicParsing="false" onAction="#closeAlienPane" text="Close" />
+                  <Button fx:id="alienOk" layoutX="140.0" layoutY="160.0" mnemonicParsing="false" onAction="#showAlien" text="Ok" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="mortgagePane" layoutX="220.0" layoutY="220.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: mediumpurple; visibility: false;">

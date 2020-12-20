@@ -17,7 +17,7 @@ public class ChangePosition extends CardDecorator{
     }
 
     @Override
-    public void duty() {
-        takenBy.setPosition(0);
+    public void duty(Player player){
+        player.setPosition(0);
     }
 }

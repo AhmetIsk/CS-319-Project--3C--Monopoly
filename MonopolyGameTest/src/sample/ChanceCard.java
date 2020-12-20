@@ -12,7 +12,7 @@ public class ChanceCard extends Card{
 
 
     @Override
-    public void duty() {
+    public void duty(Player player) {
 
     }
 }

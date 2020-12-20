@@ -16,7 +16,7 @@ public class CovidHelp extends CardDecorator{
     }
 
     @Override
-    public void duty() {
-        takenBy.setPosition(3);
+    public void duty(Player player) {
+        player.setPosition(3);
     }
 }

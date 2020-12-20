@@ -7,7 +7,7 @@ public class ChestCard extends Card{
         content = "Chest Card Duty: ";
     }
     @Override
-    public void duty() {
+    public void duty(Player player) {
 
     }
 }

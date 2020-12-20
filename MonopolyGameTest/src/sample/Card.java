@@ -29,5 +29,5 @@ public abstract class Card {
         takenBy = player;
     }
 
-    public abstract void duty();
+    public abstract void duty(Player player);
 }

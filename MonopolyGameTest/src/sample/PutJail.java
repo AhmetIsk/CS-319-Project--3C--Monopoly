@@ -17,8 +17,8 @@ public class PutJail extends CardDecorator{
     }
 
     @Override
-    public void duty() {
-        takenBy.setInJail();
+    public void duty(Player player) {
+        player.setInJail();
     }
 
 }
