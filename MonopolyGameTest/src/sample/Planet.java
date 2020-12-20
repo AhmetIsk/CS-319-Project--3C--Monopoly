@@ -19,6 +19,18 @@ public class Planet extends Property {
         numForests = 0;
     }
 
+    public int getNumHotels() {
+        return numHotels;
+    }
+
+    public int getNumHouses() {
+        return numHouses;
+    }
+
+    public int getNumForests() {
+        return numForests;
+    }
+
     @Override
     public void performMortgage() {
         if(!super.checkMortgaged() && super.checkHasOwner()){

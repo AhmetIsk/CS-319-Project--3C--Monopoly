@@ -114,7 +114,10 @@ public class GameController implements Initializable{
             changeTable();
 
             propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nPrice is: " + planets[currentPlayer.getPosition()].getPrice()
-                    + "\nRent is " +planets[currentPlayer.getPosition()].getRentPrice());
+                    + "\nRent is " +planets[currentPlayer.getPosition()].getRentPrice()
+                    + "\nHouse:" + planets[currentPlayer.getPosition()].getNumHouses()
+                    + " Hotel:" + planets[currentPlayer.getPosition()].getNumHotels()
+                    + " Forest:" + planets[currentPlayer.getPosition()].getNumForests());
 
             buildForestButton.setVisible(false);
             buildHotelButton.setVisible(false);
@@ -127,7 +130,10 @@ public class GameController implements Initializable{
             changeTable();
 
             propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nPrice is: " + planets[currentPlayer.getPosition()].getPrice()
-                    + "\nRent is " +planets[currentPlayer.getPosition()].getRentPrice());
+                    + "\nRent is " +planets[currentPlayer.getPosition()].getRentPrice()
+                    + "\nHouse:" + planets[currentPlayer.getPosition()].getNumHouses()
+                    + " Hotel:" + planets[currentPlayer.getPosition()].getNumHotels()
+                    + " Forest:" + planets[currentPlayer.getPosition()].getNumForests());
 
             buildForestButton.setVisible(false);
             buildHotelButton.setVisible(false);
@@ -140,7 +146,10 @@ public class GameController implements Initializable{
             changeTable();
 
             propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nPrice is: " + planets[currentPlayer.getPosition()].getPrice()
-                    + "\nRent is " +planets[currentPlayer.getPosition()].getRentPrice());
+                    + "\nRent is " +planets[currentPlayer.getPosition()].getRentPrice()
+                    + "\nHouse:" + planets[currentPlayer.getPosition()].getNumHouses()
+                    + " Hotel:" + planets[currentPlayer.getPosition()].getNumHotels()
+                    + " Forest:" + planets[currentPlayer.getPosition()].getNumForests());
 
             buildForestButton.setVisible(false);
             buildHotelButton.setVisible(false);
