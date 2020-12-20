@@ -293,11 +293,13 @@ public class GameController implements Initializable{
             //iterate planets
             if(currentPlayer.getTitleDeeds().size() > 0){
                 for(int i = 0; i < currentPlayer.getTitleDeeds().size(); i++){
-                    currentPlayer.getTitleDeeds().get(i).performMortgage();
-                    totalAmountNeeded = totalAmountNeeded + currentPlayer.getTitleDeeds().get(i).getMortgagePrice();
-                    mortgagedPropertiesNames.add(currentPlayer.getTitleDeeds().get(i).getPropName());
-                    if( totalAmountNeeded >= spaceships[currentPlayer.getPosition()].getRentPrice() ){
-                        break;
+                    if(!(currentPlayer.getTitleDeeds().get(i).checkMortgaged())){
+                        currentPlayer.getTitleDeeds().get(i).performMortgage();
+                        totalAmountNeeded = totalAmountNeeded + currentPlayer.getTitleDeeds().get(i).getMortgagePrice();
+                        mortgagedPropertiesNames.add(currentPlayer.getTitleDeeds().get(i).getPropName());
+                        if( totalAmountNeeded >= spaceships[currentPlayer.getPosition()].getRentPrice() ){
+                            break;
+                        }
                     }
                 }
             }
@@ -306,11 +308,13 @@ public class GameController implements Initializable{
             if(currentPlayer.getSpaceShipDeeds().size() > 0 && totalAmountNeeded
                     < spaceships[currentPlayer.getPosition()].getRentPrice()){
                 for(int i = 0; i < currentPlayer.getSpaceShipDeeds().size(); i++){
-                    currentPlayer.getSpaceShipDeeds().get(i).performMortgage();
-                    totalAmountNeeded = totalAmountNeeded + currentPlayer.getSpaceShipDeeds().get(i).getMortgagePrice();
-                    mortgagedPropertiesNames.add(currentPlayer.getSpaceShipDeeds().get(i).getPropName());
-                    if (totalAmountNeeded >= spaceships[currentPlayer.getPosition()].getRentPrice() ){
-                        break;
+                    if(!(currentPlayer.getSpaceShipDeeds().get(i).checkMortgaged())){
+                        currentPlayer.getSpaceShipDeeds().get(i).performMortgage();
+                        totalAmountNeeded = totalAmountNeeded + currentPlayer.getSpaceShipDeeds().get(i).getMortgagePrice();
+                        mortgagedPropertiesNames.add(currentPlayer.getSpaceShipDeeds().get(i).getPropName());
+                        if (totalAmountNeeded >= spaceships[currentPlayer.getPosition()].getRentPrice() ){
+                            break;
+                        }
                     }
                 }
             }
@@ -509,11 +513,13 @@ public class GameController implements Initializable{
             //iterate planets
             if(currentPlayer.getTitleDeeds().size() > 0){
                 for(int i = 0; i < currentPlayer.getTitleDeeds().size(); i++){
-                    currentPlayer.getTitleDeeds().get(i).performMortgage();
-                    totalAmountNeeded = totalAmountNeeded + currentPlayer.getTitleDeeds().get(i).getMortgagePrice();
-                    mortgagedPropertiesNames.add(currentPlayer.getTitleDeeds().get(i).getPropName());
-                    if( totalAmountNeeded >= planets[currentPlayer.getPosition()].getRentPrice() ){
-                        break;
+                    if(!(currentPlayer.getTitleDeeds().get(i).checkMortgaged())){
+                        currentPlayer.getTitleDeeds().get(i).performMortgage();
+                        totalAmountNeeded = totalAmountNeeded + currentPlayer.getTitleDeeds().get(i).getMortgagePrice();
+                        mortgagedPropertiesNames.add(currentPlayer.getTitleDeeds().get(i).getPropName());
+                        if( totalAmountNeeded >= planets[currentPlayer.getPosition()].getRentPrice() ){
+                            break;
+                        }
                     }
                 }
             }
@@ -522,11 +528,13 @@ public class GameController implements Initializable{
             if(currentPlayer.getSpaceShipDeeds().size() > 0 && totalAmountNeeded
                     < planets[currentPlayer.getPosition()].getRentPrice()){
                 for(int i = 0; i < currentPlayer.getSpaceShipDeeds().size(); i++){
-                    currentPlayer.getSpaceShipDeeds().get(i).performMortgage();
-                    totalAmountNeeded = totalAmountNeeded + currentPlayer.getSpaceShipDeeds().get(i).getMortgagePrice();
-                    mortgagedPropertiesNames.add(currentPlayer.getSpaceShipDeeds().get(i).getPropName());
-                    if (totalAmountNeeded >= planets[currentPlayer.getPosition()].getRentPrice() ){
-                        break;
+                    if(!(currentPlayer.getSpaceShipDeeds().get(i).checkMortgaged())){
+                        currentPlayer.getSpaceShipDeeds().get(i).performMortgage();
+                        totalAmountNeeded = totalAmountNeeded + currentPlayer.getSpaceShipDeeds().get(i).getMortgagePrice();
+                        mortgagedPropertiesNames.add(currentPlayer.getSpaceShipDeeds().get(i).getPropName());
+                        if (totalAmountNeeded >= planets[currentPlayer.getPosition()].getRentPrice() ){
+                            break;
+                        }
                     }
                 }
             }
