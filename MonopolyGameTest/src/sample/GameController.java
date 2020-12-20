@@ -322,42 +322,8 @@ public class GameController implements Initializable{
 
             //---------MORTGAGE FOR PAY RENT FOR PLANET-----------
             ArrayList<String> mortgagedPropertiesNames = new ArrayList<String>();
-            //first check planets
-            int totalAmountNeeded = 0;
-            //iterate planets
-            if(currentPlayer.getTitleDeeds().size() > 0){
-                for(int i = 0; i < currentPlayer.getTitleDeeds().size(); i++){
-                    if(!(currentPlayer.getTitleDeeds().get(i).checkMortgaged())){
-                        currentPlayer.getTitleDeeds().get(i).performMortgage();
-                        totalAmountNeeded = totalAmountNeeded + currentPlayer.getTitleDeeds().get(i).getMortgagePrice();
-                        mortgagedPropertiesNames.add(currentPlayer.getTitleDeeds().get(i).getPropName());
-                        if( totalAmountNeeded >= spaceships[currentPlayer.getPosition()].getRentPrice() ){
-                            break;
-                        }
-                    }
-                }
-            }
-
-            //iterate ships
-            if(currentPlayer.getSpaceShipDeeds().size() > 0 && totalAmountNeeded
-                    < spaceships[currentPlayer.getPosition()].getRentPrice()){
-                for(int i = 0; i < currentPlayer.getSpaceShipDeeds().size(); i++){
-                    if(!(currentPlayer.getSpaceShipDeeds().get(i).checkMortgaged())){
-                        currentPlayer.getSpaceShipDeeds().get(i).performMortgage();
-                        totalAmountNeeded = totalAmountNeeded + currentPlayer.getSpaceShipDeeds().get(i).getMortgagePrice();
-                        mortgagedPropertiesNames.add(currentPlayer.getSpaceShipDeeds().get(i).getPropName());
-                        if (totalAmountNeeded >= spaceships[currentPlayer.getPosition()].getRentPrice() ){
-                            break;
-                        }
-                    }
-                }
-            }
-            // player is bankrupt
-            if(totalAmountNeeded < spaceships[currentPlayer.getPosition()].getRentPrice()){
-                //declare player as bankrupt
-                System.out.println("GO BANKRUPT");
-            }
-
+           // mortgageOperation(mortgagedPropertiesNames);
+            mortgageSpaceShip(mortgagedPropertiesNames);
             String nameOfMortgaged = "";
             for(int i =0; i < mortgagedPropertiesNames.size() ; i++){
 
@@ -372,12 +338,13 @@ public class GameController implements Initializable{
             //mortgageOperation()
 
         }
+        else {
 
-
-        //temp2 = currentPlayers bank account after payment
-        int temp2 = currentPlayer.getBalance() -temp1;
-        //set current players bank account after payment for rent
-        currentPlayer.setBalance(temp2);
+            //temp2 = currentPlayers bank account after payment
+            int temp2 = currentPlayer.getBalance() - temp1;
+            //set current players bank account after payment for rent
+            currentPlayer.setBalance(temp2);
+        }
         String tempName =spaceships[currentPlayer.getPosition()].getOwnerName();
         //change bank account of the owner of the planet and show in the bank table
         for(int i = 0; i<names.size(); i++){
@@ -402,6 +369,79 @@ public class GameController implements Initializable{
     }
 
 
+    public void mortgageSpaceShip(ArrayList<String> mortgagedPropertiesNames){
+        int totalAmountNeeded = 0;
+        //iterate planets
+        if(currentPlayer.getTitleDeeds().size() > 0){
+            for(int i = 0; i < currentPlayer.getTitleDeeds().size(); i++){
+                if(!(currentPlayer.getTitleDeeds().get(i).checkMortgaged())){
+                    currentPlayer.getTitleDeeds().get(i).performMortgage();
+                    totalAmountNeeded = totalAmountNeeded + currentPlayer.getTitleDeeds().get(i).getMortgagePrice();
+                    mortgagedPropertiesNames.add(currentPlayer.getTitleDeeds().get(i).getPropName());
+                    if( totalAmountNeeded >= spaceships[currentPlayer.getPosition()].getRentPrice() ){
+                        break;
+                    }
+                }
+            }
+        }
+
+        //iterate ships
+        if(currentPlayer.getSpaceShipDeeds().size() > 0 && totalAmountNeeded
+                < spaceships[currentPlayer.getPosition()].getRentPrice()){
+            for(int i = 0; i < currentPlayer.getSpaceShipDeeds().size(); i++){
+                if(!(currentPlayer.getSpaceShipDeeds().get(i).checkMortgaged())){
+                    currentPlayer.getSpaceShipDeeds().get(i).performMortgage();
+                    totalAmountNeeded = totalAmountNeeded + currentPlayer.getSpaceShipDeeds().get(i).getMortgagePrice();
+                    mortgagedPropertiesNames.add(currentPlayer.getSpaceShipDeeds().get(i).getPropName());
+                    if (totalAmountNeeded >= spaceships[currentPlayer.getPosition()].getRentPrice() ){
+                        break;
+                    }
+                }
+            }
+        }
+        // player is bankrupt
+        if(totalAmountNeeded < spaceships[currentPlayer.getPosition()].getRentPrice()){
+            //declare player as bankrupt
+            System.out.println("GO BANKRUPT");
+        }
+    }
+
+    public void mortgageOperation(ArrayList<String> mortgagedPropertiesNames){
+        int totalAmountNeeded = 0;
+        //iterate planets
+        if(currentPlayer.getTitleDeeds().size() > 0){
+            for(int i = 0; i < currentPlayer.getTitleDeeds().size(); i++){
+                if(!(currentPlayer.getTitleDeeds().get(i).checkMortgaged())){
+                    currentPlayer.getTitleDeeds().get(i).performMortgage();
+                    totalAmountNeeded = totalAmountNeeded + currentPlayer.getTitleDeeds().get(i).getMortgagePrice();
+                    mortgagedPropertiesNames.add(currentPlayer.getTitleDeeds().get(i).getPropName());
+                    if( totalAmountNeeded >= planets[currentPlayer.getPosition()].getRentPrice() ){
+                        break;
+                    }
+                }
+            }
+        }
+
+        //iterate ships
+        if(currentPlayer.getSpaceShipDeeds().size() > 0 && totalAmountNeeded
+                < planets[currentPlayer.getPosition()].getRentPrice()){
+            for(int i = 0; i < currentPlayer.getSpaceShipDeeds().size(); i++){
+                if(!(currentPlayer.getSpaceShipDeeds().get(i).checkMortgaged())){
+                    currentPlayer.getSpaceShipDeeds().get(i).performMortgage();
+                    totalAmountNeeded = totalAmountNeeded + currentPlayer.getSpaceShipDeeds().get(i).getMortgagePrice();
+                    mortgagedPropertiesNames.add(currentPlayer.getSpaceShipDeeds().get(i).getPropName());
+                    if (totalAmountNeeded >= planets[currentPlayer.getPosition()].getRentPrice() ){
+                        break;
+                    }
+                }
+            }
+        }
+        // player is bankrupt
+        if(totalAmountNeeded < planets[currentPlayer.getPosition()].getRentPrice()){
+            //declare player as bankrupt
+            System.out.println("GO BANKRUPT");
+        }
+    }
 
 
     @FXML
@@ -470,7 +510,7 @@ public class GameController implements Initializable{
 
 
             //added here
-            if(currentPlayer.getBalance() > 100 && buildButton.isFocused()){
+            if(currentPlayer.getBalance() >= 100 && buildButton.isFocused()){
                 //buildButton.setDisable(false);
                 buildForestButton.setDisable(false);
                 buildHotelButton.setDisable(false);
@@ -579,45 +619,9 @@ public class GameController implements Initializable{
             closeMortgageButton.setDisable(true); //close is available after mortgage
             mortgagePane.setVisible(true);
 
-
             //---------MORTGAGE FOR PAY RENT FOR PLANET-----------
             ArrayList<String> mortgagedPropertiesNames = new ArrayList<String>();
-            //first check planets
-            int totalAmountNeeded = 0;
-            //iterate planets
-            if(currentPlayer.getTitleDeeds().size() > 0){
-                for(int i = 0; i < currentPlayer.getTitleDeeds().size(); i++){
-                    if(!(currentPlayer.getTitleDeeds().get(i).checkMortgaged())){
-                        currentPlayer.getTitleDeeds().get(i).performMortgage();
-                        totalAmountNeeded = totalAmountNeeded + currentPlayer.getTitleDeeds().get(i).getMortgagePrice();
-                        mortgagedPropertiesNames.add(currentPlayer.getTitleDeeds().get(i).getPropName());
-                        if( totalAmountNeeded >= planets[currentPlayer.getPosition()].getRentPrice() ){
-                            break;
-                        }
-                    }
-                }
-            }
-
-            //iterate ships
-            if(currentPlayer.getSpaceShipDeeds().size() > 0 && totalAmountNeeded
-                    < planets[currentPlayer.getPosition()].getRentPrice()){
-                for(int i = 0; i < currentPlayer.getSpaceShipDeeds().size(); i++){
-                    if(!(currentPlayer.getSpaceShipDeeds().get(i).checkMortgaged())){
-                        currentPlayer.getSpaceShipDeeds().get(i).performMortgage();
-                        totalAmountNeeded = totalAmountNeeded + currentPlayer.getSpaceShipDeeds().get(i).getMortgagePrice();
-                        mortgagedPropertiesNames.add(currentPlayer.getSpaceShipDeeds().get(i).getPropName());
-                        if (totalAmountNeeded >= planets[currentPlayer.getPosition()].getRentPrice() ){
-                            break;
-                        }
-                    }
-                }
-            }
-            // player is bankrupt
-            if(totalAmountNeeded < planets[currentPlayer.getPosition()].getRentPrice()){
-                //declare player as bankrupt
-                System.out.println("GO BANKRUPT");
-            }
-
+            mortgageOperation(mortgagedPropertiesNames);
             String nameOfMortgaged = "";
             for(int i =0; i < mortgagedPropertiesNames.size() ; i++){
 
@@ -628,16 +632,16 @@ public class GameController implements Initializable{
             }
             showMortgagedPLabel.setText(nameOfMortgaged + "\n Now you cant receive rent payments");
 
-            //3- call a method that makes mortgage(this process is handled in pane with "ok" button)
-            //mortgageOperation()
 
         }
 
+        else {
 
-        //temp2 = currentPlayers bank account after payment
-        int temp2 = currentPlayer.getBalance() -temp1;
-        //set current players bank account after payment for rent
-        currentPlayer.setBalance(temp2);
+            //temp2 = currentPlayers bank account after payment
+            int temp2 = currentPlayer.getBalance() - temp1;
+            //set current players bank account after payment for rent
+            currentPlayer.setBalance(temp2);
+        }
 
         String tempName =planets[currentPlayer.getPosition()].getOwnerName();
 
@@ -665,11 +669,8 @@ public class GameController implements Initializable{
 
     }
 
-    ArrayList<String> mortgagedPropertiesNames;
-    //3-------make progress
-    @FXML
-    public void mortgageOperation(){
-    }
+
+
 
 
     @FXML
@@ -1563,7 +1564,7 @@ public class GameController implements Initializable{
 //                    System.out.println(planets[removedPlanetLocation].checkHasOwner());
 //                    System.out.println(planets[removedPlanetLocation].getRentPrice());
                     planets[removedPlanetLocation] = new Planet(removed.getPropName(), ms, removed.getPrice(), removed.getPosition(),
-                             removed.getDefaultMortgagePrice(), removed.getDefaultRentPrice());
+                            removed.getDefaultMortgagePrice(), removed.getDefaultRentPrice());
                     System.out.println("Planet " + (removed.getPropName() + " is seized by aliens"));
 //                    System.out.println(planets[removedPlanetLocation].checkHasOwner());
 //                    System.out.println(planets[removedPlanetLocation].getRentPrice());
