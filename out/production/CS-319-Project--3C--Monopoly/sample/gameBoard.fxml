@@ -97,19 +97,20 @@
                   <Button fx:id="buyShip" layoutX="20.0" layoutY="175.0" mnemonicParsing="false" onAction="#buySpaceShip" text="Buy" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="propertyPane" layoutX="220.0" layoutY="220.0" prefHeight="200.0" prefWidth="220.0" style="-fx-background-color: grey; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
+            <AnchorPane fx:id="propertyPane" layoutX="220.0" layoutY="220.0" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: grey; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
                <children>
-                  <Label fx:id="propertyFeature" layoutX="19.0" layoutY="14.0" prefHeight="80.0" prefWidth="163.0" text="Property" textFill="#fef3ff">
+                  <Label fx:id="propertyFeature" layoutX="12.0" layoutY="14.0" prefHeight="137.0" prefWidth="222.0" text="Property" textFill="#fef3ff">
                      <font>
-                        <Font name="System Bold" size="13.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="buyButton" layoutX="11.0" layoutY="127.0" mnemonicParsing="false" onAction="#buyPlanet" prefHeight="25.0" prefWidth="45.0" text="Buy" />
-                  <Button fx:id="buildButton" layoutX="11.0" layoutY="161.0" mnemonicParsing="false" onAction="#showProperty" text="Build" />
-                  <Button fx:id="closePropButton" layoutX="68.0" layoutY="161.0" mnemonicParsing="false" onAction="#closePropertyPane" prefHeight="25.0" prefWidth="65.0" text="Close" />
-                  <Button fx:id="payRentButton" layoutX="68.0" layoutY="127.0" mnemonicParsing="false" onAction="#payRent" text="Pay Rent" />
-                  <Label fx:id="rentLabel" layoutX="141.0" layoutY="127.0" prefHeight="46.0" prefWidth="65.0" text="Rent:" textFill="WHITE" />
-                  <AnchorPane fx:id="buildStructurePane" onDragDetected="#showBuildStructure" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
+                  <Button fx:id="buyButton" layoutX="11.0" layoutY="170.0" mnemonicParsing="false" onAction="#buyPlanet" prefHeight="25.0" prefWidth="45.0" text="Buy" />
+                  <Button fx:id="buildButton" layoutX="11.0" layoutY="201.0" mnemonicParsing="false" onAction="#showProperty" text="Build" />
+                  <Button fx:id="closePropButton" layoutX="68.0" layoutY="201.0" mnemonicParsing="false" onAction="#closePropertyPane" prefHeight="25.0" prefWidth="65.0" text="Close" />
+                  <Label fx:id="mortgageShowLabel" layoutX="10.0" layoutY="150.0" prefHeight="18.0" prefWidth="193.0" text="-----------" textFill="WHITE" />
+                  <Button fx:id="payRentButton" layoutX="68.0" layoutY="170.0" mnemonicParsing="false" onAction="#payRent" text="Pay Rent" />
+                  <Label fx:id="rentLabel" layoutX="141.0" layoutY="160.0" prefHeight="46.0" prefWidth="65.0" text="Rent:" textFill="WHITE" />
+                  <AnchorPane fx:id="buildStructurePane" layoutY="30.0" onDragDetected="#showBuildStructure" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
                      <children>
                         <Button fx:id="closeBuildPaneButton" layoutX="14.0" layoutY="160.0" mnemonicParsing="false" onAction="#closeBuildStructurePane" text="close" visible="false" />
                         <Button fx:id="buildHouseButton" layoutX="100.0" layoutY="65.0" mnemonicParsing="false" onAction="#showBuildStructure" text="House 100$" visible="false" />
@@ -122,7 +123,6 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <Label fx:id="mortgageShowLabel" layoutX="10.0" layoutY="105.0" text="-----------" textFill="WHITE" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="alienPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: pink; visibility: true;">

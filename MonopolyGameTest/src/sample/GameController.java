@@ -1002,7 +1002,7 @@ public class GameController implements Initializable{
     //scroll Pane in titleDeeds
     @FXML
     ScrollPane scrollPaneDeeds;
-  //bank account table
+    //bank account table
     @FXML
     TextArea deedInfo;
     @FXML
@@ -1112,22 +1112,22 @@ public class GameController implements Initializable{
             //set title of the opened title deed's pane
             deedPaneTitle.setText(p1NameLabel.getText() + "'s Properties");
 
-                if(names.get(0).getTitleDeeds().size()>0) {
-                    player1Props += "PLANETS\n";
-                    for (int i = 0; i < names.get(0).getTitleDeeds().size(); i++) {
-                        player1Props = player1Props + "\n" + names.get(0).getTitleDeeds().get(i).getPropName();
-                    }
+            if(names.get(0).getTitleDeeds().size()>0) {
+                player1Props += "PLANETS\n";
+                for (int i = 0; i < names.get(0).getTitleDeeds().size(); i++) {
+                    player1Props = player1Props + "\n" + names.get(0).getTitleDeeds().get(i).getPropName();
                 }
-                if(names.get(0).getSpaceShipDeeds().size()>0) {
-                    player1Props += "\nSPACESHIPS\n";
-                    for (int i = 0; i < names.get(0).getSpaceShipDeeds().size(); i++) {
-                        player1Props = player1Props + "\n" + names.get(0).getSpaceShipDeeds().get(i).getPropName();
-                    }
+            }
+            if(names.get(0).getSpaceShipDeeds().size()>0) {
+                player1Props += "\nSPACESHIPS\n";
+                for (int i = 0; i < names.get(0).getSpaceShipDeeds().size(); i++) {
+                    player1Props = player1Props + "\n" + names.get(0).getSpaceShipDeeds().get(i).getPropName();
                 }
+            }
 
-                deedInfo.clear();
-                deedInfo.appendText(player1Props);
-                scrollPaneDeeds.setContent(deedInfo);
+            deedInfo.clear();
+            deedInfo.appendText(player1Props);
+            scrollPaneDeeds.setContent(deedInfo);
 
             deedPane.setVisible(true);
         }
@@ -1137,22 +1137,22 @@ public class GameController implements Initializable{
             String player2Props = "";
             //if player has no propety(players' title deed array is empty)
 
-                if(names.get(1).getTitleDeeds().size()>0) {
-                    player2Props += "PLANETS\n";
-                    for (int i = 0; i < names.get(1).getTitleDeeds().size(); i++) {
-                        player2Props = player2Props + "\n" + names.get(1).getTitleDeeds().get(i).getPropName();
+            if(names.get(1).getTitleDeeds().size()>0) {
+                player2Props += "PLANETS\n";
+                for (int i = 0; i < names.get(1).getTitleDeeds().size(); i++) {
+                    player2Props = player2Props + "\n" + names.get(1).getTitleDeeds().get(i).getPropName();
 //
-                    }
                 }
-                if(names.get(1).getSpaceShipDeeds().size()>0) {
-                    player2Props += "\nSPACESHIPS\n";
-                    for (int i = 0; i < names.get(1).getSpaceShipDeeds().size(); i++) {
-                        player2Props = player2Props + "\n" + names.get(1).getSpaceShipDeeds().get(i).getPropName();
-                    }
+            }
+            if(names.get(1).getSpaceShipDeeds().size()>0) {
+                player2Props += "\nSPACESHIPS\n";
+                for (int i = 0; i < names.get(1).getSpaceShipDeeds().size(); i++) {
+                    player2Props = player2Props + "\n" + names.get(1).getSpaceShipDeeds().get(i).getPropName();
                 }
-                deedInfo.clear();
-                deedInfo.appendText(player2Props);
-                scrollPaneDeeds.setContent(deedInfo);
+            }
+            deedInfo.clear();
+            deedInfo.appendText(player2Props);
+            scrollPaneDeeds.setContent(deedInfo);
 
 
             deedPane.setVisible(true);
@@ -1162,23 +1162,23 @@ public class GameController implements Initializable{
             String player3Props = "";
             //if player has no propety(players' title deed array is empty)
 
-                //print player's title deed in the scroll pane
-                if(names.get(2).getTitleDeeds().size()>0) {
-                    player3Props += "PLANETS\n";
-                    for (int i = 0; i < names.get(2).getTitleDeeds().size(); i++) {
-                        player3Props = player3Props + "\n" + names.get(2).getTitleDeeds().get(i).getPropName();
+            //print player's title deed in the scroll pane
+            if(names.get(2).getTitleDeeds().size()>0) {
+                player3Props += "PLANETS\n";
+                for (int i = 0; i < names.get(2).getTitleDeeds().size(); i++) {
+                    player3Props = player3Props + "\n" + names.get(2).getTitleDeeds().get(i).getPropName();
 //
-                    }
                 }
-                if(names.get(2).getSpaceShipDeeds().size()>0) {
-                    player3Props += "\nSPACESHIPS\n";
-                    for (int i = 0; i < names.get(2).getSpaceShipDeeds().size(); i++) {
-                        player3Props = player3Props + "\n" + names.get(2).getSpaceShipDeeds().get(i).getPropName();
-                    }
+            }
+            if(names.get(2).getSpaceShipDeeds().size()>0) {
+                player3Props += "\nSPACESHIPS\n";
+                for (int i = 0; i < names.get(2).getSpaceShipDeeds().size(); i++) {
+                    player3Props = player3Props + "\n" + names.get(2).getSpaceShipDeeds().get(i).getPropName();
                 }
-                deedInfo.clear();
-                deedInfo.appendText(player3Props);
-                scrollPaneDeeds.setContent(deedInfo);
+            }
+            deedInfo.clear();
+            deedInfo.appendText(player3Props);
+            scrollPaneDeeds.setContent(deedInfo);
 
 
             deedPane.setVisible(true);
@@ -1204,9 +1204,9 @@ public class GameController implements Initializable{
                 }
             }
 
-                deedInfo.clear();
-                deedInfo.appendText(player4Props);
-                scrollPaneDeeds.setContent(deedInfo);
+            deedInfo.clear();
+            deedInfo.appendText(player4Props);
+            scrollPaneDeeds.setContent(deedInfo);
 
 
             //shows deedPane after inserting information
@@ -1266,7 +1266,7 @@ public class GameController implements Initializable{
                     }
 
                     if (randomCard.equals(card3)) {
-                       changeTable();
+                        changeTable();
                     }
 
                     System.out.println("random card = " + randomCard);
