@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MonopolyLogicManager.HelpSceneController">
+   <children>
+      <ImageView fitHeight="768.0" fitWidth="1024.0" layoutX="0" layoutY="0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/HelpPageBacground.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="backBtn" cancelButton="true" defaultButton="true" graphicTextGap="10.0" layoutX="697.0" layoutY="582.0" mnemonicParsing="false" onAction="#closeToBackMain" prefHeight="42.0" prefWidth="250.0" text="Back" />
+      <Button fx:id="playBtn" layoutX="833.0" layoutY="523.0" mnemonicParsing="false" onAction="#goToPlayPage" prefHeight="42.0" prefWidth="145.0" text="Play" />
+      <TextArea layoutX="56.0" layoutY="218.0" prefHeight="228.0" prefWidth="556.0" text="The game board  is placed on a flat surface.Each player chooses a pawn for them.  Each&#10; player is given a sum of money (The amount of the money changes depending on the &#10;game edition). Game coins are placed in the bank box. A player works as a bank clerk. &#10;This player manages the bank issues in the transactions of other players. For some &#10;editions, during the game, each player can  make their own transactions with the bank &#10;(If the game plays among 2 people this way can be preferred.) &#10;&#10;Before the Game:&#10;&#10;Each player chooses a pawn and places it at the starting point. Each player receives a &#10;certain amount of money from the bank official before the game starts. This game is&#10; the starting fee. It is evenly distributed to each player. To choose which player will &#10;start first, dice  are rolled. The first player to  start the game is determined by dice. The &#10;player who gets the maximum number starts first.The player which starts first will have&#10; the right to buy the first property. If the player who rolls the first dice buys a &#10;property, the other 7 players can fall here and pay rent. Therefore, starting fist is an &#10;advantage.  &#10;&#10;&#10;Start the Game:&#10;&#10;The game starts by rolling the dice.  If a player rolls the dice double, they have&#10; the right to roll the dice one more time. If the player rolls the dice 3 times in the &#10;same turn, he goes to jail. If the player comes to a property, the player&#10;can become the owner of that property by paying the purchase price of that property &#10;to the bank. The banker gives this person  the title deed of that property. He receives&#10; rent from the player falling on that property. If the player does not want to buy the&#10; property, the game passes to the next  player..&#10;If the player falls into a jail as a result of his roll of dice, the player stays in jail for &#10;3 rounds. To get out of jail, he or she has to get the exit jail card beforehand or pay &#10;some money.&#10;If the player roll reaches the &quot;Draw Card&quot; section, the player draws a card." />
+      <TextArea layoutX="58.0" layoutY="510.0" prefHeight="228.0" prefWidth="556.0" text="Monopoly Space Edition has a virtual board  consisting of a road to travel planets, jail, &#10;spaceship, blackhole, chance cards, chest cards, aliens. Each player travels the&#10; destinations on the board with respect to their dice result and struggles with &#10;different challenges and surprises such as paying rent, going jail, earning bonuses &#10;from chance cards during the game. &#10;&#10;Tokens of Monopoly Space Edition consist of plenty of spacecraft. Each spacecraft &#10;has similar features and their main mission is to represent each player’s &#10;movement on the map. Players can select their tokens according to their pleasure. &#10;Some of the spacecraft tokens are shown in the figure below:&#10;" />
+      <Button fx:id="quitBtn" layoutX="666.0" layoutY="523.0" mnemonicParsing="false" onAction="#quitScene" prefHeight="42.0" prefWidth="145.0" text="Quit" />
+   </children>
+</AnchorPane>
