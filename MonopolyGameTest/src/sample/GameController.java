@@ -472,6 +472,9 @@ public class GameController implements Initializable{
             //added here
             if(currentPlayer.getBalance() > 100 && buildButton.isFocused()){
                 //buildButton.setDisable(false);
+                buildForestButton.setDisable(false);
+                buildHotelButton.setDisable(false);
+                buildHouseButton.setDisable(false);
                 builtMessageLabel.setText("");
                 showBuildStructure();
             }
