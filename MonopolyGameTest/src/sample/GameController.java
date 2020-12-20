@@ -202,6 +202,7 @@ public class GameController implements Initializable{
         //case1: player comes to a spaceship that has no owner
         if( !(spaceships[currentPlayer.getPosition()].checkHasOwner()) ){
 
+            rentShipButton.setDisable(true);
             //player has no enough money to buy ship
             if(currentPlayer.getBalance()<spaceships[currentPlayer.getPosition()].getPrice()){
                 infoShipLabel.setText("You don't have money \n to buy ");
@@ -229,7 +230,8 @@ public class GameController implements Initializable{
                 //player does not pay rent for his ship
                 rentShipButton.setDisable(true);
                 infoShipLabel.setText("Owner:" +  spaceships[currentPlayer.getPosition()].getOwnerName() +
-                        "\nWelcome to your Space Ship");
+                        "\nWelcome to your Space Ship\n" +
+                        spaceships[currentPlayer.getPosition()].getPropName());
             }
             //case 2.1 player comes to other players space ship
             else{
@@ -451,13 +453,26 @@ public class GameController implements Initializable{
             buildButton.setDisable(false);
             payRentButton.setDisable(true);
             //show information about planet, by adding owner player name
-            propertyFeature.setText("Welcome to your planet\n" );
+            propertyFeature.setText("Welcome to your planet\n"
+                    + planets[currentPlayer.getPosition()].getPropName());
+
 
             //added here
             if(currentPlayer.getBalance() > 100 && buildButton.isFocused()){
+                //buildButton.setDisable(false);
                 builtMessageLabel.setText("");
                 showBuildStructure();
             }
+
+            if(currentPlayer.getBalance() < 100){
+                buildButton.setDisable(true);
+                propertyFeature.setText("Welcome to your planet \n"+
+                        planets[currentPlayer.getPosition()].getPropName()
+                        + " \n Your money is not enough" +
+                        " \n for build operation");
+            }
+
+
 
         }
 
