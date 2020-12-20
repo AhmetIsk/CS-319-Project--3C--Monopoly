@@ -40,6 +40,7 @@ public class GameController implements Initializable{
     final int PLANET_NUMBER = 22;
     final int LOCATION_NUMBER = 40;
 
+    ///comment
 
     ArrayList<Token> tokens;
     ArrayList<Player> names;
