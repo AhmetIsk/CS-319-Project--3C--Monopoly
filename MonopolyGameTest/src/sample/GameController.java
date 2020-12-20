@@ -181,34 +181,32 @@ public class GameController implements Initializable{
         rentShipButton.setDisable(false);
         rollDiceBtn.setDisable(true);
         rollDiceBtn.setText("");
-        rentLabel.setText(""+spaceships[currentPlayer.getPosition()].getRentPrice());
+        rentShipLabel.setText("rent:\n"+spaceships[currentPlayer.getPosition()].getRentPrice());
 
         Spaceship currentShip;
 
         //set the label at the top of the pane
-        titleShipPaneL.setText("" + spaceships[currentPlayer.getPosition()].getPropName());
-        //make visible
+        titleShipPaneL.setText("" + spaceships[currentPlayer.getPosition()].getPropName()
+                + "\nprice:" +spaceships[currentPlayer.getPosition()].getPrice() );
         shipPane.setVisible(true);
 
 
         //case1: player comes to a spaceship that has no owner
         if( !(spaceships[currentPlayer.getPosition()].checkHasOwner()) ){
 
+            //player has no enough money to buy ship
             if(currentPlayer.getBalance()<spaceships[currentPlayer.getPosition()].getPrice()){
-
                 infoShipLabel.setText("You don't have money \n to buy ");
                 buyShip.setDisable(true);
                 closeShipButton.setDisable(false);
-                infoShipLabel.setText("");
+
             }
             else {
                 //no owher, so there is no pay option
                 rentShipButton.setDisable(true);
-                titleShipPaneL.setText("" + spaceships[currentPlayer.getPosition()].getPropName()
-                        + "\nprice:" +spaceships[currentPlayer.getPosition()].getPrice() );
                 infoShipLabel.setText("Ship has no owner." +
                         "\n Do you want to have a space ship?" +
-                        " \n This will be cool");
+                        " \n This will be cool!");
                 closeShipButton.setDisable(false);
             }
 
@@ -222,18 +220,19 @@ public class GameController implements Initializable{
             if(spaceships[currentPlayer.getPosition()].getOwnerName() == currentPlayer.getName()){
                 //player does not pay rent for his ship
                 rentShipButton.setDisable(true);
-                infoShipLabel.setText("Owner:" + currentPlayer.getName() +
+                infoShipLabel.setText("Owner:" +  spaceships[currentPlayer.getPosition()].getOwnerName() +
                         "\nWelcome to your Space Ship");
             }
             //case 2.1 player comes to other players space ship
             else{
 
-                infoShipLabel.setText("Owner:" + currentPlayer.getName() +
-                        "\nYou have to pay rent for this spaceship"
+                infoShipLabel.setText("Owner:" + spaceships[currentPlayer.getPosition()].getOwnerName() +
+                        "\nYou have to pay rent "
                         + "\nRent: " + spaceships[currentPlayer.getPosition()].getRentPrice());
                 //make close button diasable so that player can not go out without payment
                 closeShipButton.setDisable(true);
                 rentShipButton.setDisable(false);
+                buyShip.setDisable(true);
                 //pay rent action will be handled in the payShip method
 
                 //////MORTGAGE FOR SPACESHIP
@@ -381,6 +380,7 @@ public class GameController implements Initializable{
 
 
 
+
     @FXML
     //this method opens a new window for Property
     //BUNU PLANET YAP----------------
@@ -395,12 +395,17 @@ public class GameController implements Initializable{
 
         //set text at the top of the pane to show information at current player's location
         //price-rent and planet name will be shown
-        propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nPrice is: " + planets[currentPlayer.getPosition()].getPrice()
+        propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName()
+                + "\nPrice is: " + planets[currentPlayer.getPosition()].getPrice()
                 + "\nRent is: " +planets[currentPlayer.getPosition()].getRentPrice());
 
         //show rent price of the planet
         rentLabel.setText("Rent :" + planets[currentPlayer.getPosition()].getRentPrice());
 
+        //if planet has mortgage on it, show in the pane
+        if(planets[currentPlayer.getPosition()].checkMortgaged()){
+            mortgageShowLabel.setText("Planet has mortgage on it");
+        }
         //show pane that shows information of property
         propertyPane.setVisible(true);
 
@@ -415,17 +420,15 @@ public class GameController implements Initializable{
             buildButton.setDisable(true);
             closePropButton.setDisable(true);
             //show information about planet, by adding owner player name
-            propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nOwner: " + planets[currentPlayer.getPosition()].getOwnerName()
+            propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName()
+                    + "\nOwner: " + planets[currentPlayer.getPosition()].getOwnerName()
                     + "\nRent is: " +planets[currentPlayer.getPosition()].getRentPrice());
 
-            //1-----------------MORTGAGE completed
-            //1-isMortgaged olayını check edicez (player kira vericek mi diye?
+            //1-----------------MORTGAGE
+            //1-isMortgaged check to avoid pay rent for mortgaged planet
             if(planets[currentPlayer.getPosition()].checkMortgaged()){
                 payRentButton.setDisable(true);
                 closePropButton.setDisable(false);
-                propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() +
-                        "\nThis planet is mortgaged");
-
             }
 
         }
@@ -437,16 +440,19 @@ public class GameController implements Initializable{
             buildButton.setDisable(false);
             payRentButton.setDisable(true);
             //show information about planet, by adding owner player name
-            propertyFeature.setText( planets[currentPlayer.getPosition()].getPropName() + "\nOwner: " + planets[currentPlayer.getPosition()].getOwnerName()
-                    + "\nRent is: " +planets[currentPlayer.getPosition()].getRentPrice());
+            propertyFeature.setText("Welcome to your planet\n" );
         }
 
         //if planet has no owner, pay rent button is not visible
         //because pay rent is not available for planets that has no owner
         if( !(planets[currentPlayer.getPosition()].checkHasOwner())){
 
+            //if player has no enough money, but button is disabled
             if(currentPlayer.getBalance() < planets[currentPlayer.getPosition()].getPrice()){
                 buyButton.setDisable(true);
+                //planet can not be mortgaged so change this label
+                //to indicate player cant buy planet
+                mortgageShowLabel.setText("You don't have money to buy");
             }
 
             payRentButton.setDisable(true);
@@ -934,6 +940,8 @@ public class GameController implements Initializable{
     Label rentLabel;
     @FXML
     Button payRentButton;
+    @FXML
+    Label mortgageShowLabel;
     //--------
 
     //titleDeed anchorPane
