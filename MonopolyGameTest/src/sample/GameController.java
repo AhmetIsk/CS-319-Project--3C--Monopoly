@@ -273,6 +273,8 @@ public class GameController implements Initializable{
             //set owner of the spaceship to current player
             spaceships[currentPlayer.getPosition()].setOwner(currentPlayer);
 
+
+            infoShipLabel.setText("You Bought This Spaceship !");
             System.out.println(currentPlayer.getName() + " buy "
                     +currentPlayer.getSpaceShipDeeds().get(0).getPropName());
             //update bank account in bank account table
@@ -483,6 +485,8 @@ public class GameController implements Initializable{
 
                 planets[currentPlayer.getPosition()].setOwner(currentPlayer);
 
+                //indicate planet buy operation is done
+                mortgageShowLabel.setText("You Bought This Planet!");
                 System.out.println(currentPlayer.getName() + " buy " +currentPlayer.getTitleDeeds().get(0).getPropName());
                 //update bank account in bank account table
                 changeTable();

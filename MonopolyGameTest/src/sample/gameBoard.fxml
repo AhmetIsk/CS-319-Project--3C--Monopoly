@@ -97,7 +97,7 @@
                   <Button fx:id="buyShip" layoutX="20.0" layoutY="175.0" mnemonicParsing="false" onAction="#buySpaceShip" text="Buy" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="propertyPane" layoutX="220.0" layoutY="220.0" prefHeight="200.0" prefWidth="220.0" style="-fx-background-color: grey; -fx-border-color: white; -fx-border-width: 5; visibility: true;">
+            <AnchorPane fx:id="propertyPane" layoutX="220.0" layoutY="220.0" prefHeight="200.0" prefWidth="220.0" style="-fx-background-color: grey; -fx-border-color: white; -fx-border-width: 5; visibility: false;">
                <children>
                   <Label fx:id="propertyFeature" layoutX="19.0" layoutY="14.0" prefHeight="80.0" prefWidth="163.0" text="Property" textFill="#fef3ff">
                      <font>
