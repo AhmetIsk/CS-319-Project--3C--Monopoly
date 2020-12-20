@@ -437,8 +437,9 @@ public class GameController implements Initializable{
         //and owner is not current player
         //buy button will be unvisible since buy option is not available
         if( planets[currentPlayer.getPosition()].checkHasOwner()
-                && planets[currentPlayer.getPosition()].getOwnerName() != currentPlayer.getName()){
+                && (planets[currentPlayer.getPosition()].getOwnerName() != currentPlayer.getName())){
 
+            System.out.println(planets[currentPlayer.getPosition()].checkHasOwner());
             buyButton.setDisable(true);
             buildButton.setDisable(true);
             closePropButton.setDisable(true);
@@ -458,7 +459,7 @@ public class GameController implements Initializable{
 
         //if player comes to his/her own property
         if( planets[currentPlayer.getPosition()].checkHasOwner()
-                && planets[currentPlayer.getPosition()].getOwnerName() == currentPlayer.getName()){
+                && (planets[currentPlayer.getPosition()].getOwnerName() == currentPlayer.getName())){
 
             buyButton.setDisable(true);
             buildButton.setDisable(false);
@@ -880,13 +881,13 @@ public class GameController implements Initializable{
     CardDecorator card2 = new PutJail(new ChanceCard(2));
     CardDecorator card3 = new ChangeBankAccount(new ChanceCard(3));
     CardDecorator card4 = new ChangePosition(new ChanceCard(4));
-    CardDecorator card5 = new ChangeBankAccount(new ChangePosition(new ChanceCard(5)));
+    CardDecorator card5 = new ChangePosition(new ChangeBankAccount(new ChanceCard(5)));
     CardDecorator[] chanceCardsArray =  new CardDecorator[]{card1, card2, card3, card4, card5};
 
     CardDecorator card6 = new FoundMoney(new ChestCard(6));
     CardDecorator card7 = new FoundMoney(new ChangePosition(new ChestCard(7)));
     CardDecorator card8 = new CovidHelp(new ChestCard(8));
-    CardDecorator card9 = new CovidHelp(new FoundMoney(new ChestCard(9)));
+    CardDecorator card9 = new FoundMoney(new CovidHelp(new ChestCard(9)));
     CardDecorator[] chestCardsArray =  new CardDecorator[]{card6, card7, card8, card9};
 
     public CardDecorator getRandomCard(int num, CardDecorator[] cd) {
@@ -1281,6 +1282,7 @@ public class GameController implements Initializable{
                         System.out.println("balance ikili: " + currentPlayer.getBalance());
                         boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
                         boardPane.add((tokens.get(tempTurn)).getImageView(), 10, 10);
+                        currentPlayer.setPosition(0);
                         changeTable();
                     }
                     System.out.println("current player position: " + currentPlayer.getPosition());
@@ -1337,7 +1339,7 @@ public class GameController implements Initializable{
                     //covid help
                     if(randomCard.equals(card8)) {
                         System.out.println("card8");
-                        currentPlayer.setPosition(3);
+//                        currentPlayer.setPosition(3);
                         boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
                         boardPane.add((tokens.get(tempTurn)).getImageView(), 7, 10);
                     }
@@ -1550,7 +1552,23 @@ public class GameController implements Initializable{
             }
             //planet thief alien
             else if(randomAlien.getAlienId() == 3) {
-                System.out.println("planet thief alien came");
+                System.out.println("planet thief alien came \n");
+                if ((currentPlayer.getTitleDeeds().size() != 0 )) {
+                    int randomPlanet = (int)(1 + (Math.random()*(currentPlayer.getTitleDeeds()).size()) - 1);
+                    Planet removed = (currentPlayer.getTitleDeeds()).get(randomPlanet);
+                    int removedPlanetLocation = removed.getPosition();
+//                    System.out.println(planets[removedPlanetLocation].checkHasOwner());
+//                    System.out.println(planets[removedPlanetLocation].getRentPrice());
+                    planets[removedPlanetLocation] = new Planet(removed.getPropName(), ms, removed.getPrice(), removed.getPosition(),
+                             removed.getDefaultMortgagePrice(), removed.getDefaultRentPrice());
+                    System.out.println("Planet " + (removed.getPropName() + " is seized by aliens"));
+//                    System.out.println(planets[removedPlanetLocation].checkHasOwner());
+//                    System.out.println(planets[removedPlanetLocation].getRentPrice());
+                    currentPlayer.deleteTitleDeed(removed);
+                }
+                else{
+                    System.out.println(" What a shame! Poor you! ");
+                }
             }
 
             closeAlien.setVisible(true);

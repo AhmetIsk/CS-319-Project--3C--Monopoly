@@ -1,16 +1,16 @@
 Jupiter
 Earth
-Algedi
+AROG
 Chara
 UML
 Irena
 MATH
-Naled
+Fortran
 Petra
 JAVA
 Sarin
 GORA
-UruK
+Ruby
 Mirror
 Vega
 Tupi
@@ -18,5 +18,5 @@ Mars
 Skat
 LINUX
 Aries
-MAC
+Dart
 Lich

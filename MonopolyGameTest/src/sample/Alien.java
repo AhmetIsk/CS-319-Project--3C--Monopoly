@@ -51,6 +51,7 @@ public class Alien {
     public void alienInvasion(Player player) {
         if (this.getAlienId() == 1) {
             //put black hole
+            player.setInJail();
             player.setPosition(20);
         }
         else if (this.getAlienId() == 2) {

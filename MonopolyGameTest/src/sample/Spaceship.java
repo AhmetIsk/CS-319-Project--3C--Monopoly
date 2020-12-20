@@ -7,7 +7,6 @@ public class Spaceship extends Property{
     }
 
 
-
     @Override
     public void performMortgage() {
         if(!super.checkMortgaged()){

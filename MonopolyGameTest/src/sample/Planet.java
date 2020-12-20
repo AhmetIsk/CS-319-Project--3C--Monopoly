@@ -52,6 +52,7 @@ public class Planet extends Property {
         System.out.println("Forests: " + numForests );
     }
 
+
     public void performBuild(BuildStrategy bs){
         if (super.checkHasOwner()){
             bs.build(this, super.getOwner());

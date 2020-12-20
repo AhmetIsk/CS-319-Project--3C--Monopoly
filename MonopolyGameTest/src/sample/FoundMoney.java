@@ -18,6 +18,7 @@ public class FoundMoney extends CardDecorator{
 
     @Override
     public void duty(Player player) {
+        card.duty(player);
         int newBalance = (player.getBalance() + 150);
         player.setBalance(newBalance);
     }

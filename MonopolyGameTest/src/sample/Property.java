@@ -11,8 +11,12 @@ public abstract class Property {
     private Player owner;
     private int rentPrice;
     private String propName;
+    private int defaultMortgagePrice;
+    private int defaultRentPrice;
 
-    public Property(String propName,MortgageStrategy ms, int price, int position,
+
+
+    public Property(String propName, MortgageStrategy ms, int price, int position,
                     int mortgagePrice, int rentPrice){
         this.propName = propName;
         buildStrategy = new NoBuildStrategy(); //nothing is built yet
@@ -21,6 +25,8 @@ public abstract class Property {
         this.position = position;
         this.mortgagePrice = mortgagePrice;
         this.rentPrice = rentPrice;
+        this.defaultMortgagePrice = mortgagePrice;
+        this.defaultRentPrice = rentPrice;
 
         hasOwner = false;
         isMortgaged = false;
@@ -40,6 +46,7 @@ public abstract class Property {
 
 
     public abstract void performMortgage();
+
 
     /**
      *
@@ -82,6 +89,8 @@ public abstract class Property {
     }
 
     public String getOwnerName() {
+        if (owner == null)
+            return "";
         return owner.getName();
     }
 
@@ -113,5 +122,13 @@ public abstract class Property {
 
     public void setIsMortgage(boolean set){
         isMortgaged = set;
+    }
+
+    public int getDefaultMortgagePrice() {
+        return defaultMortgagePrice;
+    }
+
+    public int getDefaultRentPrice() {
+        return defaultRentPrice;
     }
 }
