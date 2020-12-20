@@ -194,11 +194,23 @@ public class GameController implements Initializable{
         //case1: player comes to a spaceship that has no owner
         if( !(spaceships[currentPlayer.getPosition()].checkHasOwner()) ){
 
-            //no owher, so there is no pay option
-            rentShipButton.setDisable(true);
-            infoShipLabel.setText("Ship has no owner." +
-                    "\n Do you want to have a space ship?" +
-                    " \n This will be cool");
+            if(currentPlayer.getBalance()<spaceships[currentPlayer.getPosition()].getPrice()){
+
+                infoShipLabel.setText("You don't have money \n to buy ");
+                buyShip.setDisable(true);
+                closeShipButton.setDisable(false);
+                infoShipLabel.setText("");
+            }
+            else {
+                //no owher, so there is no pay option
+                rentShipButton.setDisable(true);
+                titleShipPaneL.setText("" + spaceships[currentPlayer.getPosition()].getPropName()
+                        + "\nprice:" +spaceships[currentPlayer.getPosition()].getPrice() );
+                infoShipLabel.setText("Ship has no owner." +
+                        "\n Do you want to have a space ship?" +
+                        " \n This will be cool");
+                closeShipButton.setDisable(false);
+            }
 
         }
 
@@ -432,8 +444,14 @@ public class GameController implements Initializable{
         //if planet has no owner, pay rent button is not visible
         //because pay rent is not available for planets that has no owner
         if( !(planets[currentPlayer.getPosition()].checkHasOwner())){
+
+            if(currentPlayer.getBalance() < planets[currentPlayer.getPosition()].getPrice()){
+                buyButton.setDisable(true);
+            }
+
             payRentButton.setDisable(true);
             buildButton.setDisable(true);
+            closePropButton.setDisable(false);
 
         }
         if(buildButton.isFocused()){
