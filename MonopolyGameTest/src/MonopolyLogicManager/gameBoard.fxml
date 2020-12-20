@@ -323,5 +323,6 @@
             </Button>
          </children>
       </Pane>
+      <Button fx:id="mute" layoutX="226.0" layoutY="27.0" mnemonicParsing="false" onAction="#mute" opacity="0.0" prefHeight="68.0" prefWidth="68.0" />
     </children>
 </AnchorPane>

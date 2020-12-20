@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import FileControllerManager.GameInfoReader;
+import FileControllerManager.MusicPlayer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -1590,6 +1591,17 @@ public class GameController implements Initializable{
         }
 
 
+    }
+
+    @FXML
+    Button mute;
+
+    MusicPlayer musicPlayer = new MusicPlayer(GameInfoReader.getMusics());
+
+    @FXML
+    void mute () {
+
+        musicPlayer.mute();
     }
 
     @FXML

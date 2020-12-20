@@ -24,7 +24,7 @@ public class MainSceneController implements Initializable {
     @FXML
     Button plyBtn;
 
-    MusicPlayer musicPlayer = new MusicPlayer(GameInfoReader.getMusics());
+//    MusicPlayer musicPlayer = new MusicPlayer(GameInfoReader.getMusics());
 
     @FXML
     void closeView(){
