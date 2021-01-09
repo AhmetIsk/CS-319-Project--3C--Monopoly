@@ -1,4 +1,4 @@
-package MonopolyLogicManager;
+package UIController;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

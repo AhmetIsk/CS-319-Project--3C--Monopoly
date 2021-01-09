@@ -3,7 +3,7 @@
 // (powered by FernFlower decompiler)
 //
 
-package MonopolyLogicManager;
+package UIController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import FileControllerManager.GameInfoReader;
 import FileControllerManager.MusicPlayer;
+import MonopolyLogicManager.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -192,6 +193,9 @@ public class GameController implements Initializable{
 
     @FXML
     ImageView spaceshipImg;
+
+    @FXML
+    Label bankruptText;
 
     @FXML
 //this method opens a new window for SpaceShip
@@ -1279,6 +1283,11 @@ public class GameController implements Initializable{
                     }
 
                     if (randomCard.equals(card3)) {
+
+                        if (names.get(tempTurn).getBalance() < 0 ) {
+                            (names.get(tempTurn)).setBalance(0);
+                            (names.get(tempTurn)).setBankrupt();
+                        }
                         changeTable();
                     }
 
@@ -1295,6 +1304,10 @@ public class GameController implements Initializable{
                         boardPane.getChildren().remove((tokens.get(tempTurn)).getImageView());
                         boardPane.add((tokens.get(tempTurn)).getImageView(), 10, 10);
                         currentPlayer.setPosition(0);
+                        if (names.get(tempTurn).getBalance() < 0 ) {
+                            (names.get(tempTurn)).setBalance(0);
+                            (names.get(tempTurn)).setBankrupt();
+                        }
                         changeTable();
                     }
                     System.out.println("current player position: " + currentPlayer.getPosition());
@@ -1389,12 +1402,12 @@ public class GameController implements Initializable{
 
     @FXML
     void move(){
-        for (int i = 0; i < names.size(); i++) {
-            (names.get(i)).setBalance(0);
-            if (names.get(i).getNumProperty() == 0) {
-                (names.get(i)).setBankrupt();
+//        for (int i = 0; i < names.size(); i++) {
+            (names.get(0)).setBalance(0);
+            if (names.get(0).getNumProperty() == 0) {
+                (names.get(0)).setBankrupt();
             }
-        }
+//        }
     }
 
     @FXML
@@ -1427,6 +1440,9 @@ public class GameController implements Initializable{
         }
         else if (currentPlayer.getBankrupt()) {
             finishPane.setVisible(true);
+            quitBtn.setVisible(false);
+            finishReplay.setVisible(false);
+            bankruptText.setText("GO BANKRUPT!");
         }
         else {
             currentPlayer.exitJail();
@@ -1454,7 +1470,7 @@ public class GameController implements Initializable{
                     boardPane.add((tokens.get(turn)).getImageView(), 10 - updatedPosition, 10);
                     //add token to its new position by moving token according to total dice
                     if (((updatedPosition - totalDice) < 0) || updatedPosition == 0)
-                        currentPlayer.setBalance(currentPlayer.getBalance() + 1000);
+                        currentPlayer.setBalance(currentPlayer.getBalance() + 500);
                     changeTable();
                 } else if (updatedPosition <= 20) {
                     boardPane.add((tokens.get(turn)).getImageView(), 0, 20 - updatedPosition);
@@ -1559,6 +1575,10 @@ public class GameController implements Initializable{
             //money thief alien (-200M)
             else if(randomAlien.getAlienId() == 2) {
                 System.out.println("money thief alien came");
+                if (names.get(tempTurn).getBalance() < 0 ) {
+                    (names.get(tempTurn)).setBalance(0);
+                    (names.get(tempTurn)).setBankrupt();
+                }
                 changeTable();
 
             }
@@ -1615,13 +1635,94 @@ public class GameController implements Initializable{
     @FXML
     void removePlayer() {
         Token currentToken = tokens.get(turn);
-        names.remove(currentPlayer);
+
         boardPane.getChildren().remove((tokens.get(turn)).getImageView());
+        names.remove(currentPlayer);
         tokens.remove(currentToken);
-        turn = (turn + 1) % names.size();
         currentPlayer = names.get(turn);
+
         changeTable();
+        changeTable(currentPlayer);
+        updateInfoTable();
         finishPane.setVisible(false);
+    }
+
+    public void updateInfoTable() {
+        if (names.size() == 1) {
+            p1NameLabel.setText(names.get(0).getName());
+            p1AccountLabel.setText(String.valueOf(names.get(0).getBalance()));
+            //make other buttons not visible
+            p2DeedButton.setVisible(false);
+            p3DeedButton.setVisible(false);
+            p4DeedButton.setVisible(false);
+            p2NameLabel.setText("");
+            p2AccountLabel.setText("");
+            p3NameLabel.setText("");
+            p3AccountLabel.setText("");
+            p4NameLabel.setText("");
+            p4AccountLabel.setText("");
+
+            //show current player at the bottom of the game scene
+            currentPlayerName.setText("Current Player :Bankrupt");
+            nextPlayerName.setText("Next Player : " + names.get(turn).getName());
+
+        }
+        if (names.size() == 2) {
+            p1NameLabel.setText(names.get(0).getName());
+            p1AccountLabel.setText(String.valueOf(names.get(0).getBalance()));
+            //make other buttons not visible
+            p3DeedButton.setVisible(false);
+            p4DeedButton.setVisible(false);
+            // p1Deed Button will be here
+            p2NameLabel.setText(names.get(1).getName());
+            p2AccountLabel.setText(String.valueOf(names.get(1).getBalance()));
+            p3NameLabel.setText("");
+            p3AccountLabel.setText("");
+            p4NameLabel.setText("");
+            p4AccountLabel.setText("");
+
+
+            //show current player at the bottom of the game scene
+            currentPlayerName.setText("Current Player :Bankrupt");
+            nextPlayerName.setText("Next Player : " + names.get(turn).getName());
+
+        }
+        if (names.size() == 3) {
+            p1NameLabel.setText(names.get(0).getName());
+            p1AccountLabel.setText(String.valueOf(names.get(0).getBalance()));
+            // p1Deed Button will be here
+            p2NameLabel.setText(names.get(1).getName());
+            p2AccountLabel.setText(String.valueOf(names.get(1).getBalance()));
+            // p1Deed Button will be here
+            p3NameLabel.setText(names.get(2).getName());
+            p3AccountLabel.setText(String.valueOf(names.get(2).getBalance()));
+            p4NameLabel.setText("");
+            p4AccountLabel.setText("");
+            //make other buttons not visible
+            p4DeedButton.setVisible(false);
+
+            //show current player at the bottom of the game scene
+            currentPlayerName.setText("Current Player :Bankrupt");
+            nextPlayerName.setText("Next Player : " + names.get(turn).getName());
+
+        }
+        if (names.size() == 4) {
+            p1NameLabel.setText(names.get(0).getName());
+            p1AccountLabel.setText(String.valueOf(names.get(0).getBalance()));
+            // p1Deed Button will be here
+            p2NameLabel.setText(names.get(1).getName());
+            p2AccountLabel.setText(String.valueOf(names.get(1).getBalance()));
+            // p1Deed Button will be here
+            p3NameLabel.setText(names.get(2).getName());
+            p3AccountLabel.setText(String.valueOf(names.get(2).getBalance()));
+            // p1Deed Button will be here
+            p4NameLabel.setText(names.get(3).getName());
+            p4AccountLabel.setText(String.valueOf(names.get(3).getBalance()));
+
+            //show current player at the bottom of the game scene
+            currentPlayerName.setText("Current Player :Bankrupt");
+            nextPlayerName.setText("Next Player : " + names.get(turn).getName());
+        }
     }
 
 }

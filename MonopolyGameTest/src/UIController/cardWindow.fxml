@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="225.0" prefWidth="406.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MonopolyLogicManager.GameController">
+<AnchorPane prefHeight="225.0" prefWidth="406.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UIController.GameController">
    <children>
       <Button fx:id="okInCard" layoutX="73.0" layoutY="173.0" mnemonicParsing="false" onAction="#closeOpenedOnBoard" prefHeight="25.0" prefWidth="59.0" text="OK" />
       <Label fx:id="titleOnCard" layoutX="23.0" layoutY="14.0" prefHeight="15.0" prefWidth="131.0" text="Card" textFill="#8a26bc">

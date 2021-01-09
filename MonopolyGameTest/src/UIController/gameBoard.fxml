@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="bigPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MonopolyLogicManager.GameController">
+<AnchorPane fx:id="bigPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UIController.GameController">
     <children>
         <ImageView fitHeight="768.0" fitWidth="1024.0" preserveRatio="false">
          <image>
@@ -163,11 +163,11 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="mortgagePane" layoutX="220.0" layoutY="220.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: mediumpurple; visibility: false;">
+            <AnchorPane fx:id="mortgagePane" layoutX="220.0" layoutY="220.0" prefHeight="248.0" prefWidth="253.0" style="-fx-background-color: mediumpurple; visibility: false;">
                <children>
-                  <Button fx:id="okMortgageButton" layoutX="10.0" layoutY="165.0" mnemonicParsing="false" onAction="#acceptMortgage" text="OK" />
-                  <Button fx:id="closeMortgageButton" layoutX="120.0" layoutY="165.0" mnemonicParsing="false" onAction="#acceptMortgage" text="Close" />
-                  <Label fx:id="showMortgagedPLabel" layoutX="10.0" layoutY="10.0" prefHeight="138.0" prefWidth="169.0" text="Mortgage Operation" textFill="WHITE">
+                  <Button fx:id="okMortgageButton" layoutX="18.0" layoutY="201.0" mnemonicParsing="false" onAction="#acceptMortgage" text="OK" />
+                  <Button fx:id="closeMortgageButton" layoutX="188.0" layoutY="203.0" mnemonicParsing="false" onAction="#acceptMortgage" text="Close" />
+                  <Label fx:id="showMortgagedPLabel" layoutX="10.0" layoutY="10.0" prefHeight="158.0" prefWidth="227.0" text="Mortgage Operation" textFill="WHITE">
                      <font>
                         <Font size="12.0" />
                      </font>
@@ -321,6 +321,11 @@
                   <Font name="System Bold" size="48.0" />
                </font>
             </Button>
+            <Label fx:id="bankruptText" layoutX="20.0" layoutY="45.0" prefHeight="369.0" prefWidth="854.0" style="-fx-alignment: center;" textAlignment="CENTER" textFill="#eee2ed">
+               <font>
+                  <Font name="Calibri Bold" size="81.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Button fx:id="mute" layoutX="226.0" layoutY="27.0" mnemonicParsing="false" onAction="#mute" opacity="0.0" prefHeight="68.0" prefWidth="68.0" />

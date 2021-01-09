@@ -1,7 +1,5 @@
-package MonopolyLogicManager;
+package UIController;
 
-import FileControllerManager.GameInfoReader;
-import FileControllerManager.MusicPlayer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
